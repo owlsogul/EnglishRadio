@@ -20,6 +20,7 @@
 		405657EE1E27E45B00835305 /* Audio_1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 405657EB1E27E45B00835305 /* Audio_1.m4a */; };
 		405657EF1E27E45B00835305 /* Audio_2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 405657EC1E27E45B00835305 /* Audio_2.m4a */; };
 		405657F01E27E45B00835305 /* Audio_3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 405657ED1E27E45B00835305 /* Audio_3.m4a */; };
+		40613B0F1E36FA45006CC505 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40613B0E1E36FA45006CC505 /* StationData.swift */; };
 		40A4522B1E23222B0033F0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A4522A1E23222B0033F0AE /* AppDelegate.swift */; };
 		40A4522D1E23222B0033F0AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A4522C1E23222B0033F0AE /* ViewController.swift */; };
 		40A452301E23222B0033F0AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A4522E1E23222B0033F0AE /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		405657EB1E27E45B00835305 /* Audio_1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Audio_1.m4a; path = RadioProto/Audio_1.m4a; sourceTree = "<group>"; };
 		405657EC1E27E45B00835305 /* Audio_2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Audio_2.m4a; path = RadioProto/Audio_2.m4a; sourceTree = "<group>"; };
 		405657ED1E27E45B00835305 /* Audio_3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Audio_3.m4a; path = RadioProto/Audio_3.m4a; sourceTree = "<group>"; };
+		40613B0E1E36FA45006CC505 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationData.swift; path = ../Sources/StationData.swift; sourceTree = "<group>"; };
 		40A452271E23222B0033F0AE /* RadioProto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioProto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40A4522A1E23222B0033F0AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40A4522C1E23222B0033F0AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				405657C91E2730E700835305 /* Sources */,
 				40A4522A1E23222B0033F0AE /* AppDelegate.swift */,
+				40613B0E1E36FA45006CC505 /* StationData.swift */,
 				40A4522C1E23222B0033F0AE /* ViewController.swift */,
 				40A4522E1E23222B0033F0AE /* Main.storyboard */,
 				405657E61E27D5A800835305 /* Assets.xcassets */,
@@ -197,6 +200,7 @@
 				405657E11E2730E700835305 /* CHPickerViewController.swift in Sources */,
 				405657E31E2730E700835305 /* FIlters.swift in Sources */,
 				40A4523D1E2329620033F0AE /* UIViewController+Navigation.swift in Sources */,
+				40613B0F1E36FA45006CC505 /* StationData.swift in Sources */,
 				405657DE1E2730E700835305 /* CHControls.swift in Sources */,
 				40A4522D1E23222B0033F0AE /* ViewController.swift in Sources */,
 				405657E01E2730E700835305 /* CHPagingScrollViewController.swift in Sources */,
