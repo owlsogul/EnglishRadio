@@ -87,6 +87,14 @@
 			path = ../Sources;
 			sourceTree = "<group>";
 		};
+		40613B101E36FE73006CC505 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				40613B0E1E36FA45006CC505 /* StationData.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		40A4521E1E23222B0033F0AE = {
 			isa = PBXGroup;
 			children = (
@@ -109,9 +117,9 @@
 		40A452291E23222B0033F0AE /* RadioProto */ = {
 			isa = PBXGroup;
 			children = (
+				40613B101E36FE73006CC505 /* Data */,
 				405657C91E2730E700835305 /* Sources */,
 				40A4522A1E23222B0033F0AE /* AppDelegate.swift */,
-				40613B0E1E36FA45006CC505 /* StationData.swift */,
 				40A4522C1E23222B0033F0AE /* ViewController.swift */,
 				40A4522E1E23222B0033F0AE /* Main.storyboard */,
 				405657E61E27D5A800835305 /* Assets.xcassets */,
