@@ -26,6 +26,7 @@
 		40A452301E23222B0033F0AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A4522E1E23222B0033F0AE /* Main.storyboard */; };
 		40A452351E23222B0033F0AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A452331E23222B0033F0AE /* LaunchScreen.storyboard */; };
 		40A4523D1E2329620033F0AE /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A4523C1E2329620033F0AE /* UIViewController+Navigation.swift */; };
+		40DBE3911E486491004CBB38 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DBE3901E486491004CBB38 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		40A452341E23222B0033F0AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40A452361E23222B0033F0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40A4523C1E2329620033F0AE /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Navigation.swift"; path = "../RadioProto/UIViewController+Navigation.swift"; sourceTree = "<group>"; };
+		40DBE3901E486491004CBB38 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				405657E61E27D5A800835305 /* Assets.xcassets */,
 				40A452331E23222B0033F0AE /* LaunchScreen.storyboard */,
 				40A452361E23222B0033F0AE /* Info.plist */,
+				40DBE3901E486491004CBB38 /* SettingViewController.swift */,
 			);
 			path = RadioProto;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				40A4523D1E2329620033F0AE /* UIViewController+Navigation.swift in Sources */,
 				40613B0F1E36FA45006CC505 /* StationData.swift in Sources */,
 				405657DE1E2730E700835305 /* CHControls.swift in Sources */,
+				40DBE3911E486491004CBB38 /* SettingViewController.swift in Sources */,
 				40A4522D1E23222B0033F0AE /* ViewController.swift in Sources */,
 				405657E01E2730E700835305 /* CHPagingScrollViewController.swift in Sources */,
 				405657DD1E2730E700835305 /* CHContentViewController.swift in Sources */,
