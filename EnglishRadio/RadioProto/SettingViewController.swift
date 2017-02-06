@@ -8,12 +8,15 @@
 
 import UIKit
 
-class SettingViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
+class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.backgroundColor = UIColor.clear
+//        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+//        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,6 +26,25 @@ class SettingViewController: UIViewController, UITableViewDataSource,UITableView
     
     
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        
+        
+        return 3
+    }
+    
+    
+    
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath)
+        
+        
+        return cell
+        
+        
+    }
     
 
     /*
