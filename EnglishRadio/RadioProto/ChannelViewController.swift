@@ -10,6 +10,16 @@ import UIKit
 
 class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewDataSource{
 
+    let stationData: [[String:String]] =
+        [["Country" : "Canada","stationName" : "CKRW"],
+        
+         ["Country" : "United States", "stationName" : "CNN"],
+         
+         ["Country" : "Australia", "stationName" : "Australia Radio"],
+         
+         ["Country" : "United Kingdom", "stationName" : "UK Radio"]
+         
+    ]
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,28 +47,91 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    
+    //row의 수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
-        return 10
+        if section == 0 {
+            
+            return 1
+        }else if section == 1 {
+            
+            return 1
+        }else if section == 2 {
+            
+            return 1
+        }else
+        {
+            return 1
+        }
+        
         
     }
     
-    
+    //섹션 수
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return stationData.count
     }
+   
+    
+    //섹션 헤더에 나라 이름을 표시해준다.
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        let sectionNumber:Int = section
+        let stationDictionary:[String:String] = self.stationData[sectionNumber]
+        
+        
+        return "\(stationDictionary["Country"]!)"
+    }
+    
+    
+    
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
+        
         let cell: ChannelTableViewCell = tableView.dequeueReusableCell(withIdentifier: "stationListCell", for: indexPath) as! ChannelTableViewCell
-        
-        cell.backgroundColor = UIColor.clear
-        cell.stationLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
-        cell.stationLabel?.text = "Station Name"
-        
+            cell.backgroundColor = UIColor.clear
+            cell.stationLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
 
+        let stationDictionary:[String:String] = self.stationData[indexPath.section]
+        if let station: String = stationDictionary["stationName"]{
+        
+        
+            if stationDictionary["Country"] == "United States"{
+              
+                print("US")
+                cell.stationLabel?.text = station
+                return cell
+                
+            
+            }
+            if stationDictionary["Country"] == "United Kingdom"{
+                
+                print("UK")
+                cell.stationLabel?.text = station
+                return cell
+                
+            }
+            if stationDictionary["Country"] == "Canada"{
+               
+                print("Canada")
+                cell.stationLabel?.text = station
+                return cell
+                
+            }
+            if stationDictionary["Country"] == "Australia"{
+              
+                print("Australia")
+                cell.stationLabel?.text = station
+                return cell
+
+            }
+            
+        }
         return cell
+        
     }
     /*
     // MARK: - Navigation
