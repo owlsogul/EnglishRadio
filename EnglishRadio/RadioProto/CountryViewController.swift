@@ -10,6 +10,11 @@ import UIKit
 
 class CountryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UINavigationControllerDelegate {
 
+    
+    let country: [String] = ["Canada", "United States", "Australia", "United Kingdom"]
+    
+    
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,7 +41,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     //row 갯수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
-        return 10
+        return country.count
         
     }
     
@@ -45,11 +50,16 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         let cell: CountryTableViewCell
-        cell = tableView.dequeueReusableCell(withIdentifier: "countryList", for: indexPath) as! CountryTableViewCell
+        cell = tableView.dequeueReusableCell(withIdentifier: "countryListCell", for: indexPath) as! CountryTableViewCell
+        
+        let rowNumber:Int = indexPath.row
+        let name: String = country[rowNumber]
+            
+        
+        
         cell.backgroundColor = UIColor.clear
         cell.countryLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
-        cell.countryLabel?.text = "country"
-        
+        cell.countryLabel?.text = name
         
         print("country 탭에 셀이 생성되었다")
         return cell

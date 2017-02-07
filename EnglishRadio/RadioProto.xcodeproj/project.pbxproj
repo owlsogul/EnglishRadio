@@ -11,7 +11,7 @@
 		4000D6F21E49800E00FBE648 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000D6F11E49800E00FBE648 /* CountryViewController.swift */; };
 		404EBB581E49BC570018D030 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404EBB571E49BC570018D030 /* ChannelViewController.swift */; };
 		404EBB5A1E49BD540018D030 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404EBB591E49BD540018D030 /* ChannelTableViewCell.swift */; };
-		404EBB5C1E49BF1C0018D030 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404EBB5B1E49BF1C0018D030 /* main.storyboard */; };
+		404EBB5E1E49C00E0018D030 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404EBB5D1E49C00E0018D030 /* Main.storyboard */; };
 		405657DD1E2730E700835305 /* CHContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657CF1E2730E700835305 /* CHContentViewController.swift */; };
 		405657DE1E2730E700835305 /* CHControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657D01E2730E700835305 /* CHControls.swift */; };
 		405657DF1E2730E700835305 /* CHModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657D11E2730E700835305 /* CHModalViewController.swift */; };
@@ -39,7 +39,7 @@
 		4000D6F11E49800E00FBE648 /* CountryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		404EBB571E49BC570018D030 /* ChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
 		404EBB591E49BD540018D030 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
-		404EBB5B1E49BF1C0018D030 /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
+		404EBB5D1E49C00E0018D030 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		405657CF1E2730E700835305 /* CHContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHContentViewController.swift; sourceTree = "<group>"; };
 		405657D01E2730E700835305 /* CHControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHControls.swift; sourceTree = "<group>"; };
 		405657D11E2730E700835305 /* CHModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHModalViewController.swift; sourceTree = "<group>"; };
@@ -136,13 +136,13 @@
 				40A452331E23222B0033F0AE /* LaunchScreen.storyboard */,
 				40A452361E23222B0033F0AE /* Info.plist */,
 				66CDF6801E49817B005927C7 /* StationData.swift */,
+				404EBB5D1E49C00E0018D030 /* Main.storyboard */,
 				40DBE3901E486491004CBB38 /* SettingViewController.swift */,
 				40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */,
 				4000D6F11E49800E00FBE648 /* CountryViewController.swift */,
 				4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */,
 				404EBB571E49BC570018D030 /* ChannelViewController.swift */,
 				404EBB591E49BD540018D030 /* ChannelTableViewCell.swift */,
-				404EBB5B1E49BF1C0018D030 /* main.storyboard */,
 			);
 			path = RadioProto;
 			sourceTree = "<group>";
@@ -208,7 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40A452351E23222B0033F0AE /* LaunchScreen.storyboard in Resources */,
-				404EBB5C1E49BF1C0018D030 /* main.storyboard in Resources */,
+				404EBB5E1E49C00E0018D030 /* Main.storyboard in Resources */,
 				405657EE1E27E45B00835305 /* Audio_1.m4a in Resources */,
 				405657E71E27D5A800835305 /* Assets.xcassets in Resources */,
 				405657F01E27E45B00835305 /* Audio_3.m4a in Resources */,
