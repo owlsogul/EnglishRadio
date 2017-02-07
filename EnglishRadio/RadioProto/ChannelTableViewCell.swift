@@ -10,6 +10,7 @@ import UIKit
 
 class ChannelTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var stationLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

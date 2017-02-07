@@ -70,21 +70,43 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     
     //섹션 수
     func numberOfSections(in tableView: UITableView) -> Int {
+    
         return stationData.count
+    
     }
    
     
     //섹션 헤더에 나라 이름을 표시해준다.
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        
+//        let sectionNumber:Int = section
+//        let stationDictionary:[String:String] = self.stationData[sectionNumber]
+//        
+//        
+//        return "\(stationDictionary["Country"]!)"
+//    }
+//    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         
-        let sectionNumber:Int = section
-        let stationDictionary:[String:String] = self.stationData[sectionNumber]
-        
-        
-        return "\(stationDictionary["Country"]!)"
+        print("height for header in section")
+        return 30.0
     }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+        
+        let header: ChannelTableViewCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! ChannelTableViewCell
+        
+            header.headerLabel?.textColor = UIColor.gray.withAlphaComponent(0.8)
+            
+            header.headerLabel?.text = "Country"
+        
+        print("viewfor header in section")
+        
+        return header
     
     
+        
+    }
     
     
     
