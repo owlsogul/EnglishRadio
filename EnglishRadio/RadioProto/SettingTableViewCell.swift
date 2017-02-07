@@ -14,6 +14,11 @@ class SettingTableViewCell: UITableViewCell {
     @IBOutlet weak var channelLabel: UILabel!
     @IBOutlet weak var dataLabel: UILabel!
     
+<<<<<<< HEAD
+=======
+    
+  
+>>>>>>> origin/master
     
     
 }
