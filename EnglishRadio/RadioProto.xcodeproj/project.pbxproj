@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4000D6F01E497F5B00FBE648 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */; };
 		4000D6F21E49800E00FBE648 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000D6F11E49800E00FBE648 /* CountryViewController.swift */; };
+		404EBB581E49BC570018D030 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404EBB571E49BC570018D030 /* ChannelViewController.swift */; };
+		404EBB5A1E49BD540018D030 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404EBB591E49BD540018D030 /* ChannelTableViewCell.swift */; };
+		404EBB5C1E49BF1C0018D030 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404EBB5B1E49BF1C0018D030 /* main.storyboard */; };
 		405657DD1E2730E700835305 /* CHContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657CF1E2730E700835305 /* CHContentViewController.swift */; };
 		405657DE1E2730E700835305 /* CHControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657D01E2730E700835305 /* CHControls.swift */; };
 		405657DF1E2730E700835305 /* CHModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657D11E2730E700835305 /* CHModalViewController.swift */; };
@@ -24,7 +27,6 @@
 		405657F01E27E45B00835305 /* Audio_3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 405657ED1E27E45B00835305 /* Audio_3.m4a */; };
 		40A4522B1E23222B0033F0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A4522A1E23222B0033F0AE /* AppDelegate.swift */; };
 		40A4522D1E23222B0033F0AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A4522C1E23222B0033F0AE /* ViewController.swift */; };
-		40A452301E23222B0033F0AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A4522E1E23222B0033F0AE /* Main.storyboard */; };
 		40A452351E23222B0033F0AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A452331E23222B0033F0AE /* LaunchScreen.storyboard */; };
 		40A4523D1E2329620033F0AE /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A4523C1E2329620033F0AE /* UIViewController+Navigation.swift */; };
 		40CC80BC1E4868A4009A91F3 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */; };
@@ -35,6 +37,9 @@
 /* Begin PBXFileReference section */
 		4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		4000D6F11E49800E00FBE648 /* CountryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
+		404EBB571E49BC570018D030 /* ChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
+		404EBB591E49BD540018D030 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
+		404EBB5B1E49BF1C0018D030 /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
 		405657CF1E2730E700835305 /* CHContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHContentViewController.swift; sourceTree = "<group>"; };
 		405657D01E2730E700835305 /* CHControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHControls.swift; sourceTree = "<group>"; };
 		405657D11E2730E700835305 /* CHModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHModalViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +59,6 @@
 		40A452271E23222B0033F0AE /* RadioProto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioProto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40A4522A1E23222B0033F0AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40A4522C1E23222B0033F0AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		40A4522F1E23222B0033F0AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		40A452341E23222B0033F0AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40A452361E23222B0033F0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40A4523C1E2329620033F0AE /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Navigation.swift"; path = "../RadioProto/UIViewController+Navigation.swift"; sourceTree = "<group>"; };
@@ -128,15 +132,17 @@
 				405657C91E2730E700835305 /* Sources */,
 				40A4522A1E23222B0033F0AE /* AppDelegate.swift */,
 				40A4522C1E23222B0033F0AE /* ViewController.swift */,
-				40A4522E1E23222B0033F0AE /* Main.storyboard */,
 				405657E61E27D5A800835305 /* Assets.xcassets */,
 				40A452331E23222B0033F0AE /* LaunchScreen.storyboard */,
 				40A452361E23222B0033F0AE /* Info.plist */,
-				40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */,
-				40DBE3901E486491004CBB38 /* SettingViewController.swift */,
 				66CDF6801E49817B005927C7 /* StationData.swift */,
-				4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */,
+				40DBE3901E486491004CBB38 /* SettingViewController.swift */,
+				40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */,
 				4000D6F11E49800E00FBE648 /* CountryViewController.swift */,
+				4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */,
+				404EBB571E49BC570018D030 /* ChannelViewController.swift */,
+				404EBB591E49BD540018D030 /* ChannelTableViewCell.swift */,
+				404EBB5B1E49BF1C0018D030 /* main.storyboard */,
 			);
 			path = RadioProto;
 			sourceTree = "<group>";
@@ -202,11 +208,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				40A452351E23222B0033F0AE /* LaunchScreen.storyboard in Resources */,
+				404EBB5C1E49BF1C0018D030 /* main.storyboard in Resources */,
 				405657EE1E27E45B00835305 /* Audio_1.m4a in Resources */,
 				405657E71E27D5A800835305 /* Assets.xcassets in Resources */,
 				405657F01E27E45B00835305 /* Audio_3.m4a in Resources */,
 				405657EF1E27E45B00835305 /* Audio_2.m4a in Resources */,
-				40A452301E23222B0033F0AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				405657E11E2730E700835305 /* CHPickerViewController.swift in Sources */,
+				404EBB5A1E49BD540018D030 /* ChannelTableViewCell.swift in Sources */,
 				405657E31E2730E700835305 /* FIlters.swift in Sources */,
 				40A4523D1E2329620033F0AE /* UIViewController+Navigation.swift in Sources */,
 				405657DE1E2730E700835305 /* CHControls.swift in Sources */,
@@ -227,6 +234,7 @@
 				66CDF6811E49817B005927C7 /* StationData.swift in Sources */,
 				405657E01E2730E700835305 /* CHPagingScrollViewController.swift in Sources */,
 				405657DD1E2730E700835305 /* CHContentViewController.swift in Sources */,
+				404EBB581E49BC570018D030 /* ChannelViewController.swift in Sources */,
 				40A4522B1E23222B0033F0AE /* AppDelegate.swift in Sources */,
 				405657E51E2730E700835305 /* RecordButton.swift in Sources */,
 				4000D6F01E497F5B00FBE648 /* CountryTableViewCell.swift in Sources */,
@@ -240,14 +248,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		40A4522E1E23222B0033F0AE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				40A4522F1E23222B0033F0AE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		40A452331E23222B0033F0AE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -87,6 +87,12 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
                 self.navigationController?.pushViewController(nextViewController, animated: true)
             }
+        }else if indexPath.row == 1{
+            if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "channelView"){
+                
+                self.navigationController?.pushViewController(nextViewController, animated: true)
+            }
+            
         }
         
         
