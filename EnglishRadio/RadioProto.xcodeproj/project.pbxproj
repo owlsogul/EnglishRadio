@@ -137,17 +137,9 @@
 				40A452361E23222B0033F0AE /* Info.plist */,
 				40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */,
 				40DBE3901E486491004CBB38 /* SettingViewController.swift */,
-<<<<<<< HEAD
-<<<<<<< HEAD
 				66CDF6801E49817B005927C7 /* StationData.swift */,
-=======
 				4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */,
 				4000D6F11E49800E00FBE648 /* CountryViewController.swift */,
->>>>>>> origin/master
-=======
-				4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */,
-				4000D6F11E49800E00FBE648 /* CountryViewController.swift */,
->>>>>>> origin/master
 			);
 			path = RadioProto;
 			sourceTree = "<group>";
