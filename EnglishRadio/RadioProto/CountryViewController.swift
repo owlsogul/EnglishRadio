@@ -58,6 +58,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         cell.backgroundColor = UIColor.clear
+        
         cell.countryLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
         cell.countryLabel?.text = name
         
@@ -65,14 +66,31 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
         
     }
-    /*
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell: CountryTableViewCell
+        cell = tableView.dequeueReusableCell(withIdentifier: "countryListCell", for: indexPath) as! CountryTableViewCell
+        if cell.isSelected {
+            cell.setSelected(true, animated:true)
+            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+        }
+        
+        
+        
+    }
+    
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+        
+        
+        
+        
     }
-    */
+    
 
 }

@@ -90,23 +90,23 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         
         print("height for header in section")
-        return 30.0
+        return 30
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         
         let header: ChannelTableViewCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! ChannelTableViewCell
         
-            header.headerLabel?.textColor = UIColor.gray.withAlphaComponent(0.8)
+        header.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
+            header.headerLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
             
             header.headerLabel?.text = "Country"
         
-        print("viewfor header in section")
+        print("view for header in section")
         
         return header
-    
-    
         
     }
+    
     
     
     
@@ -155,14 +155,20 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
         return cell
         
     }
-    /*
+    
+    
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+       
+        
+       
+    
+    
     }
-    */
+    
 
 }
