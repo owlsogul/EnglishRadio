@@ -13,7 +13,7 @@ class SettingTableViewCell: UITableViewCell {
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var channelLabel: UILabel!
     @IBOutlet weak var dataLabel: UILabel!
-  
+    
     
     
 }

@@ -41,15 +41,18 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
+        
         //첫번째 row 에 country
         if indexPath.row == 0 {
             let cell:SettingTableViewCell
             cell = tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath) as! SettingTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.countryLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
-            
+            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             cell.countryLabel?.text = "Country"
             print("section1")
+           
+          
             return cell
         
         //두번째 row에 channel
@@ -57,6 +60,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             let cell:SettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as! SettingTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.channelLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
+            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             cell.channelLabel?.text = "Channel"
             return cell
         
@@ -70,6 +74,22 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             return cell
             
         }
+    
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+            print("next View")
+        
+        
+             if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "countryView"){
+            
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+        }
+        
+
+        
         
         
     }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4000D6F01E497F5B00FBE648 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */; };
+		4000D6F21E49800E00FBE648 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000D6F11E49800E00FBE648 /* CountryViewController.swift */; };
 		405657DD1E2730E700835305 /* CHContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657CF1E2730E700835305 /* CHContentViewController.swift */; };
 		405657DE1E2730E700835305 /* CHControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657D01E2730E700835305 /* CHControls.swift */; };
 		405657DF1E2730E700835305 /* CHModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657D11E2730E700835305 /* CHModalViewController.swift */; };
@@ -28,9 +30,12 @@
 		40A4523D1E2329620033F0AE /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A4523C1E2329620033F0AE /* UIViewController+Navigation.swift */; };
 		40CC80BC1E4868A4009A91F3 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */; };
 		40DBE3911E486491004CBB38 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DBE3901E486491004CBB38 /* SettingViewController.swift */; };
+		66CDF6811E49817B005927C7 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CDF6801E49817B005927C7 /* StationData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		4000D6F11E49800E00FBE648 /* CountryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		405657CF1E2730E700835305 /* CHContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHContentViewController.swift; sourceTree = "<group>"; };
 		405657D01E2730E700835305 /* CHControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHControls.swift; sourceTree = "<group>"; };
 		405657D11E2730E700835305 /* CHModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHModalViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +62,7 @@
 		40A4523C1E2329620033F0AE /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Navigation.swift"; path = "../RadioProto/UIViewController+Navigation.swift"; sourceTree = "<group>"; };
 		40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		40DBE3901E486491004CBB38 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		66CDF6801E49817B005927C7 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,12 @@
 				40A452361E23222B0033F0AE /* Info.plist */,
 				40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */,
 				40DBE3901E486491004CBB38 /* SettingViewController.swift */,
+<<<<<<< HEAD
+				66CDF6801E49817B005927C7 /* StationData.swift */,
+=======
+				4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */,
+				4000D6F11E49800E00FBE648 /* CountryViewController.swift */,
+>>>>>>> origin/master
 			);
 			path = RadioProto;
 			sourceTree = "<group>";
@@ -219,12 +231,15 @@
 				40DBE3911E486491004CBB38 /* SettingViewController.swift in Sources */,
 				40CC80BC1E4868A4009A91F3 /* SettingTableViewCell.swift in Sources */,
 				40A4522D1E23222B0033F0AE /* ViewController.swift in Sources */,
+				66CDF6811E49817B005927C7 /* StationData.swift in Sources */,
 				405657E01E2730E700835305 /* CHPagingScrollViewController.swift in Sources */,
 				405657DD1E2730E700835305 /* CHContentViewController.swift in Sources */,
 				40A4522B1E23222B0033F0AE /* AppDelegate.swift in Sources */,
 				405657E51E2730E700835305 /* RecordButton.swift in Sources */,
+				4000D6F01E497F5B00FBE648 /* CountryTableViewCell.swift in Sources */,
 				405657E41E2730E700835305 /* NavigationControllers.swift in Sources */,
 				405657DF1E2730E700835305 /* CHModalViewController.swift in Sources */,
+				4000D6F21E49800E00FBE648 /* CountryViewController.swift in Sources */,
 				405657E21E2730E700835305 /* DrawingCanvasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
