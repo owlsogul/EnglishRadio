@@ -80,15 +80,14 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-            print("next View")
         
+        if indexPath.row == 0 {
         
-             if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "countryView"){
-            
-            self.navigationController?.pushViewController(nextViewController, animated: true)
+            if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "countryView"){
+    
+                self.navigationController?.pushViewController(nextViewController, animated: true)
+            }
         }
-        
-
         
         
         

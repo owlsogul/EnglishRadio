@@ -10,6 +10,6 @@ import UIKit
 
 class CountryTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var stationLabel: UILabel!
+    @IBOutlet weak var countryLabel: UILabel!
  
 }

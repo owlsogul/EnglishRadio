@@ -24,6 +24,13 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func NavigationBack(_ sender: UIButton) {
+        
+        self.navigationController?.popViewController(animated: true)
+        
+        
+        
+    }
 
     
     //row 갯수
@@ -40,9 +47,8 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell: CountryTableViewCell
         cell = tableView.dequeueReusableCell(withIdentifier: "countryList", for: indexPath) as! CountryTableViewCell
         cell.backgroundColor = UIColor.clear
-        cell.stationLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
-       
-        cell.stationLabel?.text = "radio station"
+        cell.countryLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
+        cell.countryLabel?.text = "country"
         
         
         print("country 탭에 셀이 생성되었다")
