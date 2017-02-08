@@ -42,5 +42,19 @@ class DataTestViewController: UIViewController, UITableViewDelegate, UITableView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let npvc = segue.destination as? NowPlayingViewController {
+            if let ssender = sender as? StationData {
+                npvc.currentStation = ssender
+                print(npvc.currentStation.getStreamingURL())
+            }
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "CellClick", sender: sdManager.stationMap[indexPath.row+1])
+    }
 
 }

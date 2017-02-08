@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iDk-3j-OpQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Imt-oc-lrh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Test-->
+        <!--Data Test View Controller-->
         <scene sceneID="60e-96-zAi">
             <objects>
                 <viewController id="iDk-3j-OpQ" customClass="DataTestViewController" customModule="RadioProto" customModuleProvider="target" sceneMemberID="viewController">
@@ -64,10 +64,81 @@
                             <constraint firstItem="Z6t-qV-zsd" firstAttribute="width" secondItem="hxt-xF-FxR" secondAttribute="width" id="JG9-6K-axY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Test" id="VUX-AD-aCT"/>
+                    <navigationItem key="navigationItem" id="BPx-Ir-NYY"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="e7L-dD-3WZ" kind="show" identifier="CellClick" id="y9Z-oj-GyA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0aZ-9T-GxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1407.2" y="-242.42878560719643"/>
+        </scene>
+        <!--Now Playing View-->
+        <scene sceneID="bnw-PL-Tcn">
+            <objects>
+                <viewController id="e7L-dD-3WZ" userLabel="Now Playing View" customClass="NowPlayingViewController" customModule="RadioProto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BxR-Q3-jfz"/>
+                        <viewControllerLayoutGuide type="bottom" id="py3-ME-YBi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="baZ-RG-Ouq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4o-Oy-1Ep">
+                                <rect key="frame" x="159" y="217" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="clickPlay" destination="e7L-dD-3WZ" eventType="touchUpInside" id="WEN-n8-lIY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdL-jf-ITz">
+                                <rect key="frame" x="153" y="261" width="42" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="clickPause" destination="e7L-dD-3WZ" eventType="touchUpInside" id="TmE-UL-Xci"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="staion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZiZ-9S-zub">
+                                <rect key="frame" x="79" y="305" width="242" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.52037665614237694" green="0.49134188592472577" blue="0.77502379441624369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="pauseButton" destination="rdL-jf-ITz" id="25u-Pq-BkT"/>
+                        <outlet property="playButton" destination="w4o-Oy-1Ep" id="Bse-B7-yVc"/>
+                        <outlet property="stationName" destination="ZiZ-9S-zub" id="ZaU-cj-gtW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uFY-Xr-4lM" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2095.1999999999998" y="-242.42878560719643"/>
+        </scene>
+        <!--Test-->
+        <scene sceneID="hC7-1o-XE1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Imt-oc-lrh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Test" id="VUX-AD-aCT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ved-z6-05r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iDk-3j-OpQ" kind="relationship" relationship="rootViewController" id="N8b-u0-l5q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ykf-vF-qhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="468" y="-242.42878560719643"/>
         </scene>
