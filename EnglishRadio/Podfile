@@ -8,4 +8,8 @@ target 'RadioProto' do
   # Pods for RadioProto
 pod 'RealmSwift', '~> 2.4'
 
+
+pod 'SwiftyJSON'
+
+
 end
