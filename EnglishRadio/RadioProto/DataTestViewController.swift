@@ -30,9 +30,12 @@ class DataTestViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         
         sdManager.loadStationsFromJSON()
-        print(sdManager.stations[1])
-
-        // Do any additional setup after loading the view.
+        
+        //Test
+        for station in sdManager.stations {
+            print(sdManager.stationMap[station.getStationId()]?.getStationName() ?? "null")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
