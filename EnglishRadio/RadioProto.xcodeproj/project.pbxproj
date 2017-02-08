@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34D9F4A303C76B30EEEF8D66 /* Pods_RadioProto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB840F500BC0F8E282A72DC /* Pods_RadioProto.framework */; };
 		4000D6F01E497F5B00FBE648 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */; };
 		4000D6F21E49800E00FBE648 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000D6F11E49800E00FBE648 /* CountryViewController.swift */; };
 		404EBB581E49BC570018D030 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404EBB571E49BC570018D030 /* ChannelViewController.swift */; };
@@ -31,10 +32,14 @@
 		40A4523D1E2329620033F0AE /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A4523C1E2329620033F0AE /* UIViewController+Navigation.swift */; };
 		40CC80BC1E4868A4009A91F3 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */; };
 		40DBE3911E486491004CBB38 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DBE3901E486491004CBB38 /* SettingViewController.swift */; };
+		40F922891E4ADFD600C969BB /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40F922881E4ADFD600C969BB /* Setting.storyboard */; };
+		40F9228B1E4ADFE300C969BB /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40F9228A1E4ADFE300C969BB /* Favorite.storyboard */; };
+		40F9228D1E4AE7EB00C969BB /* DataTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40F9228C1E4AE7EB00C969BB /* DataTest.storyboard */; };
 		66CDF6811E49817B005927C7 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CDF6801E49817B005927C7 /* StationData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E3116D82FBBAAA90B311997 /* Pods-RadioProto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioProto.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadioProto/Pods-RadioProto.release.xcconfig"; sourceTree = "<group>"; };
 		4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		4000D6F11E49800E00FBE648 /* CountryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		404EBB571E49BC570018D030 /* ChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +69,11 @@
 		40A4523C1E2329620033F0AE /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Navigation.swift"; path = "../RadioProto/UIViewController+Navigation.swift"; sourceTree = "<group>"; };
 		40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		40DBE3901E486491004CBB38 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		40F922881E4ADFD600C969BB /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		40F9228A1E4ADFE300C969BB /* Favorite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
+		40F9228C1E4AE7EB00C969BB /* DataTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DataTest.storyboard; sourceTree = "<group>"; };
+		5805918F2A1CC235FDE566F8 /* Pods-RadioProto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioProto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadioProto/Pods-RadioProto.debug.xcconfig"; sourceTree = "<group>"; };
+		5DB840F500BC0F8E282A72DC /* Pods_RadioProto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioProto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66CDF6801E49817B005927C7 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34D9F4A303C76B30EEEF8D66 /* Pods_RadioProto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +125,8 @@
 				405657EB1E27E45B00835305 /* Audio_1.m4a */,
 				405657EC1E27E45B00835305 /* Audio_2.m4a */,
 				405657ED1E27E45B00835305 /* Audio_3.m4a */,
+				E119A24C3C3E62FD74B99DEA /* Pods */,
+				860AB81DF6D4F93C2C1DB2F5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +150,9 @@
 				40A452361E23222B0033F0AE /* Info.plist */,
 				66CDF6801E49817B005927C7 /* StationData.swift */,
 				404EBB5D1E49C00E0018D030 /* Main.storyboard */,
+				40F9228C1E4AE7EB00C969BB /* DataTest.storyboard */,
+				40F9228A1E4ADFE300C969BB /* Favorite.storyboard */,
+				40F922881E4ADFD600C969BB /* Setting.storyboard */,
 				40DBE3901E486491004CBB38 /* SettingViewController.swift */,
 				40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */,
 				4000D6F11E49800E00FBE648 /* CountryViewController.swift */,
@@ -147,6 +163,23 @@
 			path = RadioProto;
 			sourceTree = "<group>";
 		};
+		860AB81DF6D4F93C2C1DB2F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5DB840F500BC0F8E282A72DC /* Pods_RadioProto.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E119A24C3C3E62FD74B99DEA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5805918F2A1CC235FDE566F8 /* Pods-RadioProto.debug.xcconfig */,
+				1E3116D82FBBAAA90B311997 /* Pods-RadioProto.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -154,9 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40A452391E23222B0033F0AE /* Build configuration list for PBXNativeTarget "RadioProto" */;
 			buildPhases = (
+				EE99577722D97737C2D7A0B0 /* [CP] Check Pods Manifest.lock */,
 				40A452231E23222B0033F0AE /* Sources */,
 				40A452241E23222B0033F0AE /* Frameworks */,
 				40A452251E23222B0033F0AE /* Resources */,
+				565EC17FF25BA33B30F348A6 /* [CP] Embed Pods Frameworks */,
+				A3D68B5B01CCCB6750BD1C03 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,8 +243,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40F9228D1E4AE7EB00C969BB /* DataTest.storyboard in Resources */,
 				40A452351E23222B0033F0AE /* LaunchScreen.storyboard in Resources */,
 				404EBB5E1E49C00E0018D030 /* Main.storyboard in Resources */,
+				40F9228B1E4ADFE300C969BB /* Favorite.storyboard in Resources */,
+				40F922891E4ADFD600C969BB /* Setting.storyboard in Resources */,
 				405657EE1E27E45B00835305 /* Audio_1.m4a in Resources */,
 				405657E71E27D5A800835305 /* Assets.xcassets in Resources */,
 				405657F01E27E45B00835305 /* Audio_3.m4a in Resources */,
@@ -217,6 +256,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		565EC17FF25BA33B30F348A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RadioProto/Pods-RadioProto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3D68B5B01CCCB6750BD1C03 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RadioProto/Pods-RadioProto-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE99577722D97737C2D7A0B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		40A452231E23222B0033F0AE /* Sources */ = {
@@ -352,6 +439,7 @@
 		};
 		40A4523A1E23222B0033F0AE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5805918F2A1CC235FDE566F8 /* Pods-RadioProto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9PZPL5979H;
@@ -366,6 +454,7 @@
 		};
 		40A4523B1E23222B0033F0AE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E3116D82FBBAAA90B311997 /* Pods-RadioProto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9PZPL5979H;
