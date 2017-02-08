@@ -18,6 +18,7 @@ class SettingTableViewCell: UITableViewCell {
         
         if dataSettingSwitch.isOn {
             print("스위치켜짐")
+
         } else {
             print("스위치꺼짐")
         }

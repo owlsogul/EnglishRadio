@@ -69,8 +69,8 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             let cell:SettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! SettingTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.dataLabel?.textColor = UIColor.white
-            
             cell.dataLabel?.text = "3G/LTE"
+            
             return cell
             
         }

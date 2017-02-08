@@ -26,7 +26,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RsF-nb-dP9">
-                                <rect key="frame" x="0.0" y="70" width="375" height="160"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="322"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -97,6 +97,20 @@
                                             <outlet property="dataLabel" destination="pf7-a2-yaY" id="YiN-bd-Uxl"/>
                                             <outlet property="dataSettingSwitch" destination="azl-6b-L9B" id="WD3-gD-QBM"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataLimitCell" rowHeight="109" id="mP0-Mt-IHF">
+                                        <rect key="frame" x="0.0" y="160" width="375" height="109"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mP0-Mt-IHF" id="3RJ-ga-Ji3">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="oVw-bL-I6I">
+                                                    <rect key="frame" x="34" y="39" width="320" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </slider>
+                                            </subviews>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -214,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39g-5f-51u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2791.1999999999998" y="79.610194902548727"/>
+            <point key="canvasLocation" x="3732" y="18"/>
         </scene>
         <!--Country View Controller-->
         <scene sceneID="kbE-p5-mK3">
