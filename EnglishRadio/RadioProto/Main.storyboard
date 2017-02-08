@@ -72,21 +72,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="H11-1J-Aw5">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="H11-1J-Aw5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Press Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ux3-hj-VLv">
+                                <rect key="frame" x="133" y="175" width="109" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UK Radio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuF-Kd-oLZ">
+                                <rect key="frame" x="86" y="137" width="202" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="oneclick-19" translatesAutoresizingMaskIntoConstraints="NO" id="K8r-XU-LfC">
+                                <rect key="frame" x="165" y="436" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="UIRadio-12" translatesAutoresizingMaskIntoConstraints="NO" id="pBC-sn-R3f">
+                                <rect key="frame" x="99" y="237" width="176" height="176"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="176" id="LY6-7W-pjX"/>
+                                    <constraint firstAttribute="width" constant="176" id="asu-Xy-LrD"/>
+                                </constraints>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="S83-eL-aR3">
+                                <rect key="frame" x="33" y="529" width="308" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="H11-1J-Aw5" secondAttribute="trailing" id="4lg-VA-Ove"/>
+                            <constraint firstItem="H11-1J-Aw5" firstAttribute="top" secondItem="Rix-mJ-Kb3" secondAttribute="top" id="PID-qZ-57g"/>
+                            <constraint firstItem="H11-1J-Aw5" firstAttribute="leading" secondItem="Rix-mJ-Kb3" secondAttribute="leading" id="cTv-Hd-U0c"/>
+                            <constraint firstItem="pBC-sn-R3f" firstAttribute="centerY" secondItem="Rix-mJ-Kb3" secondAttribute="centerY" constant="-21" id="caH-Tp-gad"/>
+                            <constraint firstAttribute="bottom" secondItem="H11-1J-Aw5" secondAttribute="bottom" id="dGH-iJ-RJE"/>
+                            <constraint firstItem="pBC-sn-R3f" firstAttribute="centerX" secondItem="Rix-mJ-Kb3" secondAttribute="centerX" id="ogL-D7-kDv"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Radio" id="1XY-rR-Wx1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtD-mB-EpE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1380" y="-964.76761619190415"/>
+            <point key="canvasLocation" x="1378.2608695652175" y="-965.21739130434787"/>
         </scene>
     </scenes>
     <resources>
+        <image name="UIRadio-12" width="260" height="260"/>
         <image name="background1" width="320" height="568"/>
+        <image name="oneclick-19" width="116" height="133"/>
     </resources>
 </document>
