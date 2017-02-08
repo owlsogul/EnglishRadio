@@ -35,7 +35,11 @@
 		40F922891E4ADFD600C969BB /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40F922881E4ADFD600C969BB /* Setting.storyboard */; };
 		40F9228B1E4ADFE300C969BB /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40F9228A1E4ADFE300C969BB /* Favorite.storyboard */; };
 		40F9228D1E4AE7EB00C969BB /* DataTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40F9228C1E4AE7EB00C969BB /* DataTest.storyboard */; };
-		66CDF6811E49817B005927C7 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CDF6801E49817B005927C7 /* StationData.swift */; };
+		6625BABC1E4AEC5000E53565 /* StationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625BABB1E4AEC5000E53565 /* StationDataManager.swift */; };
+		6625BAC31E4AF22100E53565 /* DataTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625BAC21E4AF22100E53565 /* DataTestViewController.swift */; };
+		6625BAC51E4B057000E53565 /* StationTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 6625BAC41E4B057000E53565 /* StationTest.json */; };
+		6625BACB1E4B0B2100E53565 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625BACA1E4B0B2100E53565 /* StationData.swift */; };
+		6625BACD1E4B0B3500E53565 /* Station.json in Resources */ = {isa = PBXBuildFile; fileRef = 6625BACC1E4B0B3500E53565 /* Station.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,7 +78,11 @@
 		40F9228C1E4AE7EB00C969BB /* DataTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DataTest.storyboard; sourceTree = "<group>"; };
 		5805918F2A1CC235FDE566F8 /* Pods-RadioProto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioProto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadioProto/Pods-RadioProto.debug.xcconfig"; sourceTree = "<group>"; };
 		5DB840F500BC0F8E282A72DC /* Pods_RadioProto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioProto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		66CDF6801E49817B005927C7 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
+		6625BABB1E4AEC5000E53565 /* StationDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDataManager.swift; sourceTree = "<group>"; };
+		6625BAC21E4AF22100E53565 /* DataTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTestViewController.swift; sourceTree = "<group>"; };
+		6625BAC41E4B057000E53565 /* StationTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StationTest.json; sourceTree = "<group>"; };
+		6625BACA1E4B0B2100E53565 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
+		6625BACC1E4B0B3500E53565 /* Station.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Station.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,9 +156,13 @@
 				405657E61E27D5A800835305 /* Assets.xcassets */,
 				40A452331E23222B0033F0AE /* LaunchScreen.storyboard */,
 				40A452361E23222B0033F0AE /* Info.plist */,
-				66CDF6801E49817B005927C7 /* StationData.swift */,
+				6625BACC1E4B0B3500E53565 /* Station.json */,
+				6625BAC41E4B057000E53565 /* StationTest.json */,
+				6625BACA1E4B0B2100E53565 /* StationData.swift */,
+				6625BABB1E4AEC5000E53565 /* StationDataManager.swift */,
 				404EBB5D1E49C00E0018D030 /* Main.storyboard */,
 				40F9228C1E4AE7EB00C969BB /* DataTest.storyboard */,
+				6625BAC21E4AF22100E53565 /* DataTestViewController.swift */,
 				40F9228A1E4ADFE300C969BB /* Favorite.storyboard */,
 				40F922881E4ADFD600C969BB /* Setting.storyboard */,
 				40DBE3901E486491004CBB38 /* SettingViewController.swift */,
@@ -215,7 +227,6 @@
 				TargetAttributes = {
 					40A452261E23222B0033F0AE = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9PZPL5979H;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -244,8 +255,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				40F9228D1E4AE7EB00C969BB /* DataTest.storyboard in Resources */,
+				6625BACD1E4B0B3500E53565 /* Station.json in Resources */,
 				40A452351E23222B0033F0AE /* LaunchScreen.storyboard in Resources */,
 				404EBB5E1E49C00E0018D030 /* Main.storyboard in Resources */,
+				6625BAC51E4B057000E53565 /* StationTest.json in Resources */,
 				40F9228B1E4ADFE300C969BB /* Favorite.storyboard in Resources */,
 				40F922891E4ADFD600C969BB /* Setting.storyboard in Resources */,
 				405657EE1E27E45B00835305 /* Audio_1.m4a in Resources */,
@@ -318,9 +331,10 @@
 				40DBE3911E486491004CBB38 /* SettingViewController.swift in Sources */,
 				40CC80BC1E4868A4009A91F3 /* SettingTableViewCell.swift in Sources */,
 				40A4522D1E23222B0033F0AE /* ViewController.swift in Sources */,
-				66CDF6811E49817B005927C7 /* StationData.swift in Sources */,
 				405657E01E2730E700835305 /* CHPagingScrollViewController.swift in Sources */,
+				6625BABC1E4AEC5000E53565 /* StationDataManager.swift in Sources */,
 				405657DD1E2730E700835305 /* CHContentViewController.swift in Sources */,
+				6625BAC31E4AF22100E53565 /* DataTestViewController.swift in Sources */,
 				404EBB581E49BC570018D030 /* ChannelViewController.swift in Sources */,
 				40A4522B1E23222B0033F0AE /* AppDelegate.swift in Sources */,
 				405657E51E2730E700835305 /* RecordButton.swift in Sources */,
@@ -328,6 +342,7 @@
 				405657E41E2730E700835305 /* NavigationControllers.swift in Sources */,
 				405657DF1E2730E700835305 /* CHModalViewController.swift in Sources */,
 				4000D6F21E49800E00FBE648 /* CountryViewController.swift in Sources */,
+				6625BACB1E4B0B2100E53565 /* StationData.swift in Sources */,
 				405657E21E2730E700835305 /* DrawingCanvasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,7 +457,7 @@
 			baseConfigurationReference = 5805918F2A1CC235FDE566F8 /* Pods-RadioProto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9PZPL5979H;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RadioProto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -457,7 +472,7 @@
 			baseConfigurationReference = 1E3116D82FBBAAA90B311997 /* Pods-RadioProto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9PZPL5979H;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RadioProto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

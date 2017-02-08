@@ -7,33 +7,63 @@
 //
 
 import Foundation
+import SwiftyJSON
 
+/** 스테이션의 데이터를 가지고 있는 클래스(구조체, 데이터 묶음) 입니다. */
 class StationData{
 
-    public init?(name: String, streaming: String, image: String, desc: String) {
+    
+    
+    public init(id: Int, name: String, streaming: String, image: String, desc: String) {
+        self.stationId = id
         self.stationName = name
-        self.streamingURL = streaming
-        self.imageURL = image
-        self.desc = desc
+        self.stationStreamURL = streaming
+        self.stationImageURL = image
+        self.stationDesc = desc
     }
     
     //
     // Class Field Varation
     //
+    private var stationId: Int = 0
     // Name of Station
     private var stationName: String = ""
-
-    private var streamingURL: String = ""
-    
-    private var imageURL: String = ""
-    
+    private var stationStreamURL: String = ""
+    private var stationImageURL: String = ""
     // Description of Station
-    private var desc: String = ""
+    private var stationDesc: String = ""
     
+
+    class func parseStation(stationJSON: JSON) -> (StationData) {
+        
+        let id        = stationJSON["id"].int ?? 0
+        let name      = stationJSON["stationName"].string ?? ""
+        let streamURL = stationJSON["URL"].string ?? ""
+        let imageURL  = stationJSON["Image"].string ?? ""
+        let desc      = stationJSON["desc"].string ?? ""
+
+        let station = StationData(id: id, name: name, streaming: streamURL, image: imageURL, desc: desc)
+        return station
+    }
+    
+    
+    
+    //
+    // Station Id
+    //
+    /** Station의 아이디값을 리턴하는 함수 */
+    public func getStationId() -> Int{
+        return self.stationId
+    }
+    
+    public func setStationId(id: Int) -> () {
+        self.stationId = id;
+    }
     
     //
     // Station Name
     //
+    /** Station의 이름값을 리턴하는 함수 */
     public func getStationName() -> String{
         return self.stationName
     }
@@ -45,33 +75,38 @@ class StationData{
     //
     // Streaming URL
     //
+    /** Station의 스트리밍 주소값을 리턴하는 함수 */
     public func getStreamingURL() -> String{
-        return self.streamingURL
+        return self.stationStreamURL
     }
     
     public func setStreamingURL(url: String) -> () {
-        self.streamingURL = url;
+        self.stationStreamURL = url;
     }
     
     //
     // image URL
     //
+    /** Station의 이미지 주소값을 리턴하는 함수 */
     public func getImageURL() -> String{
-        return self.imageURL
+        return self.stationImageURL
     }
     
     public func setImageURL(url: String) -> () {
-        self.imageURL = url;
+        self.stationImageURL = url;
     }
     
     //
     // Description
     //
+    /** Station의 설명값을 리턴하는 함수 */
     public func getDescription() -> String{
-        return self.desc
+        return self.stationDesc
     }
     
     public func setDescription(url: String) -> () {
-        self.desc = url;
+        self.stationDesc = url;
     }
+    
+    
 }
