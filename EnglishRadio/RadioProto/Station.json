@@ -1,9 +1,9 @@
 {
-	"station”:
-	[
-	{
-		"id":1,
-		"stationName":"Houston Texans Radio",
+"station”:
+[
+{
+"id":1,
+"stationName":"Houston Texans Radio",
 "URL":"http://206.190.136.141:3920/Live",
 "Image":"",
 "genre":"Sports",
@@ -337,7 +337,7 @@
 "URL":"http://wbur-sc.streamguys.com/wbur",
 "Image":"",
 "genre":"국가 뉴스, 시사 토론, 공영 라디오",
-"country":"US(Boston, MA)",
+"country":"United States",
 "State(optional)":"",
 "desc":"http://www.wbur.org/"
 },
@@ -347,7 +347,7 @@
 "URL":"http://audio4.orpanc.net:80/wasb.aac",
 "Image":"",
 "genre":"스포츠 토론",
-"country":"US(Canadaigua, NY)",
+"country":"United States",
 "State(optional)":"Newyork",
 "desc":"http://theteam.fm/"
 },
@@ -357,7 +357,7 @@
 "URL":"http://streaming.witr.rit.edu:8000/live",
 "Image":"",
 "genre":"University, Indie, Music",
-"country":"US(Henrietta, NY)",
+"country":"United States",
 "State(optional)":"Newyork",
 "desc":"https://witr.rit.edu"
 },
@@ -367,7 +367,7 @@
 "URL":"http://14523.live.streamtheworld.com:3690/KRWGFM_SC",
 "Image":"",
 "genre":"공영라디오",
-"country":"US(Las Cruces, NM)",
+"country":"United States",
 "State(optional)":"",
 "desc":"http://krwg.org/"
 },
@@ -377,7 +377,7 @@
 "URL":"http://www.ophanim.net:7170/stream.mp3",
 "Image":"",
 "genre":"Commuity",
-"country":"US(Medical Lake, WA)",
+"country":"United States",
 "State(optional)":"Waston",
 "desc":"http://kyrs.org/"
 },
@@ -397,7 +397,7 @@
 "URL":"http://192.240.102.2:8440/stream",
 "Image":"",
 "genre":"공영라디오",
-"country":"US(Radford, VA)",
+"country":"United States",
 "State(optional)":"",
 "desc":"https://www.radford.edu/content/wvru/home.html"
 },
@@ -407,9 +407,9 @@
 "URL":"http://centova.rockhost.com:8001/stream",
 "Image":"",
 "genre":"Local News",
-"country":"US(Seattle, WA)",
+"country":"United States",
 "State(optional)":"Waston",
 "desc":"http://www.hollowearthradio.org/home”
-	}
-	]
+}
+]
 }
