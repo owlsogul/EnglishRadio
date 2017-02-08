@@ -18,7 +18,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
         tableView.separatorColor = UIColor.white.withAlphaComponent(0.3)
         tableView.separatorInset.left = 0
         
@@ -59,7 +59,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         cell.backgroundColor = UIColor.clear
         
-        cell.countryLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
+        cell.countryLabel?.textColor = UIColor.white.withAlphaComponent(0.9)
         cell.countryLabel?.text = name
         
         print("country 탭에 셀이 생성되었다")

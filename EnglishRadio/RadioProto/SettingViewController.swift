@@ -16,7 +16,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
 
         
         //테이블 뷰 백그라운드 색상 및 구분선 UI 조작
-        tableView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
         tableView.separatorColor = UIColor.white.withAlphaComponent(0.3)
         tableView.separatorInset.left = 0
 //        // Do any additional setup after loading the view.
@@ -47,7 +47,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             let cell:SettingTableViewCell
             cell = tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath) as! SettingTableViewCell
             cell.backgroundColor = UIColor.clear
-            cell.countryLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
+            cell.countryLabel?.textColor = UIColor.white
             cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             cell.countryLabel?.text = "Country"
             print("section1")
@@ -59,7 +59,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         }else if indexPath.row == 1 {
             let cell:SettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as! SettingTableViewCell
             cell.backgroundColor = UIColor.clear
-            cell.channelLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
+            cell.channelLabel?.textColor = UIColor.white
             cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             cell.channelLabel?.text = "Channel"
             return cell
@@ -68,7 +68,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         }else{
             let cell:SettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! SettingTableViewCell
             cell.backgroundColor = UIColor.clear
-            cell.dataLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
+            cell.dataLabel?.textColor = UIColor.white
             
             cell.dataLabel?.text = "3G/LTE"
             return cell
