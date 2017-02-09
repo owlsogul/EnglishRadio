@@ -46,6 +46,7 @@
 		6625BACD1E4B0B3500E53565 /* Station.json in Resources */ = {isa = PBXBuildFile; fileRef = 6625BACC1E4B0B3500E53565 /* Station.json */; };
 		66EC31741E4C0D090097C96D /* FavoriteTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EC31731E4C0D090097C96D /* FavoriteTableTableViewController.swift */; };
 		66EC31761E4C340C0097C96D /* StationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EC31751E4C340C0097C96D /* StationInfo.swift */; };
+		66EC31781E4C41630097C96D /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EC31771E4C41630097C96D /* Timer.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,7 @@
 		6625BACC1E4B0B3500E53565 /* Station.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Station.json; sourceTree = "<group>"; };
 		66EC31731E4C0D090097C96D /* FavoriteTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableTableViewController.swift; sourceTree = "<group>"; };
 		66EC31751E4C340C0097C96D /* StationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationInfo.swift; sourceTree = "<group>"; };
+		66EC31771E4C41630097C96D /* Timer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timer.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 				404EBB5D1E49C00E0018D030 /* Main.storyboard */,
 				40F9228C1E4AE7EB00C969BB /* DataTest.storyboard */,
 				6625BAC21E4AF22100E53565 /* DataTestViewController.swift */,
+				66EC31771E4C41630097C96D /* Timer.storyboard */,
 				6610394A1E4B3C220088951C /* NowPlayingViewController.swift */,
 				40F9228A1E4ADFE300C969BB /* Favorite.storyboard */,
 				66EC31731E4C0D090097C96D /* FavoriteTableTableViewController.swift */,
@@ -279,6 +282,7 @@
 				6625BACD1E4B0B3500E53565 /* Station.json in Resources */,
 				40A452351E23222B0033F0AE /* LaunchScreen.storyboard in Resources */,
 				404EBB5E1E49C00E0018D030 /* Main.storyboard in Resources */,
+				66EC31781E4C41630097C96D /* Timer.storyboard in Resources */,
 				6625BAC51E4B057000E53565 /* StationTest.json in Resources */,
 				40F9228B1E4ADFE300C969BB /* Favorite.storyboard in Resources */,
 				40F922891E4ADFD600C969BB /* Setting.storyboard in Resources */,
