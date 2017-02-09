@@ -10,21 +10,30 @@ import UIKit
 
 class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewDataSource{
 
-    let stationData: [[String:String]] =
-        [["Country" : "Canada","stationName" : "CKRW"],
-        
-         ["Country" : "United States", "stationName" : "CNN"],
-         
-         ["Country" : "Australia", "stationName" : "Australia Radio"],
-         
-         ["Country" : "United Kingdom", "stationName" : "UK Radio"]
-         
-    ]
+    
+    let country: [String] = ["Canada", "United States", "Australia", "United Kingdom"]
+    
+    var sdManager:StationDataManager = StationDataManager()
+    var stationsInCountry: [String: [StationData]] = [:]
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
+        print("A")
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        //일단 테스트
+        sdManager.loadStationsFromJSON()
+        //
+        print("B")
+        for countryName in country {
+            stationsInCountry[countryName] = Array<StationData>()
+            print(countryName)
+        }
+        
+        for station in sdManager.stations {
+            stationsInCountry[station.getStationCountry()]?.append(station)
+            print(station.getStationCountry() + " : \(stationsInCountry[station.getStationCountry()]?.count)")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,36 +43,18 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
         tableView.separatorInset.left = 0
         
     }
-
-    @IBAction func NavigationBack(_ sender: UIButton) {
-        
-        self.navigationController?.popViewController(animated: true)
-        
-        
-        
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
+  
     //row의 수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
-        if section == 0 {
-            
-            return 1
-        }else if section == 1 {
-            
-            return 1
-        }else if section == 2 {
-            
-            return 1
-        }else
-        {
-            return 1
+        print("Row In Section\(section)")
+        if let stationCountry = stationsInCountry[country[section]] {
+            return stationCountry.count + 1
         }
+        else {
+            return 0
+        }
+        
         
         
     }
@@ -71,88 +62,45 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     //섹션 수
     func numberOfSections(in tableView: UITableView) -> Int {
     
-        return stationData.count
+        return country.count
     
     }
-   
-    
-    //섹션 헤더에 나라 이름을 표시해준다.
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        
-//        let sectionNumber:Int = section
-//        let stationDictionary:[String:String] = self.stationData[sectionNumber]
-//        
-//        
-//        return "\(stationDictionary["Country"]!)"
-//    }
-//    
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-        
-        print("height for header in section")
-        return 30
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-        
-        let header: ChannelTableViewCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! ChannelTableViewCell
-        
-        header.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
-            header.headerLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
-            
-            header.headerLabel?.text = "Country"
-        
-        print("view for header in section")
-        
-        return header
-        
-    }
+
     
     
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+    
         
-        
-        let cell: ChannelTableViewCell = tableView.dequeueReusableCell(withIdentifier: "stationListCell", for: indexPath) as! ChannelTableViewCell
-            cell.backgroundColor = UIColor.clear
-            cell.stationLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
-
-        let stationDictionary:[String:String] = self.stationData[indexPath.section]
-        if let station: String = stationDictionary["stationName"]{
-        
-        
-            if stationDictionary["Country"] == "United States"{
-              
-                print("US")
-                cell.stationLabel?.text = station
-                return cell
-                
+        let section = indexPath.section
+        let row = indexPath.row
+        if row == 0 {
             
-            }
-            if stationDictionary["Country"] == "United Kingdom"{
-                
-                print("UK")
-                cell.stationLabel?.text = station
-                return cell
-                
-            }
-            if stationDictionary["Country"] == "Canada"{
-               
-                print("Canada")
-                cell.stationLabel?.text = station
-                return cell
-                
-            }
-            if stationDictionary["Country"] == "Australia"{
-              
-                print("Australia")
-                cell.stationLabel?.text = station
-                return cell
-
-            }
+            let header: ChannelTableViewCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! ChannelTableViewCell
+            
+            header.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
+            header.headerLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
+            header.headerLabel?.text = country[section]
+            
+            return header
             
         }
-        return cell
+        else {
+            
+            let cell: ChannelTableViewCell = tableView.dequeueReusableCell(withIdentifier: "stationListCell", for: indexPath) as! ChannelTableViewCell
+            
+            let countryName = country[section]
+            
+            cell.backgroundColor = UIColor.clear
+            cell.stationLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
+            
+            if let station = stationsInCountry[countryName]?[row-1] {
+                cell.stationLabel.text = station.getStationName()
+            }
+            
+            return cell
+        }
         
     }
     
