@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     var currentStation: StationData!
     let sdManager = StationDataManager()
     
-    
 
     
     
@@ -104,30 +103,22 @@ class ViewController: UIViewController {
         
         if playing {
             
-            stationInfo.stationData = currentStation.getStationName()
-            stationInfo.stationCountry = currentStation.getStationCountry()
-            stationInfo.stationID = currentStation.getStationId()
+            stationInfo.stationData = self.currentStation.getStationName()
+            stationInfo.stationCountry = self.currentStation.getStationCountry()
+            stationInfo.stationID = self.currentStation.getStationId()
             
          print(stationInfo)
             
             try? realm?.write {
-                               realm?.add(stationInfo)
-               
                 
+                realm?.add(stationInfo)
+                print("Success")
+               
             }
-
-            
-            
         }
-        
-        
-   
-    
-    
- 
     }
 
-
+ 
  
 }
 

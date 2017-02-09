@@ -12,8 +12,8 @@ import RealmSwift
 
 class StationInfo: Object {
     
-    var stationData : String?
-    var stationID: Int?
-    var stationCountry: String?
+    dynamic var stationData : String? = nil
+    dynamic var stationID = 0
+    dynamic var stationCountry: String? = nil
     
 }
