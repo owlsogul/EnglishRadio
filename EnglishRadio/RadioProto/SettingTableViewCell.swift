@@ -15,14 +15,21 @@ class SettingTableViewCell: UITableViewCell {
     @IBOutlet weak var dataLabel: UILabel!
     @IBOutlet weak var dataSettingSwitch: UISwitch!
     @IBAction func dataSettingSwitchAction(_ sender: UISwitch) {
-        
         if dataSettingSwitch.isOn {
-            print("스위치켜짐")
-
+            print("on")
         } else {
-            print("스위치꺼짐")
+            print("off")
         }
     }
+    @IBAction func dataSettingSlider(_ sender: UISlider) {
+        
+        let index = sender.value
+        dataUsageLabel.text = "\(index) GB"
+    }
+    @IBOutlet weak var dataUsageLabel: UILabel!
+
+    
+    
     
     
     

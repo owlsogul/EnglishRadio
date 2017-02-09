@@ -19,6 +19,14 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
         tableView.separatorColor = UIColor.white.withAlphaComponent(0.3)
         tableView.separatorInset.left = 0
+        
+        //데이터테이블 스위치로 hide&Show 조작
+        tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+
+        
+        
+        
 //        // Do any additional setup after loading the view.
     }
 
@@ -31,7 +39,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
     //row 갯수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
-        return 3
+        return 4
         
     }
     
@@ -65,17 +73,46 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             return cell
         
         //세번째 row에 data
-        }else{
+        }else if indexPath.row == 2{
             let cell:SettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! SettingTableViewCell
             cell.backgroundColor = UIColor.clear
             cell.dataLabel?.textColor = UIColor.white
             cell.dataLabel?.text = "3G/LTE"
-            
+
             return cell
             
+        } else {
+            let cell:SettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "dataLimitCell", for: indexPath) as! SettingTableViewCell
+            cell.backgroundColor = UIColor.clear
+            
+            
+            return cell
         }
     
     }
+    var sliderVisable = false
+    
+    
+    // 왜 에러가 나냐 이거에요ㅠㅠㅠㅠㅠ ㅗㅗ
+    
+   /*func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cell : SettingTableViewCell
+        cell = tableView.dequeueReusableCell(withIdentifier: "dataLimitCell", for: indexPath) as! SettingTableViewCell
+        if indexPath.row == 3 {
+            if cell.dataSettingSwitch.isOn  {
+                return 135.0
+            } else {
+                return 0.0
+            }
+        }
+        
+        return 44.0
+    }
+    */
+    
+    
+    
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -98,6 +135,10 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         
         
     }
+    
+
+    
+    
     
 
    
