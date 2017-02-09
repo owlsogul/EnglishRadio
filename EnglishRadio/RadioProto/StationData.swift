@@ -14,12 +14,13 @@ class StationData{
 
     
     
-    public init(id: Int, name: String, streaming: String, image: String, desc: String) {
+    public init(id: Int, name: String, streaming: String, image: String, desc: String, country: String) {
         self.stationId = id
         self.stationName = name
         self.stationStreamURL = streaming
         self.stationImageURL = image
         self.stationDesc = desc
+        self.stationCountry = country
     }
     
     //
@@ -32,6 +33,7 @@ class StationData{
     private var stationImageURL: String = ""
     // Description of Station
     private var stationDesc: String = ""
+    private var stationCountry: String = ""
     
 
     class func parseStation(stationJSON: JSON) -> (StationData) {
@@ -41,8 +43,9 @@ class StationData{
         let streamURL = stationJSON["URL"].string ?? ""
         let imageURL  = stationJSON["Image"].string ?? ""
         let desc      = stationJSON["desc"].string ?? ""
+        let country   = stationJSON["country"].string ?? ""
 
-        let station = StationData(id: id, name: name, streaming: streamURL, image: imageURL, desc: desc)
+        let station = StationData(id: id, name: name, streaming: streamURL, image: imageURL, desc: desc, country: country)
         return station
     }
     
@@ -108,5 +111,13 @@ class StationData{
         self.stationDesc = url;
     }
     
+    /** Station의 나라값을 리턴하는 함수 */
+    public func getStationCountry() -> String{
+        return self.stationCountry
+    }
+    
+    public func setStationCountry(country: String) -> () {
+        self.stationCountry = country;
+    }
     
 }
