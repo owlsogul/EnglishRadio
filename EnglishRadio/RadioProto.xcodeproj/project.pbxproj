@@ -30,6 +30,7 @@
 		40A4522D1E23222B0033F0AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A4522C1E23222B0033F0AE /* ViewController.swift */; };
 		40A452351E23222B0033F0AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A452331E23222B0033F0AE /* LaunchScreen.storyboard */; };
 		40A4523D1E2329620033F0AE /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A4523C1E2329620033F0AE /* UIViewController+Navigation.swift */; };
+		40C857D01E4C663000AE1D1B /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C857CF1E4C663000AE1D1B /* FavoriteViewController.swift */; };
 		40CC80BC1E4868A4009A91F3 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */; };
 		40DBE3911E486491004CBB38 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DBE3901E486491004CBB38 /* SettingViewController.swift */; };
 		40F922891E4ADFD600C969BB /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40F922881E4ADFD600C969BB /* Setting.storyboard */; };
@@ -44,7 +45,6 @@
 		6625BAC51E4B057000E53565 /* StationTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 6625BAC41E4B057000E53565 /* StationTest.json */; };
 		6625BACB1E4B0B2100E53565 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625BACA1E4B0B2100E53565 /* StationData.swift */; };
 		6625BACD1E4B0B3500E53565 /* Station.json in Resources */ = {isa = PBXBuildFile; fileRef = 6625BACC1E4B0B3500E53565 /* Station.json */; };
-		66EC31741E4C0D090097C96D /* FavoriteTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EC31731E4C0D090097C96D /* FavoriteTableTableViewController.swift */; };
 		66EC31761E4C340C0097C96D /* StationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EC31751E4C340C0097C96D /* StationInfo.swift */; };
 		66EC31781E4C41630097C96D /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EC31771E4C41630097C96D /* Timer.storyboard */; };
 /* End PBXBuildFile section */
@@ -78,6 +78,7 @@
 		40A452341E23222B0033F0AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40A452361E23222B0033F0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40A4523C1E2329620033F0AE /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Navigation.swift"; path = "../RadioProto/UIViewController+Navigation.swift"; sourceTree = "<group>"; };
+		40C857CF1E4C663000AE1D1B /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		40DBE3901E486491004CBB38 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		40F922881E4ADFD600C969BB /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
@@ -94,7 +95,6 @@
 		6625BAC41E4B057000E53565 /* StationTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StationTest.json; sourceTree = "<group>"; };
 		6625BACA1E4B0B2100E53565 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
 		6625BACC1E4B0B3500E53565 /* Station.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Station.json; sourceTree = "<group>"; };
-		66EC31731E4C0D090097C96D /* FavoriteTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableTableViewController.swift; sourceTree = "<group>"; };
 		66EC31751E4C340C0097C96D /* StationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationInfo.swift; sourceTree = "<group>"; };
 		66EC31771E4C41630097C96D /* Timer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timer.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,7 +184,7 @@
 				66EC31771E4C41630097C96D /* Timer.storyboard */,
 				6610394A1E4B3C220088951C /* NowPlayingViewController.swift */,
 				40F9228A1E4ADFE300C969BB /* Favorite.storyboard */,
-				66EC31731E4C0D090097C96D /* FavoriteTableTableViewController.swift */,
+				40C857CF1E4C663000AE1D1B /* FavoriteViewController.swift */,
 				40F922881E4ADFD600C969BB /* Setting.storyboard */,
 				40DBE3901E486491004CBB38 /* SettingViewController.swift */,
 				40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */,
@@ -370,7 +370,7 @@
 				405657DF1E2730E700835305 /* CHModalViewController.swift in Sources */,
 				4000D6F21E49800E00FBE648 /* CountryViewController.swift in Sources */,
 				6625BACB1E4B0B2100E53565 /* StationData.swift in Sources */,
-				66EC31741E4C0D090097C96D /* FavoriteTableTableViewController.swift in Sources */,
+				40C857D01E4C663000AE1D1B /* FavoriteViewController.swift in Sources */,
 				405657E21E2730E700835305 /* DrawingCanvasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
