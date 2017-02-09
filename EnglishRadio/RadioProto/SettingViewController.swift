@@ -20,10 +20,12 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         tableView.separatorColor = UIColor.white.withAlphaComponent(0.3)
         tableView.separatorInset.left = 0
         
+        
+        /*일단 주석처리
         //데이터테이블 스위치로 hide&Show 조작
         tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-
+*/
         
         
         
@@ -90,7 +92,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         }
     
     }
-    var sliderVisable = false
+
     
     
     // 왜 에러가 나냐 이거에요ㅠㅠㅠㅠㅠ ㅗㅗ
