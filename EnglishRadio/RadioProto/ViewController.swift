@@ -94,7 +94,29 @@ class ViewController: UIViewController {
         }
     }
     
-
+    // favourite button을 할수있게 버튼을 생성
+    @IBAction func clickFavButton(_ sender: UIButton) {
+        
+        var currentStationName:String
+        var currentID: Int
+        var currentCountry: String
+        
+        if playing {
+            
+            currentStationName = currentStation.getStationName()
+            currentID = currentStation.getStationId()
+            currentCountry = currentStation.get
+            
+        }
+        
+        
+   
     
+    
+ 
+    }
+
+
+ 
 }
 
