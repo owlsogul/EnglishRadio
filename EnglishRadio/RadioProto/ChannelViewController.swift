@@ -14,6 +14,7 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     let country: [String] = ["Canada", "United States", "Australia", "United Kingdom"]
     
     var sdManager:StationDataManager = StationDataManager()
+    
     var stationsInCountry: [String: [StationData]] = [:]
     
     @IBOutlet weak var tableView: UITableView!
@@ -21,7 +22,7 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
         print("A")
         super.viewDidLoad()
         
-        //일단 테스트
+        //일단 테스트. 받아와야함
         sdManager.loadStationsFromJSON()
         //
         print("B")
@@ -61,13 +62,16 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     
     //섹션 수
     func numberOfSections(in tableView: UITableView) -> Int {
-    
         return country.count
-    
     }
 
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath.row == 0){
+            return 22.0
+        }
+        return 44.0
+    }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -78,7 +82,7 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
         if row == 0 {
             
             let header: ChannelTableViewCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! ChannelTableViewCell
-            
+            header.setEditing(false, animated: false)
             header.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
             header.headerLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
             header.headerLabel?.text = country[section]
