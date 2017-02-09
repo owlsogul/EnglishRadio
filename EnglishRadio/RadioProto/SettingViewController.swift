@@ -10,22 +10,24 @@ import UIKit
 
 class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
 
+  
+    var changed:Bool = false
+   
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-        //테이블 뷰 백그라운드 색상 및 구분선 UI 조작
+       //테이블 뷰 백그라운드 색상 및 구분선 UI 조작
         tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
         tableView.separatorColor = UIColor.white.withAlphaComponent(0.3)
         tableView.separatorInset.left = 0
         
         
-        /*일단 주석처리
+      
         //데이터테이블 스위치로 hide&Show 조작
         tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-*/
+
         
         
         
@@ -45,13 +47,13 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         
     }
     
-    
+
     
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
-        
+        print("section number is \(indexPath.section)")
         //첫번째 row 에 country
         if indexPath.row == 0 {
             let cell:SettingTableViewCell
@@ -80,15 +82,34 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             cell.backgroundColor = UIColor.clear
             cell.dataLabel?.textColor = UIColor.white
             cell.dataLabel?.text = "3G/LTE"
+            
+            
 
             return cell
             
         } else {
+            
+            print("테이블은 언제 불러오죠?")
             let cell:SettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "dataLimitCell", for: indexPath) as! SettingTableViewCell
+            
             cell.backgroundColor = UIColor.clear
+            if changed{
+                print("안숨김")
+                cell.isHidden = false
+                return cell
+
+            }else {
+                print("숨김")
+                cell.isHidden = true
+                return cell
+
+                
+            }
             
+         
             
-            return cell
+        
+            
         }
     
     }
@@ -97,29 +118,37 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     // 왜 에러가 나냐 이거에요ㅠㅠㅠㅠㅠ ㅗㅗ
     
-   /*func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cell : SettingTableViewCell
-        cell = tableView.dequeueReusableCell(withIdentifier: "dataLimitCell", for: indexPath) as! SettingTableViewCell
-        if indexPath.row == 3 {
-            if cell.dataSettingSwitch.isOn  {
-                return 135.0
-            } else {
-                return 0.0
-            }
-        }
-        
-        return 44.0
-    }
-    */
+        cell = tableView.dequeueReusableCell(withIdentifier: "dataCell") as! SettingTableViewCell
+    print("언제 호출이 되는걸까요")
+   
+    if cell.dataSettingSwitch.isOn{
     
+        if indexPath.row == 3 {
+            
+            return 144
+            
+        }
+    }else  {
+        
+        
+        if indexPath.row == 3 {
+        
+           return 144
+        }
+    }
+    
+    return UITableViewAutomaticDimension
+    }
+ 
+
     
     
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
-        
+       
         if indexPath.row == 0 {
         
             if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "countryView"){
@@ -134,11 +163,31 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             
         }
         
+    
         
         
     }
     
 
+    
+    @IBAction func toggleDataButton(_ sender: UISwitch) {
+        
+        if sender.isOn {
+           
+            changed = true
+            tableView.reloadRows(at: [IndexPath.init(row: 3, section: 0)], with: .none)
+            
+             print("reload")
+              } else {
+            
+            changed = false
+            tableView.reloadRows(at: [IndexPath.init(row: 3, section: 0)], with: .none)
+            
+            print("reload")
+        
+        }
+        
+    }
     
     
     
