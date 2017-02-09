@@ -97,15 +97,26 @@ class ViewController: UIViewController {
     // favourite button을 할수있게 버튼을 생성
     @IBAction func clickFavButton(_ sender: UIButton) {
         
-        var currentStationName:String
-        var currentID: Int
-        var currentCountry: String
+        let realm = try? Realm()
+        
+          let stationInfo: StationInfo = StationInfo()
+        
         
         if playing {
             
-            currentStationName = currentStation.getStationName()
-            currentID = currentStation.getStationId()
-            currentCountry = currentStation.get
+            stationInfo.stationData = currentStation.getStationName()
+            stationInfo.stationCountry = currentStation.getStationCountry()
+            stationInfo.stationID = currentStation.getStationId()
+            
+         print(stationInfo)
+            
+            try? realm?.write {
+                               realm?.add(stationInfo)
+               
+                
+            }
+
+            
             
         }
         
