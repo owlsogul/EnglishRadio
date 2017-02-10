@@ -49,6 +49,8 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
             
             // 실제 테이블뷰에서 row를 삭제합니다
             self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            
+            ViewController.favManager.load()
         }
     }
     
