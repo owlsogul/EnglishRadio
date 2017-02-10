@@ -21,6 +21,14 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
         tableView.separatorColor = UIColor.white.withAlphaComponent(0.3)
         tableView.separatorInset.left = 0
+       
+        /*
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = UIColor.clear
+        } else {
+            cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
+        }
+         */
         
     }
 

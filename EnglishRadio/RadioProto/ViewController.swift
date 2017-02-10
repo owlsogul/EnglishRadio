@@ -133,9 +133,9 @@ class ViewController: UIViewController {
         if playing {
             sender.setImage(#imageLiteral(resourceName: "newFavoriteFilled"), for: .normal)
             stationInfo.stationData = self.currentStation.getStationName()
-            stationInfo.stationCountry = self.currentStation.getStationCountry()
             stationInfo.stationID = self.currentStation.getStationId()
-//            stationInfo.favoriteID = stationInfo.stationID
+            stationInfo.stationCountry = self.currentStation.getStationCountry()
+            stationInfo.favoriteID = self.currentStation.getStationId()
        
             print(stationInfo)
             
