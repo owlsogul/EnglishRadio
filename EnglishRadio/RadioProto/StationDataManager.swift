@@ -37,6 +37,7 @@ class StationDataManager {
      */
     public func loadStationsFromJSON() {
         
+        print("STATION.JSON을 불러옵니다.")
         if let file = Bundle.main.path(forResource: "Station", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: file))
@@ -51,7 +52,6 @@ class StationDataManager {
                     }
                 }
                 else {
-                    print(json)
                     print("array가 터졌다.")
                 }
             } catch {

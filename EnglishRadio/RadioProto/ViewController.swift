@@ -20,6 +20,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var stationImage: UIImageView!
     
+    @IBOutlet weak var volumeParentView: UIView!
+    var mpVolumeSlider = UISlider()
+    
     let radioPlayer = MPMoviePlayerController()
     var playing: Bool = false
     var currentStation: StationData!
@@ -50,7 +53,18 @@ class ViewController: UIViewController {
             print(error.localizedDescription)
         }
 
-        
+        let volumeView = MPVolumeView(frame: volumeParentView.bounds)
+        for view in volumeView.subviews {
+            let uiview: UIView = view as UIView
+            if (uiview.description as NSString).range(of: "MPVolumeSlider").location != NSNotFound {
+                mpVolumeSlider = (uiview as! UISlider)
+            }
+        }
+
+    }
+    
+    @IBAction func volumeChanged(_ sender:UISlider) {
+        mpVolumeSlider.value = sender.value
     }
     
     
@@ -95,7 +109,7 @@ class ViewController: UIViewController {
             bottomStationLabel.text = "\(currentStation.getStationName())"
             stationTitleLabel.text = "\(currentStation.getStationName())"
             detailTitleLabel.text = "\(currentStation.getStationCountry())"
-     //       stationImage.loadImageWithURL(url: url)
+            //stationImage.loadImageWithURL(url: url)
             radioPlayer.prepareToPlay()
             radioPlayer.play()
             playing = true
