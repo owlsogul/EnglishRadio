@@ -90,10 +90,15 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    /*
+    private func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+        var itemToMove = tableData[fromIndexPath.row]
+        tableData.removeAtIndex(fromIndexPath.row)
+        tableData.insert(itemToMove, atIndex: toIndexPath.row)
+        
+    }
     
-
-    
-    
+    */
     
     
     
