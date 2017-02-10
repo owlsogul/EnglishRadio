@@ -22,8 +22,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
-        tableView.separatorColor = UIColor.white.withAlphaComponent(0.3)
-        tableView.separatorInset.left = 0
+        tableView.separatorStyle = .none
        
         arrangedCountry = country.sorted(by: {(left:String, right:String) -> Bool
             in return left < right})
@@ -69,6 +68,13 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.countryLabel?.text = name
         
         print("country 탭에 셀이 생성되었다")
+       
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = UIColor.clear
+        } else {
+            cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
+        }
+        
         return cell
         
     }

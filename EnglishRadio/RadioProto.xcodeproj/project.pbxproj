@@ -11,18 +11,10 @@
 		4000D6F01E497F5B00FBE648 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */; };
 		4000D6F21E49800E00FBE648 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000D6F11E49800E00FBE648 /* CountryViewController.swift */; };
 		400FC80A1E4DA9CF0084A822 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400FC8091E4DA9CF0084A822 /* RealmSwift.framework */; };
+		400FC80C1E4DEF860084A822 /* TodoList.md in Resources */ = {isa = PBXBuildFile; fileRef = 400FC80B1E4DEF860084A822 /* TodoList.md */; };
 		404EBB581E49BC570018D030 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404EBB571E49BC570018D030 /* ChannelViewController.swift */; };
 		404EBB5A1E49BD540018D030 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404EBB591E49BD540018D030 /* ChannelTableViewCell.swift */; };
 		404EBB5E1E49C00E0018D030 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404EBB5D1E49C00E0018D030 /* Main.storyboard */; };
-		405657DD1E2730E700835305 /* CHContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657CF1E2730E700835305 /* CHContentViewController.swift */; };
-		405657DE1E2730E700835305 /* CHControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657D01E2730E700835305 /* CHControls.swift */; };
-		405657DF1E2730E700835305 /* CHModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657D11E2730E700835305 /* CHModalViewController.swift */; };
-		405657E01E2730E700835305 /* CHPagingScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657D21E2730E700835305 /* CHPagingScrollViewController.swift */; };
-		405657E11E2730E700835305 /* CHPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657D31E2730E700835305 /* CHPickerViewController.swift */; };
-		405657E21E2730E700835305 /* DrawingCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657D41E2730E700835305 /* DrawingCanvasView.swift */; };
-		405657E31E2730E700835305 /* FIlters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657D51E2730E700835305 /* FIlters.swift */; };
-		405657E41E2730E700835305 /* NavigationControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657D61E2730E700835305 /* NavigationControllers.swift */; };
-		405657E51E2730E700835305 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405657D71E2730E700835305 /* RecordButton.swift */; };
 		405657E71E27D5A800835305 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 405657E61E27D5A800835305 /* Assets.xcassets */; };
 		405657EE1E27E45B00835305 /* Audio_1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 405657EB1E27E45B00835305 /* Audio_1.m4a */; };
 		405657EF1E27E45B00835305 /* Audio_2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 405657EC1E27E45B00835305 /* Audio_2.m4a */; };
@@ -30,7 +22,6 @@
 		40A4522B1E23222B0033F0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A4522A1E23222B0033F0AE /* AppDelegate.swift */; };
 		40A4522D1E23222B0033F0AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A4522C1E23222B0033F0AE /* ViewController.swift */; };
 		40A452351E23222B0033F0AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A452331E23222B0033F0AE /* LaunchScreen.storyboard */; };
-		40A4523D1E2329620033F0AE /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A4523C1E2329620033F0AE /* UIViewController+Navigation.swift */; };
 		40C857D01E4C663000AE1D1B /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C857CF1E4C663000AE1D1B /* FavoriteViewController.swift */; };
 		40CC80BC1E4868A4009A91F3 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */; };
 		40DBE3911E486491004CBB38 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DBE3901E486491004CBB38 /* SettingViewController.swift */; };
@@ -56,22 +47,11 @@
 		4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		4000D6F11E49800E00FBE648 /* CountryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		400FC8091E4DA9CF0084A822 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/RadioProto-eknleewukwnltmbikhhwifldhkzp/Build/Products/Debug-iphonesimulator/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
+		400FC80B1E4DEF860084A822 /* TodoList.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = TodoList.md; sourceTree = "<group>"; };
 		404EBB571E49BC570018D030 /* ChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
 		404EBB591E49BD540018D030 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		404EBB5D1E49C00E0018D030 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		405657CF1E2730E700835305 /* CHContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHContentViewController.swift; sourceTree = "<group>"; };
-		405657D01E2730E700835305 /* CHControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHControls.swift; sourceTree = "<group>"; };
-		405657D11E2730E700835305 /* CHModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHModalViewController.swift; sourceTree = "<group>"; };
-		405657D21E2730E700835305 /* CHPagingScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHPagingScrollViewController.swift; sourceTree = "<group>"; };
-		405657D31E2730E700835305 /* CHPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHPickerViewController.swift; sourceTree = "<group>"; };
-		405657D41E2730E700835305 /* DrawingCanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingCanvasView.swift; sourceTree = "<group>"; };
-		405657D51E2730E700835305 /* FIlters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIlters.swift; sourceTree = "<group>"; };
-		405657D61E2730E700835305 /* NavigationControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllers.swift; sourceTree = "<group>"; };
-		405657D71E2730E700835305 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		405657E61E27D5A800835305 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		405657E81E27E27600835305 /* Audio_1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Audio_1.m4a; sourceTree = "<group>"; };
-		405657E91E27E27600835305 /* Audio_2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Audio_2.m4a; sourceTree = "<group>"; };
-		405657EA1E27E27600835305 /* Audio_3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Audio_3.m4a; sourceTree = "<group>"; };
 		405657EB1E27E45B00835305 /* Audio_1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Audio_1.m4a; path = RadioProto/Audio_1.m4a; sourceTree = "<group>"; };
 		405657EC1E27E45B00835305 /* Audio_2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Audio_2.m4a; path = RadioProto/Audio_2.m4a; sourceTree = "<group>"; };
 		405657ED1E27E45B00835305 /* Audio_3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Audio_3.m4a; path = RadioProto/Audio_3.m4a; sourceTree = "<group>"; };
@@ -80,7 +60,6 @@
 		40A4522C1E23222B0033F0AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		40A452341E23222B0033F0AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40A452361E23222B0033F0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		40A4523C1E2329620033F0AE /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Navigation.swift"; path = "../RadioProto/UIViewController+Navigation.swift"; sourceTree = "<group>"; };
 		40C857CF1E4C663000AE1D1B /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		40DBE3901E486491004CBB38 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -119,30 +98,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		405657C91E2730E700835305 /* Sources */ = {
+		400FC80D1E4DEFAD0084A822 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
-				40A4523C1E2329620033F0AE /* UIViewController+Navigation.swift */,
-				405657E81E27E27600835305 /* Audio_1.m4a */,
-				405657E91E27E27600835305 /* Audio_2.m4a */,
-				405657EA1E27E27600835305 /* Audio_3.m4a */,
-				405657CF1E2730E700835305 /* CHContentViewController.swift */,
-				405657D01E2730E700835305 /* CHControls.swift */,
-				405657D11E2730E700835305 /* CHModalViewController.swift */,
-				405657D21E2730E700835305 /* CHPagingScrollViewController.swift */,
-				405657D31E2730E700835305 /* CHPickerViewController.swift */,
-				405657D41E2730E700835305 /* DrawingCanvasView.swift */,
-				405657D51E2730E700835305 /* FIlters.swift */,
-				405657D61E2730E700835305 /* NavigationControllers.swift */,
-				405657D71E2730E700835305 /* RecordButton.swift */,
+				40F9228A1E4ADFE300C969BB /* Favorite.storyboard */,
+				6600FC9F1E4DB95A00951782 /* FavoriteManager.swift */,
+				40C857CF1E4C663000AE1D1B /* FavoriteViewController.swift */,
 			);
-			name = Sources;
-			path = ../Sources;
+			name = Favorite;
 			sourceTree = "<group>";
 		};
-		40613B101E36FE73006CC505 /* Data */ = {
+		400FC80E1E4DEFB50084A822 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				40A4522A1E23222B0033F0AE /* AppDelegate.swift */,
+				40F922881E4ADFD600C969BB /* Setting.storyboard */,
+				40DBE3901E486491004CBB38 /* SettingViewController.swift */,
+				40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */,
+				4000D6F11E49800E00FBE648 /* CountryViewController.swift */,
+				4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */,
+				404EBB571E49BC570018D030 /* ChannelViewController.swift */,
+				404EBB591E49BD540018D030 /* ChannelTableViewCell.swift */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		400FC80F1E4DEFD00084A822 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6625BACC1E4B0B3500E53565 /* Station.json */,
+				6625BACA1E4B0B2100E53565 /* StationData.swift */,
+				66EC31751E4C340C0097C96D /* StationInfo.swift */,
+				6625BABB1E4AEC5000E53565 /* StationDataManager.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -171,33 +158,20 @@
 		40A452291E23222B0033F0AE /* RadioProto */ = {
 			isa = PBXGroup;
 			children = (
-				40613B101E36FE73006CC505 /* Data */,
-				405657C91E2730E700835305 /* Sources */,
-				40A4522A1E23222B0033F0AE /* AppDelegate.swift */,
-				405657E61E27D5A800835305 /* Assets.xcassets */,
-				6625BACC1E4B0B3500E53565 /* Station.json */,
-				6625BAC41E4B057000E53565 /* StationTest.json */,
-				40A452361E23222B0033F0AE /* Info.plist */,
-				40A452331E23222B0033F0AE /* LaunchScreen.storyboard */,
+				400FC80B1E4DEF860084A822 /* TodoList.md */,
 				404EBB5D1E49C00E0018D030 /* Main.storyboard */,
 				40A4522C1E23222B0033F0AE /* ViewController.swift */,
-				6625BACA1E4B0B2100E53565 /* StationData.swift */,
-				66EC31751E4C340C0097C96D /* StationInfo.swift */,
-				6625BABB1E4AEC5000E53565 /* StationDataManager.swift */,
+				400FC80D1E4DEFAD0084A822 /* Favorite */,
+				400FC80E1E4DEFB50084A822 /* Setting */,
+				400FC80F1E4DEFD00084A822 /* Data */,
 				66EC31771E4C41630097C96D /* Timer.storyboard */,
+				6625BAC41E4B057000E53565 /* StationTest.json */,
 				40F9228C1E4AE7EB00C969BB /* DataTest.storyboard */,
 				6625BAC21E4AF22100E53565 /* DataTestViewController.swift */,
 				6610394A1E4B3C220088951C /* NowPlayingViewController.swift */,
-				40F9228A1E4ADFE300C969BB /* Favorite.storyboard */,
-				6600FC9F1E4DB95A00951782 /* FavoriteManager.swift */,
-				40C857CF1E4C663000AE1D1B /* FavoriteViewController.swift */,
-				40F922881E4ADFD600C969BB /* Setting.storyboard */,
-				40DBE3901E486491004CBB38 /* SettingViewController.swift */,
-				40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */,
-				4000D6F11E49800E00FBE648 /* CountryViewController.swift */,
-				4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */,
-				404EBB571E49BC570018D030 /* ChannelViewController.swift */,
-				404EBB591E49BD540018D030 /* ChannelTableViewCell.swift */,
+				40A452331E23222B0033F0AE /* LaunchScreen.storyboard */,
+				405657E61E27D5A800835305 /* Assets.xcassets */,
+				40A452361E23222B0033F0AE /* Info.plist */,
 			);
 			path = RadioProto;
 			sourceTree = "<group>";
@@ -302,6 +276,7 @@
 				405657EE1E27E45B00835305 /* Audio_1.m4a in Resources */,
 				405657E71E27D5A800835305 /* Assets.xcassets in Resources */,
 				405657F01E27E45B00835305 /* Audio_3.m4a in Resources */,
+				400FC80C1E4DEF860084A822 /* TodoList.md in Resources */,
 				405657EF1E27E45B00835305 /* Audio_2.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,31 +336,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				405657E11E2730E700835305 /* CHPickerViewController.swift in Sources */,
 				404EBB5A1E49BD540018D030 /* ChannelTableViewCell.swift in Sources */,
 				66EC31761E4C340C0097C96D /* StationInfo.swift in Sources */,
-				405657E31E2730E700835305 /* FIlters.swift in Sources */,
-				40A4523D1E2329620033F0AE /* UIViewController+Navigation.swift in Sources */,
-				405657DE1E2730E700835305 /* CHControls.swift in Sources */,
 				40DBE3911E486491004CBB38 /* SettingViewController.swift in Sources */,
 				40CC80BC1E4868A4009A91F3 /* SettingTableViewCell.swift in Sources */,
 				40A4522D1E23222B0033F0AE /* ViewController.swift in Sources */,
 				6610394B1E4B3C220088951C /* NowPlayingViewController.swift in Sources */,
-				405657E01E2730E700835305 /* CHPagingScrollViewController.swift in Sources */,
 				6625BABC1E4AEC5000E53565 /* StationDataManager.swift in Sources */,
-				405657DD1E2730E700835305 /* CHContentViewController.swift in Sources */,
 				6625BAC31E4AF22100E53565 /* DataTestViewController.swift in Sources */,
 				404EBB581E49BC570018D030 /* ChannelViewController.swift in Sources */,
 				40A4522B1E23222B0033F0AE /* AppDelegate.swift in Sources */,
-				405657E51E2730E700835305 /* RecordButton.swift in Sources */,
 				4000D6F01E497F5B00FBE648 /* CountryTableViewCell.swift in Sources */,
-				405657E41E2730E700835305 /* NavigationControllers.swift in Sources */,
-				405657DF1E2730E700835305 /* CHModalViewController.swift in Sources */,
 				6600FCA01E4DB95A00951782 /* FavoriteManager.swift in Sources */,
 				4000D6F21E49800E00FBE648 /* CountryViewController.swift in Sources */,
 				6625BACB1E4B0B2100E53565 /* StationData.swift in Sources */,
 				40C857D01E4C663000AE1D1B /* FavoriteViewController.swift in Sources */,
-				405657E21E2730E700835305 /* DrawingCanvasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
