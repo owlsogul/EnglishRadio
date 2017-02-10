@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     var playing: Bool = false
     var currentStation: StationData!
     let sdManager = StationDataManager()
-    
+    var firstPlay: Bool = true
 
     
     
@@ -58,38 +58,41 @@ class ViewController: UIViewController {
     
     @IBAction func clickPlay(){
         if !playing{
-            let rand:UInt32 = arc4random_uniform(10) + 1
-            currentStation = sdManager.stationMap[Int(rand)]
+                      playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
             
+            if firstPlay {
 
-            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+                let rand:UInt32 = arc4random_uniform(10) + 1
+                currentStation = sdManager.stationMap[Int(rand)]
+                radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+                firstPlay = false
+            
+            }
             print("Now Playing is : \(currentStation.getStationName())")
             radioPlayer.prepareToPlay()
             radioPlayer.play()
             playing = true
+            
+        }else {
+            playButton.setImage(#imageLiteral(resourceName: "newPlay"), for: .normal)
+            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+            radioPlayer.stop()
+            playing = false
+            firstPlay = false
         }
         
     }
-
-    @IBAction func clickPause(){
-        if playing {
-            print("Pause Button Clicked")
-            radioPlayer.pause()
-            playing = false
-        }
-    }
-    
     
     //TODO: 꺼져도 계속 인풋을 받음 - 해결해야함
     override func viewWillDisappear(_ animated: Bool) {
         if playing{
-            radioPlayer.stop()
+            radioPlayer.play()
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if playing{
-            radioPlayer.stop()
+            radioPlayer.play()
         }
     }
     
