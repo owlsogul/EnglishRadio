@@ -85,6 +85,22 @@ class ViewController: UIViewController {
         ]
     }
     
+    override func remoteControlReceived(with receivedEvent: UIEvent?) {
+        super.remoteControlReceived(with: receivedEvent)
+        
+        if receivedEvent!.type == UIEventType.remoteControl {
+            
+            switch receivedEvent!.subtype {
+            case .remoteControlPlay:
+                //clickPlay()
+            case .remoteControlPause:
+                //clickPlay()
+            default:
+                break
+            }
+        }
+    }
+    
     @IBAction func clickPlay(){
         if !playing{
                       playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
