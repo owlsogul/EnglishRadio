@@ -13,6 +13,7 @@ import RealmSwift
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var bottomPlayButton: UIButton!
     @IBOutlet weak var bottomStationLabel: UILabel!
     @IBOutlet weak var stationTitleLabel: UILabel!
     @IBOutlet weak var detailTitleLabel: UILabel!
@@ -115,7 +116,7 @@ class ViewController: UIViewController {
     
     func play(){
         playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
-        
+        bottomPlayButton.setImage(#imageLiteral(resourceName: "newPauseSmall"), for: .normal)
         if firstPlay {
             
             let rand:UInt32 = arc4random_uniform(40) + 1
@@ -138,10 +139,12 @@ class ViewController: UIViewController {
     
     func pause(){
         playButton.setImage(#imageLiteral(resourceName: "newPlay"), for: .normal)
+        bottomPlayButton.setImage(#imageLiteral(resourceName: "newPlaySmall"), for: .normal)
         radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
         radioPlayer.stop()
         playing = false
         firstPlay = false
+        bottomStationLabel.text = "Radio paused..."
     }
     
     @IBAction func clickPlay(){
