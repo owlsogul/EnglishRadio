@@ -4,6 +4,10 @@
 
 1그룹
 
+
+1. realm 이 휴대폰에서 안된다??
+
+
 1. 즐겨찾기 제거시 메인 화면에서도 하트가 사라지기 - 해결
 : ViewController 의 viewWillAppear 함수에 changeFavorite 호출
 
