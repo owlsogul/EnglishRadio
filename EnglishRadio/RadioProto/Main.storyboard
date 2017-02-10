@@ -853,7 +853,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ol2-hZ-uYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3733.5999999999999" y="-1685.3073463268368"/>
+            <point key="canvasLocation" x="3793" y="-1666"/>
         </scene>
         <!--Radio-->
         <scene sceneID="jTe-3z-rtt">
@@ -950,7 +950,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lhc-6Z-98f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4605.6000000000004" y="-1701.4992503748126"/>
+            <point key="canvasLocation" x="4612" y="-1666"/>
         </scene>
         <!--Radio-->
         <scene sceneID="CGu-jc-iYc">
@@ -1065,10 +1065,9 @@
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="Xrt-Ye-88F">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <view alpha="0.10000000149011612" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5V8-dy-C0J">
-                                <rect key="frame" x="0.0" y="546" width="373" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5V8-dy-C0J">
+                                <rect key="frame" x="0.0" y="565" width="375" height="102"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fyz-Qx-YHV">
                                 <rect key="frame" x="34" y="473" width="308" height="31"/>
@@ -1096,15 +1095,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next" image="newPrev"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UK Radio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xar-1L-89Z">
-                                <rect key="frame" x="81" y="562" width="202" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDd-FJ-Jg4">
-                                <rect key="frame" x="90" y="205" width="187" height="181"/>
+                                <rect key="frame" x="93" y="205" width="187" height="181"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Play" image="newPlay">
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1114,24 +1106,16 @@
                                     <action selector="clickPlay" destination="4fQ-pI-UW8" eventType="touchUpInside" id="WXx-2F-S8H"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xhx-5K-knS" userLabel="BottomPlay">
-                                <rect key="frame" x="301" y="559" width="46" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play" image="newPlay">
-                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="selected" image="newPause"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vej-JG-KGP">
-                                <rect key="frame" x="306" y="274" width="53" height="37"/>
+                                <rect key="frame" x="308" y="274" width="53" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next" image="newNext"/>
                                 <connections>
                                     <action selector="nextButton:" destination="4fQ-pI-UW8" eventType="touchUpInside" id="pBt-5t-y6I"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="WKSU-header" translatesAutoresizingMaskIntoConstraints="NO" id="Ip1-0T-YmE">
-                                <rect key="frame" x="20" y="552" width="54" height="54"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="albumArt" translatesAutoresizingMaskIntoConstraints="NO" id="Ip1-0T-YmE">
+                                <rect key="frame" x="20" y="577" width="29" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Press Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IC1-He-x7A">
@@ -1148,11 +1132,30 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bottom Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xar-1L-89Z">
+                                <rect key="frame" x="86" y="574" width="202" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xhx-5K-knS" userLabel="BottomPlay">
+                                <rect key="frame" x="334" y="576" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play" image="newPlaySmall">
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="selected" image="newPause"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="5V8-dy-C0J" firstAttribute="leading" secondItem="APH-3q-1cK" secondAttribute="leading" id="Awd-Xg-hyV"/>
+                            <constraint firstAttribute="bottom" secondItem="5V8-dy-C0J" secondAttribute="bottom" id="Bwx-y4-drC"/>
                             <constraint firstItem="Xrt-Ye-88F" firstAttribute="top" secondItem="APH-3q-1cK" secondAttribute="top" id="CWD-MV-Y2S"/>
                             <constraint firstAttribute="bottom" secondItem="Xrt-Ye-88F" secondAttribute="bottom" id="Kcm-C9-C4m"/>
+                            <constraint firstAttribute="trailing" secondItem="5V8-dy-C0J" secondAttribute="trailing" id="afb-jE-gxu"/>
+                            <constraint firstItem="5V8-dy-C0J" firstAttribute="top" secondItem="Xrt-Ye-88F" secondAttribute="top" constant="565" id="pO3-ps-fn6"/>
                             <constraint firstAttribute="trailing" secondItem="Xrt-Ye-88F" secondAttribute="trailing" id="tEB-cG-Y9J"/>
                             <constraint firstItem="Xrt-Ye-88F" firstAttribute="leading" secondItem="APH-3q-1cK" secondAttribute="leading" id="ymk-Qk-xMh"/>
                         </constraints>
@@ -1174,11 +1177,13 @@
     </scenes>
     <resources>
         <image name="WKSU-header" width="400" height="120"/>
+        <image name="albumArt" width="180" height="180"/>
         <image name="background1" width="320" height="568"/>
         <image name="newFavorite" width="462" height="412"/>
         <image name="newNext" width="598" height="444"/>
         <image name="newPause" width="1254" height="1233"/>
         <image name="newPlay" width="1254" height="1233"/>
+        <image name="newPlaySmall" width="130" height="130"/>
         <image name="newPrev" width="598" height="444"/>
         <image name="united_kingdom" width="30" height="30"/>
     </resources>
