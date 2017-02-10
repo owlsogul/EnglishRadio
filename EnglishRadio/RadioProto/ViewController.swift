@@ -68,17 +68,17 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    func updateLockScreen() {
-//        
-//        // Update notification/lock screen
-//        let albumArtwork = MPMediaItemArtwork(image: #imageLiteral(resourceName: "albumArt"))
-//        
-//        MPNowPlayingInfoCenter.default().nowPlayingInfo = [
-//        
-//            MPMediaItemPropertyTitle: currentStation.getStationName(),
-//        ]
-//    }
-
+    func updateLockScreen() {
+        
+        // Update notification/lock screen
+        let albumArtwork = MPMediaItemArtwork(image: #imageLiteral(resourceName: "albumArt"))
+        
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+            MPMediaItemPropertyArtist: "",
+            MPMediaItemPropertyTitle: currentStation.getStationName(),
+            MPMediaItemPropertyArtwork: albumArtwork
+        ]
+    }
     @IBAction func clickPlay(){
         if !playing{
                       playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
@@ -99,6 +99,7 @@ class ViewController: UIViewController {
             radioPlayer.prepareToPlay()
             radioPlayer.play()
             playing = true
+            updateLockScreen()
             
         }else {
             playButton.setImage(#imageLiteral(resourceName: "newPlay"), for: .normal)
@@ -156,11 +157,9 @@ class ViewController: UIViewController {
         if playing {
             sender.setImage(#imageLiteral(resourceName: "newFavoriteFilled"), for: .normal)
             stationInfo.stationData = self.currentStation.getStationName()
-            stationInfo.stationID = self.currentStation.getStationId()
+            stationInfo.favoriteID = self.currentStation.getStationId()
             stationInfo.stationCountry = self.currentStation.getStationCountry()
-   //         stationInfo.favoriteStation = true
-            print(stationInfo)
-            
+           print(Realm.Configuration.defaultConfiguration.fileURL!)            
             try? realm?.write {
             
                 realm?.add(stationInfo)
