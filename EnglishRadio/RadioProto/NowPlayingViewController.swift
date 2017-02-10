@@ -29,9 +29,11 @@ class NowPlayingViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        let url:NSURL = NSURL(string: currentStation.getStreamingURL())!
         radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
         radioPlayer.play()
         playing = true;
+        
     }
     
     @IBAction func clickPause(){
