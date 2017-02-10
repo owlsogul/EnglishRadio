@@ -36,9 +36,22 @@ class ViewController: UIViewController {
         radioPlayer.shouldAutoplay = true
         radioPlayer.prepareToPlay()
         radioPlayer.controlStyle = MPMovieControlStyle.none
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            print("AVAudioSession Category Playback OK")
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+                print("AVAudioSession is Active")
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
 
         
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +68,17 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+//    func updateLockScreen() {
+//        
+//        // Update notification/lock screen
+//        let albumArtwork = MPMediaItemArtwork(image: #imageLiteral(resourceName: "albumArt"))
+//        
+//        MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+//        
+//            MPMediaItemPropertyTitle: currentStation.getStationName(),
+//        ]
+//    }
+
     @IBAction func clickPlay(){
         if !playing{
                       playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
@@ -135,7 +158,7 @@ class ViewController: UIViewController {
             stationInfo.stationData = self.currentStation.getStationName()
             stationInfo.stationID = self.currentStation.getStationId()
             stationInfo.stationCountry = self.currentStation.getStationCountry()
-        //    stationInfo.favoriteStation = true
+   //         stationInfo.favoriteStation = true
             print(stationInfo)
             
             try? realm?.write {

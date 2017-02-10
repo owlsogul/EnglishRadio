@@ -255,6 +255,7 @@
 				TargetAttributes = {
 					40A452261E23222B0033F0AE = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9PZPL5979H;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -494,7 +495,7 @@
 			baseConfigurationReference = 5805918F2A1CC235FDE566F8 /* Pods-RadioProto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9PZPL5979H;
 				INFOPLIST_FILE = RadioProto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -509,7 +510,7 @@
 			baseConfigurationReference = 1E3116D82FBBAAA90B311997 /* Pods-RadioProto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9PZPL5979H;
 				INFOPLIST_FILE = RadioProto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
