@@ -73,6 +73,10 @@ class ViewController: UIViewController {
         
     }
 
+    //
+    // 잠금화면에서 하는 작업들
+    //
+    
     func updateLockScreen() {
         
         // Update notification/lock screen
@@ -93,43 +97,61 @@ class ViewController: UIViewController {
             switch receivedEvent!.subtype {
             case .remoteControlPlay:
                 //clickPlay()
+                play()
+                break;
             case .remoteControlPause:
                 //clickPlay()
+                pause()
+                break;
             default:
                 break
             }
         }
     }
     
+    //
+    //
+    //
+    
+    func play(){
+        playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
+        
+        if firstPlay {
+            
+            let rand:UInt32 = arc4random_uniform(40) + 1
+            currentStation = ViewController.sdManager.stationMap[Int(rand)]
+            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+            firstPlay = false
+            
+        }
+        print("Now Playing is : \(currentStation.getStationName())")
+        bottomStationLabel.text = "\(currentStation.getStationName())"
+        stationTitleLabel.text = "\(currentStation.getStationName())"
+        detailTitleLabel.text = "\(currentStation.getStationCountry())"
+        //stationImage.loadImageWithURL(url: url)
+        radioPlayer.prepareToPlay()
+        radioPlayer.play()
+        playing = true
+        updateLockScreen()
+        changeFavorite()
+    }
+    
+    func pause(){
+        playButton.setImage(#imageLiteral(resourceName: "newPlay"), for: .normal)
+        radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+        radioPlayer.stop()
+        playing = false
+        firstPlay = false
+    }
+    
     @IBAction func clickPlay(){
         if !playing{
-                      playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
             
-            if firstPlay {
-
-                let rand:UInt32 = arc4random_uniform(40) + 1
-                currentStation = ViewController.sdManager.stationMap[Int(rand)]
-                radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
-                firstPlay = false
-            
-            }
-            print("Now Playing is : \(currentStation.getStationName())")
-            bottomStationLabel.text = "\(currentStation.getStationName())"
-            stationTitleLabel.text = "\(currentStation.getStationName())"
-            detailTitleLabel.text = "\(currentStation.getStationCountry())"
-            //stationImage.loadImageWithURL(url: url)
-            radioPlayer.prepareToPlay()
-            radioPlayer.play()
-            playing = true
-            updateLockScreen()
-            changeFavorite()
+            play()
             
         }else {
-            playButton.setImage(#imageLiteral(resourceName: "newPlay"), for: .normal)
-            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
-            radioPlayer.stop()
-            playing = false
-            firstPlay = false
+            
+            pause()
         }
         
     }
