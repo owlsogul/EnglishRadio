@@ -29,6 +29,15 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
+        tableView.separatorStyle = .none
+        
+
+        
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,7 +55,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     //row 갯수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
-        return country.count
+        return arrangedCountry.count
         
     }
     
@@ -58,7 +67,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell = tableView.dequeueReusableCell(withIdentifier: "countryListCell", for: indexPath) as! CountryTableViewCell
         
         let rowNumber:Int = indexPath.row
-        let name: String = country[rowNumber]
+        let name: String = arrangedCountry[rowNumber]
             
         
         

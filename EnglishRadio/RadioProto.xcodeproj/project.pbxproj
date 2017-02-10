@@ -111,7 +111,6 @@
 		400FC80E1E4DEFB50084A822 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				40A4522A1E23222B0033F0AE /* AppDelegate.swift */,
 				40F922881E4ADFD600C969BB /* Setting.storyboard */,
 				40DBE3901E486491004CBB38 /* SettingViewController.swift */,
 				40CC80BB1E4868A4009A91F3 /* SettingTableViewCell.swift */,
@@ -164,6 +163,7 @@
 				400FC80D1E4DEFAD0084A822 /* Favorite */,
 				400FC80E1E4DEFB50084A822 /* Setting */,
 				400FC80F1E4DEFD00084A822 /* Data */,
+				40A4522A1E23222B0033F0AE /* AppDelegate.swift */,
 				66EC31771E4C41630097C96D /* Timer.storyboard */,
 				6625BAC41E4B057000E53565 /* StationTest.json */,
 				40F9228C1E4AE7EB00C969BB /* DataTest.storyboard */,
