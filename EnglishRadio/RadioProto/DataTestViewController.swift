@@ -56,5 +56,5 @@ class DataTestViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "CellClick", sender: sdManager.stationMap[indexPath.row+1])
     }
-
+    
 }
