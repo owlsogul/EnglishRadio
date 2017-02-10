@@ -1143,27 +1143,13 @@
                                 </state>
                                 <state key="selected" image="newPause"/>
                             </button>
-                            <view alpha="0.25" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H4c-ea-nec">
-                                <rect key="frame" x="0.0" y="438" width="377" height="84"/>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fyz-Qx-YHV">
+                                <rect key="frame" x="34" y="476" width="308" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="volumeView" translatesAutoresizingMaskIntoConstraints="NO" id="dof-be-adh">
-                                        <rect key="frame" x="17" y="22" width="343" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fyz-Qx-YHV">
-                                                <rect key="frame" x="17" y="4" width="308" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <connections>
-                                                    <action selector="volumeChanged:" destination="4fQ-pI-UW8" eventType="valueChanged" id="Wwf-Fq-Nm9"/>
-                                                </connections>
-                                            </slider>
-                                        </subviews>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                                <connections>
+                                    <action selector="volumeChanged:" destination="4fQ-pI-UW8" eventType="valueChanged" id="Wwf-Fq-Nm9"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1185,7 +1171,6 @@
                         <outlet property="playButton" destination="hDd-FJ-Jg4" id="JeL-UD-CFn"/>
                         <outlet property="stationImage" destination="Ip1-0T-YmE" id="Os4-Da-J3q"/>
                         <outlet property="stationTitleLabel" destination="Hzm-7T-YTP" id="tPj-vB-BCj"/>
-                        <outlet property="volumeView" destination="dof-be-adh" id="xAk-ZO-Gqj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tW-5U-8Z4" userLabel="First Responder" sceneMemberID="firstResponder"/>
