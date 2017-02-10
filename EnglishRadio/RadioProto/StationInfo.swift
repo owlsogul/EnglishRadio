@@ -15,6 +15,5 @@ class StationInfo: Object {
     dynamic var stationData : String? = nil
     dynamic var stationID = 0
     dynamic var stationCountry: String? = nil
-    dynamic var favoriteID:Int = 0
-    
+ //   dynamic var favoriteStation: Bool = false
 }

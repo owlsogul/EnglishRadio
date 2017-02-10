@@ -135,8 +135,7 @@ class ViewController: UIViewController {
             stationInfo.stationData = self.currentStation.getStationName()
             stationInfo.stationID = self.currentStation.getStationId()
             stationInfo.stationCountry = self.currentStation.getStationCountry()
-            stationInfo.favoriteID = self.currentStation.getStationId()
-       
+        //    stationInfo.favoriteStation = true
             print(stationInfo)
             
             try? realm?.write {
