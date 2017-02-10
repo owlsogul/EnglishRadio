@@ -60,7 +60,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // photoInfos는 옵셔널이므로 옵셔널에 값이 없으면 0을 돌려주세요
+        // favStationInfos는 옵셔널ㅇㅇ
         return self.favStationInfos?.count ?? 0
     }
     
@@ -68,11 +68,11 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "favCell", for: indexPath)
         
-        // cell의 indexPath의 row에 해당하는 사진 정보를 가져와 봅니다
+        // cell의 indexPath의 row에 해당하는 스테이션 정보를 불러옴
         if let info = self.favStationInfos?[indexPath.row] {
             
             cell.backgroundColor = UIColor.clear
-            // 사진정보의 title을 텍스트 레이블에 세팅
+            // 스테이션데이터(스테이션이름)을 텍스트라벨에 적용
             cell.textLabel?.text = info.stationData
             cell.textLabel?.textColor = UIColor.white
             
@@ -100,15 +100,11 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "favCell", for: indexPath)
-        
-        
-        
+
         if editingStyle == .delete {
+
             tableView.deleteRows(at: [indexPath], with: .fade)
             
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
 
