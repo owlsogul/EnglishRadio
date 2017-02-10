@@ -13,7 +13,6 @@ import RealmSwift
 class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var tableView: UITableView!
-
     @IBOutlet weak var editButton: UIButton!
     
     
@@ -27,18 +26,41 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    var favStationInfos: Results<StationInfo>?
+    
+    // 테이블뷰의 셀을 스와이프하여 삭제할 수 있는지 확인
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    
+    // 테이블뷰의 셀을 스와이프하여 삭제할 수 있도록 옵션 제공
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.delete
+    }
+    
+    // 테이블뷰의 셀을 스와이프하여 삭제할 때 호출되는 함수
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        // 삭제할 정보를 꺼내와서
+        if let deletingInfo = ViewController.favManager.favStationArr?[indexPath.row] {
+            
+            // Realm에서 삭제해줍니다
+            ViewController.favManager.delFavorite(id: deletingInfo.favoriteID)
+            
+            // 실제 테이블뷰에서 row를 삭제합니다
+            self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        }
+    }
+    
+    
     // ViewController의 화면이 보여지기 직전에 불려질 함수
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         print("ViewController의 화면이 보여질 예정입니다")
         
-        // Realm을 초기화하여 realm 이라는 이름으로 사용합니다
-        let realm = try? Realm()
-        
-        // StationInfo에 해당하는 자료들을 데이터베이스에서 불러와서 favStationInfos에 넣어줍니다
-        self.favStationInfos = realm?.objects(StationInfo.self)
+        // Favorite Manager의 Realm으로부터 Result 값을 불러옵니다
+        ViewController.favManager.load()
         
         // 테이블뷰를 새로고침 합니다
         self.tableView.reloadData()
@@ -57,9 +79,8 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         // favStationInfos는 옵셔널ㅇㅇ
-        return self.favStationInfos?.count ?? 0
+        return ViewController.favManager.favStationArr?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,7 +88,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "favCell", for: indexPath)
         
         // cell의 indexPath의 row에 해당하는 스테이션 정보를 불러옴
-        if let info = self.favStationInfos?[indexPath.row] {
+        if let info = ViewController.favManager.favStationArr?[indexPath.row] {
             
             cell.backgroundColor = UIColor.clear
             // 스테이션데이터(스테이션이름)을 텍스트라벨에 적용

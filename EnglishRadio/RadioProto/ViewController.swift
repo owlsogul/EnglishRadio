@@ -23,7 +23,8 @@ class ViewController: UIViewController {
     let radioPlayer = MPMoviePlayerController()
     var playing: Bool = false
     var currentStation: StationData!
-    let sdManager = StationDataManager()
+    static var sdManager = StationDataManager()
+    static var favManager = FavoriteManager()
     var firstPlay: Bool = true
   
     
@@ -55,19 +56,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sdManager.loadStationsFromJSON()
+        
+        ViewController.sdManager.loadStationsFromJSON()
+        print("sdManager Load Test : \(ViewController.sdManager.getNumberOfStation())")
+        ViewController.favManager.register(sdManager: ViewController.sdManager)
+        print("favManger Load Test : \(ViewController.favManager.sdManager.getNumberOfStation())")
+        
         setupPlayer()
        
         
     }
 
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func updateLockScreen() {
         
         // Update notification/lock screen
@@ -79,6 +78,7 @@ class ViewController: UIViewController {
             MPMediaItemPropertyArtwork: albumArtwork
         ]
     }
+    
     @IBAction func clickPlay(){
         if !playing{
                       playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
@@ -86,7 +86,7 @@ class ViewController: UIViewController {
             if firstPlay {
 
                 let rand:UInt32 = arc4random_uniform(40) + 1
-                currentStation = sdManager.stationMap[Int(rand)]
+                currentStation = ViewController.sdManager.stationMap[Int(rand)]
                 radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
                 firstPlay = false
             
@@ -100,6 +100,7 @@ class ViewController: UIViewController {
             radioPlayer.play()
             playing = true
             updateLockScreen()
+            changeFavorite()
             
         }else {
             playButton.setImage(#imageLiteral(resourceName: "newPlay"), for: .normal)
@@ -110,28 +111,49 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    
+    
     @IBAction func nextButton(_ sender: UIButton) {
         
         if playing{
             
-            
+            // 랜덤 스테이션 가져오기
             let rand:UInt32 = arc4random_uniform(40) + 1
-            currentStation = sdManager.stationMap[Int(rand)]
-            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
-            firstPlay = false
+            currentStation = ViewController.sdManager.stationMap[Int(rand)]
+            
+            // 스트리밍 시작
             print("Now Playing is : \(currentStation.getStationName())")
-            bottomStationLabel.text = "\(currentStation.getStationName())"
-            stationTitleLabel.text = "\(currentStation.getStationName())"
-            detailTitleLabel.text = "\(currentStation.getStationCountry())"
+            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
             radioPlayer.prepareToPlay()
             radioPlayer.play()
             playing = true
+            firstPlay = false
+            
+            // 정보 갱신
+            bottomStationLabel.text = "\(currentStation.getStationName())"
+            stationTitleLabel.text = "\(currentStation.getStationName())"
+            detailTitleLabel.text = "\(currentStation.getStationCountry())"
+            changeFavorite()
+            
             
         }
-        
-        
-        
     }
+    
+    /**
+     
+     Favorite 버튼 갱신 할 때 쓰임!
+     
+     */
+    func changeFavorite(){
+        if ViewController.favManager.isFavorite(id: currentStation.getStationId()) {
+            favoriteButton.setImage(#imageLiteral(resourceName: "newFavoriteFilled"), for: .normal)
+        }
+        else {
+            favoriteButton.setImage(#imageLiteral(resourceName: "newFavorite"), for: .normal)
+        }
+    }
+    
     
     //TODO: 꺼져도 계속 인풋을 받음 - 해결해야함
     override func viewWillDisappear(_ animated: Bool) {
@@ -149,25 +171,28 @@ class ViewController: UIViewController {
     // favourite button을 할수있게 버튼을 생성
     @IBAction func clickFavButton(_ sender: UIButton) {
         
-        let realm = try? Realm()
         let stationInfo: StationInfo = StationInfo()
         
-        
-        
         if playing {
-            sender.setImage(#imageLiteral(resourceName: "newFavoriteFilled"), for: .normal)
-            stationInfo.stationData = self.currentStation.getStationName()
-            stationInfo.favoriteID = self.currentStation.getStationId()
-            stationInfo.stationCountry = self.currentStation.getStationCountry()
-           print(Realm.Configuration.defaultConfiguration.fileURL!)            
-            try? realm?.write {
-            
-                realm?.add(stationInfo)
-                print("Success")
-               
+            if (ViewController.favManager.isFavorite(id: currentStation.getStationId())){
+                ViewController.favManager.delFavorite(id: currentStation.getStationId())
+                ViewController.favManager.load()
+                print("del Favorite : \(ViewController.favManager.favStationArr?.count)")
             }
+            else {
+                stationInfo.stationData = self.currentStation.getStationName()
+                stationInfo.favoriteID = self.currentStation.getStationId()
+                stationInfo.stationCountry = self.currentStation.getStationCountry()
+                if ViewController.favManager.addFavorite(id: currentStation.getStationId()){
+                    ViewController.favManager.load()
+                    print("Add Sucess : \(ViewController.favManager.favStationArr?.count)")
+                }
+                else {
+                    print("Fail Add")
+                }
+            }
+            changeFavorite()
         }
-    
     
     }
 
