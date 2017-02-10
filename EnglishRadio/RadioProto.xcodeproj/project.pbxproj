@@ -10,6 +10,7 @@
 		34D9F4A303C76B30EEEF8D66 /* Pods_RadioProto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB840F500BC0F8E282A72DC /* Pods_RadioProto.framework */; };
 		4000D6F01E497F5B00FBE648 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */; };
 		4000D6F21E49800E00FBE648 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000D6F11E49800E00FBE648 /* CountryViewController.swift */; };
+		400FC80A1E4DA9CF0084A822 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400FC8091E4DA9CF0084A822 /* RealmSwift.framework */; };
 		404EBB581E49BC570018D030 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404EBB571E49BC570018D030 /* ChannelViewController.swift */; };
 		404EBB5A1E49BD540018D030 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404EBB591E49BD540018D030 /* ChannelTableViewCell.swift */; };
 		404EBB5E1E49C00E0018D030 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404EBB5D1E49C00E0018D030 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		1E3116D82FBBAAA90B311997 /* Pods-RadioProto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioProto.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadioProto/Pods-RadioProto.release.xcconfig"; sourceTree = "<group>"; };
 		4000D6EF1E497F5B00FBE648 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		4000D6F11E49800E00FBE648 /* CountryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
+		400FC8091E4DA9CF0084A822 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/RadioProto-eknleewukwnltmbikhhwifldhkzp/Build/Products/Debug-iphonesimulator/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
 		404EBB571E49BC570018D030 /* ChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
 		404EBB591E49BD540018D030 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		404EBB5D1E49C00E0018D030 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				400FC80A1E4DA9CF0084A822 /* RealmSwift.framework in Frameworks */,
 				40F922911E4BFEA600C969BB /* Foundation.framework in Frameworks */,
 				40F9228F1E4BFE9D00C969BB /* UIKit.framework in Frameworks */,
 				6610394D1E4B3DC80088951C /* MediaPlayer.framework in Frameworks */,
@@ -199,6 +202,7 @@
 		860AB81DF6D4F93C2C1DB2F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				400FC8091E4DA9CF0084A822 /* RealmSwift.framework */,
 				40F922901E4BFEA600C969BB /* Foundation.framework */,
 				40F9228E1E4BFE9D00C969BB /* UIKit.framework */,
 				6610394C1E4B3DC80088951C /* MediaPlayer.framework */,

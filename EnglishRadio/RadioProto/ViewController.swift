@@ -72,8 +72,7 @@ class ViewController: UIViewController {
             bottomStationLabel.text = "\(currentStation.getStationName())"
             stationTitleLabel.text = "\(currentStation.getStationName())"
             detailTitleLabel.text = "\(currentStation.getStationCountry())"
-            stationImage.image = URL(fileURLWithPath: "\(currentStation.getImageURL())")
-            
+     //       stationImage.loadImageWithURL(url: url)
             radioPlayer.prepareToPlay()
             radioPlayer.play()
             playing = true
@@ -136,11 +135,12 @@ class ViewController: UIViewController {
             stationInfo.stationData = self.currentStation.getStationName()
             stationInfo.stationCountry = self.currentStation.getStationCountry()
             stationInfo.stationID = self.currentStation.getStationId()
-            stationInfo.favoriteID = self.currentStation.getStationId()
-         print(stationInfo)
+//            stationInfo.favoriteID = stationInfo.stationID
+       
+            print(stationInfo)
             
             try? realm?.write {
-                
+            
                 realm?.add(stationInfo)
                 print("Success")
                
