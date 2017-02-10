@@ -87,19 +87,31 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
             cell.detailTextLabel?.textColor = UIColor.white
         }
         
+        
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = UIColor.clear
+        } else {
+            cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
+        }
+        
+        
         return cell
     }
-    /*
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "favCell", for: indexPath)
+        
+        
+        
         if editingStyle == .delete {
-            self.favStationInfos.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
-    
-    */
+
     
 
     
