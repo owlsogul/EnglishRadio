@@ -122,7 +122,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         let cell : SettingTableViewCell
         cell = tableView.dequeueReusableCell(withIdentifier: "dataCell") as! SettingTableViewCell
     print("언제 호출이 되는걸까요")
-   
+    
     if cell.dataSettingSwitch.isOn{
     
         if indexPath.row == 3 {
@@ -132,10 +132,9 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         }
     }else  {
         
-        
         if indexPath.row == 3 {
         
-           return 144
+           return 44
         }
     }
     
