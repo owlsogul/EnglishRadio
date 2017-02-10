@@ -16,25 +16,37 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     var sdManager:StationDataManager = StationDataManager()
     
     var stationsInCountry: [String: [StationData]] = [:]
+    var arrangedStation: [String: [StationData]] = [:]
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
-        print("A")
         super.viewDidLoad()
         
         //일단 테스트. 받아와야함
         sdManager.loadStationsFromJSON()
         //
-        print("B")
+        
+        // 딕셔너리 초기화
         for countryName in country {
             stationsInCountry[countryName] = Array<StationData>()
+            arrangedStation[countryName] = Array<StationData>()
             print(countryName)
         }
         
+        // 스테이션 데이터 딕셔너리에 넣기
         for station in sdManager.stations {
             stationsInCountry[station.getStationCountry()]?.append(station)
             print(station.getStationCountry() + " : \(stationsInCountry[station.getStationCountry()]?.count)")
         }
+
+        // 딕셔너리 정렬
+        for countryName in country {
+            arrangedStation[countryName] = stationsInCountry[countryName]?.sorted(by: {
+                (left:StationData, right: StationData) -> Bool in
+                return left.getStationName() < right.getStationName()
+            })
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +61,7 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
         print("Row In Section\(section)")
-        if let stationCountry = stationsInCountry[country[section]] {
+        if let stationCountry = arrangedStation[country[section]] {
             return stationCountry.count + 1
         }
         else {
@@ -99,7 +111,7 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
             cell.backgroundColor = UIColor.clear
             cell.stationLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
             
-            if let station = stationsInCountry[countryName]?[row-1] {
+            if let station = arrangedStation[countryName]?[row-1] {
                 cell.stationLabel.text = station.getStationName()
             }
             
