@@ -17,6 +17,38 @@
             endingLineNumber = "13"
             landmarkName = "StationData"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RadioProto.StationData.__deallocating_deinit"
+                  moduleName = "RadioProto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cauadc/Desktop/EnglishRadio/EnglishRadio/RadioProto/StationData.swift"
+                  timestampString = "508409399.946962"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RadioProto.StationData.deinit"
+                  moduleName = "RadioProto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cauadc/Desktop/EnglishRadio/EnglishRadio/RadioProto/StationData.swift"
+                  timestampString = "508409399.94918"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
