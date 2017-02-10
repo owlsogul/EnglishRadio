@@ -1159,6 +1159,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Radio" id="jSm-eK-ani"/>
                     <connections>
+                        <outlet property="bottomStationLabel" destination="xar-1L-89Z" id="7CR-SV-9J3"/>
                         <outlet property="detailTitleLabel" destination="IC1-He-x7A" id="AWU-rb-OWi"/>
                         <outlet property="favoriteButton" destination="u15-Hz-b4q" id="HfO-w9-Rx2"/>
                         <outlet property="playButton" destination="hDd-FJ-Jg4" id="JeL-UD-CFn"/>

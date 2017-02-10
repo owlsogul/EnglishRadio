@@ -13,6 +13,7 @@ import RealmSwift
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var bottomStationLabel: UILabel!
     @IBOutlet weak var stationTitleLabel: UILabel!
     @IBOutlet weak var detailTitleLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
@@ -68,8 +69,11 @@ class ViewController: UIViewController {
             
             }
             print("Now Playing is : \(currentStation.getStationName())")
+            bottomStationLabel.text = "\(currentStation.getStationName())"
             stationTitleLabel.text = "\(currentStation.getStationName())"
             detailTitleLabel.text = "\(currentStation.getStationCountry())"
+            stationImage.image = URL(fileURLWithPath: "\(currentStation.getImageURL())")
+            
             radioPlayer.prepareToPlay()
             radioPlayer.play()
             playing = true
@@ -93,6 +97,7 @@ class ViewController: UIViewController {
             radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
             firstPlay = false
             print("Now Playing is : \(currentStation.getStationName())")
+            bottomStationLabel.text = "\(currentStation.getStationName())"
             stationTitleLabel.text = "\(currentStation.getStationName())"
             detailTitleLabel.text = "\(currentStation.getStationCountry())"
             radioPlayer.prepareToPlay()
