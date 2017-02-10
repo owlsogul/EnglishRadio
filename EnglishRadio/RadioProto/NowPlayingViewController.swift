@@ -26,6 +26,19 @@ class NowPlayingViewController: UIViewController {
         radioPlayer.shouldAutoplay = true
         radioPlayer.prepareToPlay()
         radioPlayer.controlStyle = MPMovieControlStyle.none
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            print("AVAudioSession Category Playback OK")
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+                print("AVAudioSession is Active")
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

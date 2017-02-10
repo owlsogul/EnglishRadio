@@ -21,7 +21,7 @@ class TimerViewController: UIViewController,UITableViewController {
     @IBAction func StartButton(sender: any)
  
    // timer = NSTimer.scheduledTimerWithTimeInterval(1.0)
-    https://www.youtube.com/watch?v=QKXZRRSlDss 참고
+    //https://www.youtube.com/watch?v=QKXZRRSlDss 참고
     @IBAction func StopButton(sender: any)
     
     
