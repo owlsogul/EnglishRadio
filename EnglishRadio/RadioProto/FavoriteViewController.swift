@@ -50,9 +50,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         
         //테이블 뷰 백그라운드 색상 및 구분선 UI 조작
         tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
-        tableView.separatorColor = UIColor.white.withAlphaComponent(0.3)
-        tableView.separatorInset.left = 0
-
+        tableView.separatorStyle = .none
         
     }
     

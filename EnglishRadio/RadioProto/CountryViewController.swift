@@ -13,22 +13,20 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     let country: [String] = ["Canada", "United States", "Australia", "United Kingdom"]
     
+    var arrangedCountry: [String] = []
     
     
     @IBOutlet weak var tableView: UITableView!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
+        
+        
+        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
         tableView.separatorColor = UIColor.white.withAlphaComponent(0.3)
         tableView.separatorInset.left = 0
        
-        /*
-        if indexPath.row % 2 == 0 {
-            cell.backgroundColor = UIColor.clear
-        } else {
-            cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
-        }
-         */
+        arrangedCountry = country.sorted(by: {(left:String, right:String) -> Bool
+            in return left < right})
         
     }
 

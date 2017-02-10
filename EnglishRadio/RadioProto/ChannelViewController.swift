@@ -14,7 +14,8 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     let country: [String] = ["Canada", "United States", "Australia", "United Kingdom"]
     
     var sdManager:StationDataManager = StationDataManager()
-    
+   
+    var arrangedCountry: [String] = []
     var stationsInCountry: [String: [StationData]] = [:]
     var arrangedStation: [String: [StationData]] = [:]
     
@@ -27,7 +28,11 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
         //
         
         // 딕셔너리 초기화
-        for countryName in country {
+        
+        arrangedCountry = country.sorted(by: {(left:String, right:String) -> Bool
+            in return left < right})
+        
+        for countryName in arrangedCountry {
             stationsInCountry[countryName] = Array<StationData>()
             arrangedStation[countryName] = Array<StationData>()
             print(countryName)
@@ -40,20 +45,21 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
         }
 
         // 딕셔너리 정렬
-        for countryName in country {
+        for countryName in arrangedCountry {
             arrangedStation[countryName] = stationsInCountry[countryName]?.sorted(by: {
                 (left:StationData, right: StationData) -> Bool in
                 return left.getStationName() < right.getStationName()
             })
         }
+       
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
-        tableView.separatorColor = UIColor.white.withAlphaComponent(0.3)
-        tableView.separatorInset.left = 0
+        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
+       
+        tableView.separatorStyle = .none
         
     }
   
@@ -61,7 +67,7 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
         print("Row In Section\(section)")
-        if let stationCountry = arrangedStation[country[section]] {
+        if let stationCountry = arrangedStation[arrangedCountry[section]] {
             return stationCountry.count + 1
         }
         else {
@@ -74,7 +80,7 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     
     //섹션 수
     func numberOfSections(in tableView: UITableView) -> Int {
-        return country.count
+        return arrangedCountry.count
     }
 
     
@@ -95,9 +101,9 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
             
             let header: ChannelTableViewCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! ChannelTableViewCell
             header.setEditing(false, animated: false)
-            header.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
+            header.backgroundColor = UIColor.black.withAlphaComponent(0.2)
             header.headerLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
-            header.headerLabel?.text = country[section]
+            header.headerLabel?.text = arrangedCountry[section]
             
             return header
             
@@ -106,7 +112,7 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
             
             let cell: ChannelTableViewCell = tableView.dequeueReusableCell(withIdentifier: "stationListCell", for: indexPath) as! ChannelTableViewCell
             
-            let countryName = country[section]
+            let countryName = arrangedCountry[section]
             
             cell.backgroundColor = UIColor.clear
             cell.stationLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
@@ -114,6 +120,12 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
             if let station = arrangedStation[countryName]?[row-1] {
                 cell.stationLabel.text = station.getStationName()
             }
+            if indexPath.row % 2 == 0 {
+                cell.backgroundColor = UIColor.clear
+            } else {
+                cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
+            }
+            
             
             return cell
         }
