@@ -24,8 +24,7 @@ class ViewController: UIViewController {
     var currentStation: StationData!
     let sdManager = StationDataManager()
     var firstPlay: Bool = true
-
-    
+  
     
     
     func setupPlayer(){
@@ -62,13 +61,15 @@ class ViewController: UIViewController {
             
             if firstPlay {
 
-                let rand:UInt32 = arc4random_uniform(10) + 1
+                let rand:UInt32 = arc4random_uniform(40) + 1
                 currentStation = sdManager.stationMap[Int(rand)]
                 radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
                 firstPlay = false
             
             }
             print("Now Playing is : \(currentStation.getStationName())")
+            stationTitleLabel.text = "\(currentStation.getStationName())"
+            detailTitleLabel.text = "\(currentStation.getStationCountry())"
             radioPlayer.prepareToPlay()
             radioPlayer.play()
             playing = true
@@ -80,6 +81,27 @@ class ViewController: UIViewController {
             playing = false
             firstPlay = false
         }
+        
+    }
+    @IBAction func nextButton(_ sender: UIButton) {
+        
+        if playing{
+            
+            
+            let rand:UInt32 = arc4random_uniform(40) + 1
+            currentStation = sdManager.stationMap[Int(rand)]
+            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+            firstPlay = false
+            print("Now Playing is : \(currentStation.getStationName())")
+            stationTitleLabel.text = "\(currentStation.getStationName())"
+            detailTitleLabel.text = "\(currentStation.getStationCountry())"
+            radioPlayer.prepareToPlay()
+            radioPlayer.play()
+            playing = true
+            
+        }
+        
+        
         
     }
     
@@ -100,16 +122,16 @@ class ViewController: UIViewController {
     @IBAction func clickFavButton(_ sender: UIButton) {
         
         let realm = try? Realm()
+        let stationInfo: StationInfo = StationInfo()
         
-          let stationInfo: StationInfo = StationInfo()
         
         
         if playing {
-            
+            sender.setImage(#imageLiteral(resourceName: "newFavoriteFilled"), for: .normal)
             stationInfo.stationData = self.currentStation.getStationName()
             stationInfo.stationCountry = self.currentStation.getStationCountry()
             stationInfo.stationID = self.currentStation.getStationId()
-            
+            stationInfo.favoriteID = self.currentStation.getStationId()
          print(stationInfo)
             
             try? realm?.write {
