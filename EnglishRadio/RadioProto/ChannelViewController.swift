@@ -13,7 +13,7 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     
     let country: [String] = ["Canada", "United States", "Australia", "United Kingdom"]
     
-    var sdManager:StationDataManager = StationDataManager()
+    var sdManager:StationDataManager = ViewController.sdManager
    
     var arrangedCountry: [String] = []
     var stationsInCountry: [String: [StationData]] = [:]
@@ -23,15 +23,12 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //일단 테스트. 받아와야함
-        sdManager.loadStationsFromJSON()
-        //
         
-        // 딕셔너리 초기화
-        
+        // 나라 이름 정렬
         arrangedCountry = country.sorted(by: {(left:String, right:String) -> Bool
             in return left < right})
         
+        // 딕셔너리 초기화
         for countryName in arrangedCountry {
             stationsInCountry[countryName] = Array<StationData>()
             arrangedStation[countryName] = Array<StationData>()
@@ -41,7 +38,7 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
         // 스테이션 데이터 딕셔너리에 넣기
         for station in sdManager.stations {
             stationsInCountry[station.getStationCountry()]?.append(station)
-            print(station.getStationCountry() + " : \(stationsInCountry[station.getStationCountry()]?.count)")
+            print("나라 별 분류 - " + station.getStationCountry() + " : \(stationsInCountry[station.getStationCountry()]?.count)")
         }
 
         // 딕셔너리 정렬
@@ -58,15 +55,12 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
-       
         tableView.separatorStyle = .none
-        
     }
   
-    //row의 수
+    // Row 수 정하기
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
-        print("Row In Section\(section)")
         if let stationCountry = arrangedStation[arrangedCountry[section]] {
             return stationCountry.count + 1
         }
@@ -78,7 +72,7 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
         
     }
     
-    //섹션 수
+    // 섹션 수 정하기
     func numberOfSections(in tableView: UITableView) -> Int {
         return arrangedCountry.count
     }
@@ -93,7 +87,6 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-    
         
         let section = indexPath.section
         let row = indexPath.row

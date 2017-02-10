@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var stationImage: UIImageView!
-    
+
     let radioPlayer = MPMoviePlayerController()
     var playing: Bool = false
     var currentStation: StationData!
@@ -27,6 +27,13 @@ class ViewController: UIViewController {
     static var favManager = FavoriteManager()
     var firstPlay: Bool = true
   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("나는 나타났다!")
+        if currentStation != nil {
+            changeFavorite()
+        }
+    }
     
     
     func setupPlayer(){
@@ -49,10 +56,9 @@ class ViewController: UIViewController {
         } catch let error as NSError {
             print(error.localizedDescription)
         }
-
-        
     }
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +101,7 @@ class ViewController: UIViewController {
             bottomStationLabel.text = "\(currentStation.getStationName())"
             stationTitleLabel.text = "\(currentStation.getStationName())"
             detailTitleLabel.text = "\(currentStation.getStationCountry())"
-     //       stationImage.loadImageWithURL(url: url)
+            //stationImage.loadImageWithURL(url: url)
             radioPlayer.prepareToPlay()
             radioPlayer.play()
             playing = true
