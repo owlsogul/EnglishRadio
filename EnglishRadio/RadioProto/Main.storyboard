@@ -14,7 +14,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="krR-Tq-lK6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="KVL-Aq-n7E">
+                    <tabBar key="tabBar" contentMode="scaleAspectFit" backgroundImage="UIRadio-44" id="KVL-Aq-n7E">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1168,7 +1168,7 @@
                             <constraint firstItem="Xrt-Ye-88F" firstAttribute="leading" secondItem="APH-3q-1cK" secondAttribute="leading" id="ymk-Qk-xMh"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Radio" id="jSm-eK-ani"/>
+                    <tabBarItem key="tabBarItem" title="Radio" image="Radio" id="jSm-eK-ani"/>
                     <connections>
                         <outlet property="bottomPlayButton" destination="Xhx-5K-knS" id="zUe-Ig-1kU"/>
                         <outlet property="bottomStationLabel" destination="xar-1L-89Z" id="7CR-SV-9J3"/>
@@ -1185,6 +1185,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Radio" width="52" height="52"/>
+        <image name="UIRadio-44" width="375" height="50"/>
         <image name="WKSU-header" width="400" height="120"/>
         <image name="albumArt" width="180" height="180"/>
         <image name="background1" width="320" height="568"/>

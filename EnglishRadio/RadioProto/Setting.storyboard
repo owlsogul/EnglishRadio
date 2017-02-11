@@ -92,6 +92,7 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="azl-6b-L9B">
                                                     <rect key="frame" x="310" y="6" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="toggleDataButton:" destination="6IK-hG-RJJ" eventType="valueChanged" id="ken-Oc-3Uc"/>
                                                     </connections>
@@ -356,7 +357,7 @@
         <scene sceneID="gbP-yU-M0U">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="4pF-Od-qYV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Setting" id="THK-JC-vza"/>
+                    <tabBarItem key="tabBarItem" title="Setting" image="Setting" id="THK-JC-vza"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CGx-S7-mwJ">
@@ -374,8 +375,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Setting" width="52" height="52"/>
         <image name="background1" width="320" height="568"/>
         <image name="newPause" width="1254" height="1233"/>
         <image name="newPlaySmall" width="130" height="130"/>
     </resources>
+    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -116,7 +116,7 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
             if indexPath.row % 2 == 0 {
                 cell.backgroundColor = UIColor.clear
             } else {
-                cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
+                cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
             }
             
             
