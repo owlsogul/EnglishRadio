@@ -93,22 +93,21 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             let cell:SettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "dataLimitCell", for: indexPath) as! SettingTableViewCell
             
             cell.backgroundColor = UIColor.clear
+           
+            //만약 스위치의 상태가 변한다면
             if changed{
-                print("안숨김")
+                
+                //셀 숨김을 바꾼다.
                 cell.isHidden = false
                 return cell
 
             }else {
-                print("숨김")
+
                 cell.isHidden = true
                 return cell
 
                 
             }
-            
-         
-            
-        
             
         }
     
@@ -121,7 +120,6 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cell : SettingTableViewCell
         cell = tableView.dequeueReusableCell(withIdentifier: "dataCell") as! SettingTableViewCell
-    print("언제 호출이 되는걸까요")
     
     if cell.dataSettingSwitch.isOn{
     
@@ -171,19 +169,22 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     @IBAction func toggleDataButton(_ sender: UISwitch) {
         
+        
+        //만약 스위치가 온이라면
         if sender.isOn {
            
+            //아래로 나타난다.
             changed = true
-            tableView.reloadRows(at: [IndexPath.init(row: 3, section: 0)], with: .none)
+            tableView.reloadRows(at: [IndexPath.init(row: 3, section: 0)], with: .bottom)
             
-             print("reload")
               } else {
             
-            changed = false
-            tableView.reloadRows(at: [IndexPath.init(row: 3, section: 0)], with: .none)
             
-            print("reload")
-        
+            //다시 위로 접힌다.
+            changed = false
+            tableView.reloadRows(at: [IndexPath.init(row: 3, section: 0)], with: .top)
+            
+            
         }
         
     }

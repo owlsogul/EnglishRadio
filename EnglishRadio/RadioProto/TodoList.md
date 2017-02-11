@@ -5,8 +5,6 @@
 1그룹
 
 
-1. realm 이 휴대폰에서 안된다??
-
 
 1. 즐겨찾기 제거시 메인 화면에서도 하트가 사라지기 - 해결
 : ViewController 의 viewWillAppear 함수에 changeFavorite 호출
@@ -16,7 +14,7 @@
 
 3. Setting 에서 재생 가능
 
-4. 하단에 있는 Bottom View 클릭시 모달뷰 올라오기 -> 컨테이너 뷰를 사용해야 하지 않을까 싶습니다
+4. 하단에 있는 Bottom View 클릭시 뷰 올라오기 (처음에는 안보임) 
 
 5. 잠금화면 제어
 
@@ -33,6 +31,13 @@
 11. 런치 스크린
 
 12. 각 탭바 아이콘
+
+
+13. realm 이 휴대폰에서 안된다??
+
+14. 스위치 선택했을 때 Cell Expand 하기 - 완료 
+: reload할 때 표시 옵션을 none이 아니라 bottom 이라 top 으로 하면 해결
+
 
 
 2그룹
