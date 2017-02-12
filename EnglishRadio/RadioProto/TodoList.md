@@ -39,7 +39,7 @@
 : reload할 때 표시 옵션을 none이 아니라 bottom 이라 top 으로 하면 해결
 
 15 - 1. BottomPlayView modal 로 넘어가기 - 완료
-
+15 - 2. BottomPlayView 화면 중간쯤 올라오기
 
 
 2그룹
