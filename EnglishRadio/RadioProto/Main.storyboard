@@ -1107,7 +1107,6 @@
                                         <connections>
                                             <outlet property="bottomPlayButton" destination="rcA-g4-4nG" id="HbV-Mi-esp"/>
                                             <outlet property="bottomStationLabel" destination="Ctd-3M-1hr" id="Qe1-ZQ-jie"/>
-                                            <segue destination="Nh3-xj-Bxy" kind="presentation" id="1rw-I0-EL5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
