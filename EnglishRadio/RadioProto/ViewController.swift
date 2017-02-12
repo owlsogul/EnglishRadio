@@ -316,8 +316,17 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         return 0
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        if indexPath.row == 0 {
+        if let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "bottomPlayView"){
+            self.present(secondViewController, animated: true, completion: {
+                print("코드를 통해 두번째 화면이 올라왔다.")})
     
- 
+            }
+        }
+    
+    }
     
     /***
      

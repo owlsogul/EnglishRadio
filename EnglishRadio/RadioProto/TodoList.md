@@ -38,8 +38,7 @@
 14. 스위치 선택했을 때 Cell Expand 하기 - 완료 
 : reload할 때 표시 옵션을 none이 아니라 bottom 이라 top 으로 하면 해결
 
-15. BottomPlayView modal 로 넘어가기
-
+15 - 1. BottomPlayView modal 로 넘어가기 - 완료
 
 
 

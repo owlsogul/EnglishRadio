@@ -1192,10 +1192,14 @@
             </objects>
             <point key="canvasLocation" x="1093.5999999999999" y="-979.16041979010504"/>
         </scene>
-        <!--View Controller-->
+        <!--Bottom Play View Controller-->
         <scene sceneID="Aa5-MX-BZX">
             <objects>
-                <viewController id="Nh3-xj-Bxy" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="bottomPlayView" id="Nh3-xj-Bxy" customClass="BottomPlayViewController" customModule="RadioProto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="deB-hU-Bga"/>
+                        <viewControllerLayoutGuide type="bottom" id="k96-g9-LY1"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kiv-0f-Xwm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1226,6 +1230,16 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.2910691352739726" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpG-0c-sSe">
+                                <rect key="frame" x="153" y="225" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="Back:" destination="Nh3-xj-Bxy" eventType="touchUpInside" id="TcM-Bw-wat"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

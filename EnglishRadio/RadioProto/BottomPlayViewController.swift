@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BottomPlayViewController: ViewController {
+class BottomPlayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
