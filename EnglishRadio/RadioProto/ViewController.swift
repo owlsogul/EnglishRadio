@@ -58,7 +58,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             print(error.localizedDescription)
         }
     }
-    
 
     
     override func viewDidLoad() {
@@ -271,18 +270,14 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     }
 
 //MPVolumeView : 슬라이더로 시스템볼륨 조절하기
-    @IBOutlet weak var volumeVIew: MPVolumeView!
+    @IBOutlet weak var volumeView: MPVolumeView!
+    func adjustVolumeView() {
+        volumeView.showsRouteButton = false
+        volumeView.showsVolumeSlider = true
+        volumeView.backgroundColor = UIColor.clear
+    }
+    
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     /***
