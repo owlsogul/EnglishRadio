@@ -270,7 +270,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     }
 
-
+//MPVolumeView : 슬라이더로 시스템볼륨 조절하기
     @IBOutlet weak var volumeVIew: MPVolumeView!
 
     
