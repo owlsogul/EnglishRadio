@@ -1069,6 +1069,14 @@
                             <view alpha="0.10000000149011612" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z22-Ds-44z">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jvU-0m-jXN" customClass="MPVolumeView">
+                                        <rect key="frame" x="0.0" y="451" width="375" height="82"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="5GE-xu-6Tk">
@@ -1161,13 +1169,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fyz-Qx-YHV">
-                                <rect key="frame" x="0.0" y="485" width="375" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="adjustVolume:" destination="4fQ-pI-UW8" eventType="valueChanged" id="dSI-jU-Kkc"/>
-                                </connections>
-                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1185,7 +1186,7 @@
                         <outlet property="stationImage" destination="Ip1-0T-YmE" id="Os4-Da-J3q"/>
                         <outlet property="stationTitleLabel" destination="Hzm-7T-YTP" id="tPj-vB-BCj"/>
                         <outlet property="tableView" destination="5GE-xu-6Tk" id="keW-cV-yQW"/>
-                        <outlet property="volumeControl" destination="fyz-Qx-YHV" id="cgR-2t-a5l"/>
+                        <outlet property="volumeVIew" destination="jvU-0m-jXN" id="vZ3-Wj-c3G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tW-5U-8Z4" userLabel="First Responder" sceneMemberID="firstResponder"/>

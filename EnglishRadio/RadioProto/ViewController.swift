@@ -270,13 +270,9 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     }
 
-    @IBOutlet weak var volumeControl: UISlider!
-    @IBAction func adjustVolume(_ sender: Any) {
-        if radioPlayer != nil {
-            }
-        
-    }
-    
+
+    @IBOutlet weak var volumeVIew: MPVolumeView!
+
     
     
     
