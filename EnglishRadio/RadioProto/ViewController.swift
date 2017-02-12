@@ -27,7 +27,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     static var sdManager = StationDataManager()
     static var favManager = FavoriteManager()
     var firstPlay: Bool = true
-  
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("나는 나타났다!")
@@ -205,7 +205,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             firstPlay = false
             
             // 정보 갱신
-//            bottomStationLabel.text = "\(currentStation.getStationName())"
+            tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .none)
             stationTitleLabel.text = "\(currentStation.getStationName())"
             detailTitleLabel.text = "\(currentStation.getStationCountry())"
             changeFavorite()
