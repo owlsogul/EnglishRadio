@@ -120,18 +120,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     
-    /* 삭제 버튼을 누르면 에러가 납니다,,,,,,, (;ㅅ;)
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
-        
-        if editingStyle == .delete {
 
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-        }
-    }
-
-    */
 
     
 }
