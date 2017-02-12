@@ -14,7 +14,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="krR-Tq-lK6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleAspectFit" barStyle="black" backgroundImage="UIRadio-44" shadowImage="UIRadio-44" id="KVL-Aq-n7E">
+                    <tabBar key="tabBar" opaque="NO" contentMode="scaleAspectFit" barStyle="black" backgroundImage="UIRadio-44" shadowImage="UIRadio-44" id="KVL-Aq-n7E">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

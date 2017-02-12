@@ -4,42 +4,54 @@
 
 1그룹
 
+-----Done-----
 
-
-1. 즐겨찾기 제거시 메인 화면에서도 하트가 사라지기 - 해결
+- 즐겨찾기 제거시 메인 화면에서도 하트가 사라지기 - 완료 17.02.10
 : ViewController 의 viewWillAppear 함수에 changeFavorite 호출
 
-2. Favorite 에서 재생 가능 
+- favorite, 표시, 삭제  - 완료
 
-3. Setting 에서 재생 가능
+- 하단에 있는 Bottom View 클릭시 뷰 올라오기 (처음에는 안보임) - 완료 17.02.12.
+: reload 시에 아래에서 위로 올라오도록 프로그래밍 setting에 있는 데이터 스위치와 같다
 
-4. 하단에 있는 Bottom View 클릭시 뷰 올라오기 (처음에는 안보임) 
-
-5. 잠금화면 제어
-
-6. 음량 제어
-
-7. 헤드폰 제어
-
-8. favorite, 표시, 삭제  - 완료
-
-9. 즐겨찾기 설정 시 안내 문구(방해하지 않는 알림)
-
-10. 3G, wifi 연결 구분
-
-11. 런치 스크린
-
-12. 각 탭바 아이콘
-
-
-13. realm 이 휴대폰에서 안된다??
-
-
-14. 스위치 선택했을 때 Cell Expand 하기 - 완료 
+- 스위치 선택했을 때 Cell Expand 하기 - 완료 17.02.12.
 : reload할 때 표시 옵션을 none이 아니라 bottom 이라 top 으로 하면 해결
 
-15 - 1. BottomPlayView modal 로 넘어가기 - 완료
-15 - 2. BottomPlayView 화면 중간쯤 올라오기
+
+-----todo-----
+
+- 코드 다듬기 & 코멘트 적어놓기
+
+- realm 이 휴대폰에서 안된다??
+
+- 잠금화면 제어
+
+- 음량 슬라이더 제어
+
+- BottomPlayView modal 로 넘어가기 - 완료
+- BottomPlayView 화면 중간쯤 올라오기
+- BottomPlayView Favorite, Setting 에서도 보이기 
+- BottomPlayView 에서도 Play 제어 가능
+
+- Favorite 에서 재생 가능 
+
+- Setting 에서 재생 가능
+
+
+
+- 헤드폰 제어
+
+- 즐겨찾기 설정 시 안내 문구(방해하지 않는 알림)
+
+- 3G, wifi 연결 구분
+
+- 런치 스크린 이미지
+
+- 각 탭바 아이콘 - 완료
+- 탭바 아이콘이 하얗게는 안될까?? 선택시 태두리 변경 
+
+
+
 
 
 2그룹
