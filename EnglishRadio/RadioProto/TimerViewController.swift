@@ -27,14 +27,14 @@ class TimerViewController: ViewController {
     }
     
     
-    @IBAction func clickStartButton(sender:AnyObject){
+    @IBAction func clickStartButton(sender:UIButton){
         
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: ("timeResults"), userInfo: nil, repeats: true)
         
     }
     
     
-    @IBAction func clickStopButton(sender:AnyObject){
+    @IBAction func clickStopButton(sender:UIButton){
         
         timer.invalidate()
         

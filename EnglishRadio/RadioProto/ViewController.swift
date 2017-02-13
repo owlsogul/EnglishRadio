@@ -158,9 +158,27 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     //###################################################
     
     /** 랜덤으로 스테이션을 고르는 함수 */
-    func chooseRandomStation(){
+    func chooseRandomStation() -> Bool{
         let rand:UInt32 = arc4random_uniform(40) + 1
+        var token: Int = 0
+        
         currentStation = ViewController.sdManager.stationMap[Int(rand)]
+        
+        //for 문을 통해 현재 스테이션과 CountryViewController 에 있는 아이템을 비교 후 같으면 토큰 1 증가
+        for item in CountryViewController.selectedCountry{
+
+            if item == currentStation.getStationCountry(){
+             token += 1
+            }
+            
+        }
+        //따라서 토큰이 0 이면 같은 채널이 없음
+        if token == 0 {
+            return true
+        }else {
+            return false
+        }
+    
     }
     
     /** 기존의 라디오가 틀어져있다면 멈추고(다른 스트리밍을 위해), 스트리밍 주소를 바꾸는 함수 */
@@ -168,12 +186,14 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         if playing {
             radioPlayer.stop()
         }
+        print(CountryViewController.selectedCountry)
         radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
     }
 
     /** 현재의 방송국을 스트리밍하는 함수 */
     func radioPlay(){
         print("Now Playing is : \(currentStation.getStationName())")
+        
         radioPlayer.prepareToPlay()
         radioPlayer.play()
     }
@@ -249,7 +269,12 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             addHistory()
             
             // 랜덤 스테이션 가져오기
-            chooseRandomStation()
+            while chooseRandomStation(){
+                if CountryViewController.selectedCountry.count == 0{
+                    break
+                }
+                
+            }
             
             // 스트리밍 시작
             radioSetting()
@@ -362,7 +387,9 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     /** 페이버릿에 추가됬음을 알리는 함수 */
     func alertFavorite(station: StationData){
-        self.alertLabel.text = "Add '" + station.getStationName() + "' to favorite"
+        self.alertLabel.text = "Added favorite"
+        self.alertLabel.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+        
         UIView.transition(with: alertView, duration: 0.5, options: .transitionCrossDissolve, animations: {() -> Void in
             self.alertView.isHidden = false;
         }, completion: { _ in })
@@ -371,7 +398,9 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         self.alertTimer?.invalidate()
         self.alertTimer = nil
         
-        alertTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertEnd(timer:)), userInfo: nil, repeats: false)
+        alertTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(alertEnd(timer:)), userInfo: nil, repeats: false)
+        
+       
     }
     
     /** 애니매이션을 위한 함수 */
