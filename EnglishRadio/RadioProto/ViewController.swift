@@ -40,8 +40,9 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     /** 히스토리에서 마지막 스테이션의 아이디값을 가져온다 */
     func getLastStationId() -> Int? {
         if (history.count > 0){
-            let ret: Int = history[history.endIndex]
-            history.remove(at: history.endIndex)
+            print(history.endIndex)
+            let ret: Int = history[history.endIndex-1]
+            history.remove(at: history.endIndex-1)
             return ret
         }
         else {
