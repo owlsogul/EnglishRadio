@@ -1134,7 +1134,7 @@
                                 </state>
                                 <state key="selected" image="newPause"/>
                                 <connections>
-                                    <action selector="playButton" destination="4fQ-pI-UW8" eventType="touchUpInside" id="ozw-jC-JKj"/>
+                                    <action selector="clickPlayButton" destination="4fQ-pI-UW8" eventType="touchUpInside" id="XKm-QC-7C8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vej-JG-KGP">

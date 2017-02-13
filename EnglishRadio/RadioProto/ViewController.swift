@@ -205,7 +205,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     // 라디오 컨트롤 연결 시작 - Play, Next, Prev
     //###################################################
     
-    @IBAction func playButton(){
+    @IBAction func clickPlayButton(){
         if !playing{
             
             play()
