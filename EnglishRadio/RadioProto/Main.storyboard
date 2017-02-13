@@ -1122,6 +1122,9 @@
                                 <rect key="frame" x="16" y="274" width="53" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next" image="newPrev"/>
+                                <connections>
+                                    <action selector="prevButton:" destination="4fQ-pI-UW8" eventType="touchUpInside" id="fBE-KO-4pi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDd-FJ-Jg4">
                                 <rect key="frame" x="93" y="205" width="187" height="181"/>

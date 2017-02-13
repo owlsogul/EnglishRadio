@@ -28,6 +28,28 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     static var favManager = FavoriteManager()
     var firstPlay: Bool = true
     
+    /** 
+     재생된 목록을 ID값으로 저장하는 배열
+     다음 버튼(>>)을 눌러야 값이 저장된다.
+     */
+    var history: [Int] = []
+    /** 히스토리를 추가하는 함수 */
+    func addHistory(){
+        history.append(currentStation.getStationId())
+    }
+    /** 히스토리에서 마지막 스테이션의 아이디값을 가져온다 */
+    func getLastStationId() -> Int? {
+        if (history.count > 0){
+            let ret: Int = history[history.endIndex]
+            history.remove(at: history.endIndex)
+            return ret
+        }
+        else {
+            return nil
+        }
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("나는 나타났다!")
@@ -191,6 +213,9 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         
         if playing{
             
+            // 히스토리 저장
+            addHistory()
+            
             // 랜덤 스테이션 가져오기
             let rand:UInt32 = arc4random_uniform(40) + 1
             currentStation = ViewController.sdManager.stationMap[Int(rand)]
@@ -211,6 +236,38 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             
             
         }
+    }
+    
+    // 이전 버튼을 눌렀을 때 호출되는 함수
+    @IBAction func prevButton(_ sender: UIButton){
+        
+        // 만약 최근 재생한 스테이션이 있다면
+        if let lastStationId = getLastStationId() {
+            
+            // 현재 스테이션 바꿔줌
+            currentStation = ViewController.sdManager.stationMap[lastStationId]
+            
+            // 스트리밍 시작
+            print("Now Playing is : \(currentStation.getStationName())")
+            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+            radioPlayer.prepareToPlay()
+            radioPlayer.play()
+            playing = true
+            firstPlay = false
+            
+            // 정보 갱신
+            tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .none)
+            stationTitleLabel.text = "\(currentStation.getStationName())"
+            detailTitleLabel.text = "\(currentStation.getStationCountry())"
+            changeFavorite()
+            
+        }
+        // 없다면
+        else{
+            print("최근 재생한 스테이션이 없습니다.")
+        }
+        
+        
     }
     
     /**
