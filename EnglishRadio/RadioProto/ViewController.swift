@@ -14,6 +14,8 @@ import RealmSwift
 class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var alertView: UIView!
+    @IBOutlet weak var alertLabel: UILabel!
 
     @IBOutlet weak var stationTitleLabel: UILabel!
     @IBOutlet weak var detailTitleLabel: UILabel!
@@ -262,6 +264,8 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             detailTitleLabel.text = "\(currentStation.getStationCountry())"
             changeFavorite()
             
+            
+            
         }
         // 없다면
         else{
@@ -317,6 +321,8 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
                 if ViewController.favManager.addFavorite(id: currentStation.getStationId()){
                     ViewController.favManager.load()
                     print("Add Sucess : \(ViewController.favManager.favStationArr?.count)")
+                    // 알림창을 띄우기 위해 추가된 코드
+                    alertFavorite(station: currentStation)
                 }
                 else {
                     print("Fail Add")
@@ -326,6 +332,33 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
     
     }
+    
+    /** 알림창을 위한 타이머 */
+    var alertTimer: Timer?
+    
+    /** 페이버릿에 추가됬음을 알리는 함수 */
+    func alertFavorite(station: StationData){
+        self.alertLabel.text = "Add '" + station.getStationName() + "' to favorite"
+        UIView.transition(with: alertView, duration: 0.5, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.alertView.isHidden = false;
+        }, completion: { _ in })
+        
+        // 이전 타이머를 초기화합니다
+        self.alertTimer?.invalidate()
+        self.alertTimer = nil
+        
+        alertTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertEnd(timer:)), userInfo: nil, repeats: false)
+    }
+    
+    /** 애니매이션을 위한 함수 */
+    func alertEnd(timer: Timer){
+        UIView.transition(with: alertView, duration: 0.5, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.alertView.isHidden = true;
+        }, completion: { _ in })
+        self.alertTimer?.invalidate()
+        self.alertTimer = nil
+    }
+    
 
 //MPVolumeView : 슬라이더로 시스템볼륨 조절하기
     @IBOutlet weak var volumeView: MPVolumeView!
