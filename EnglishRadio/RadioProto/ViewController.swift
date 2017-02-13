@@ -157,43 +157,61 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     // 라디오 컨트롤 함수 파트 시작
     //###################################################
     
+    /** 랜덤으로 스테이션을 고르는 함수 */
+    func chooseRandomStation(){
+        let rand:UInt32 = arc4random_uniform(40) + 1
+        currentStation = ViewController.sdManager.stationMap[Int(rand)]
+    }
+    
+    /** 기존의 라디오가 틀어져있다면 멈추고(다른 스트리밍을 위해), 스트리밍 주소를 바꾸는 함수 */
+    func radioSetting(){
+        if playing {
+            radioPlayer.stop()
+        }
+        radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+    }
+
+    /** 현재의 방송국을 스트리밍하는 함수 */
+    func radioPlay(){
+        print("Now Playing is : \(currentStation.getStationName())")
+        radioPlayer.prepareToPlay()
+        radioPlayer.play()
+    }
+    
+    /** 메인의 정보를 바꿔주는 함수 */
+    func refreshMainInfo(){
+        tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .none)
+        stationTitleLabel.text = "\(currentStation.getStationName())"
+        detailTitleLabel.text = "\(currentStation.getStationCountry())"
+        changeFavorite()
+    }
+    
     func play(){
-        playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
-        
         
         //만약 처음으로 실행한 것이 아니면
         if firstPlay {
-            
-            //랜덤변수를 생성하여 랜덤 인덱스의 라디오 스테이션의 URL 을 가져온다.
-            let rand:UInt32 = arc4random_uniform(40) + 1
-            currentStation = ViewController.sdManager.stationMap[Int(rand)]
-            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
-            
+            chooseRandomStation()
             firstPlay = false
-            
         }
         
-        print("Now Playing is : \(currentStation.getStationName())")
-        stationTitleLabel.text = "\(currentStation.getStationName())"
-        detailTitleLabel.text = "\(currentStation.getStationCountry())"
-        //stationImage.loadImageWithURL(url: url)
-        radioPlayer.prepareToPlay()
-        radioPlayer.play()
-        tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .none)
+        radioSetting()
+        radioPlay()
         
-        playing = true
+        refreshMainInfo()
+        playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
+        
         updateLockScreen()
-        changeFavorite()
+        playing = true
         
     }
     
     func pause(){
         playButton.setImage(#imageLiteral(resourceName: "newPlay"), for: .normal)
-        radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+        //radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
         radioPlayer.stop()
         playing = false
         firstPlay = false
-        //     bottomStationLabel.text = "Radio paused..."
+        //bottomStationLabel.text = "Radio paused..."
     }
     
     //###################################################
@@ -209,7 +227,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         if !playing{
             
             play()
-            
             //만약 플레이 버튼이 눌리면 1번째 줄 셀 리로드
             tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .top)
             
@@ -224,7 +241,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     
     
-    @IBAction func nextButton(_ sender: UIButton) {
+    @IBAction func clickNextButton(_ sender: UIButton) {
         
         if playing{
             
@@ -232,29 +249,23 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             addHistory()
             
             // 랜덤 스테이션 가져오기
-            let rand:UInt32 = arc4random_uniform(40) + 1
-            currentStation = ViewController.sdManager.stationMap[Int(rand)]
+            chooseRandomStation()
             
             // 스트리밍 시작
-            print("Now Playing is : \(currentStation.getStationName())")
-            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
-            radioPlayer.prepareToPlay()
-            radioPlayer.play()
+            radioSetting()
+            radioPlay()
+            
             playing = true
             firstPlay = false
             
             // 정보 갱신
-            tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .none)
-            stationTitleLabel.text = "\(currentStation.getStationName())"
-            detailTitleLabel.text = "\(currentStation.getStationCountry())"
-            changeFavorite()
-            
+            refreshMainInfo()
             
         }
     }
     
     // 이전 버튼을 눌렀을 때 호출되는 함수
-    @IBAction func prevButton(_ sender: UIButton){
+    @IBAction func clickPrevButton(_ sender: UIButton){
         
         // 만약 최근 재생한 스테이션이 있다면
         if let lastStationId = getLastStationId() {
