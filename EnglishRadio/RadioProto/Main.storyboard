@@ -1123,7 +1123,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next" image="newPrev"/>
                                 <connections>
-                                    <action selector="prevButton:" destination="4fQ-pI-UW8" eventType="touchUpInside" id="fBE-KO-4pi"/>
+                                    <action selector="clickPrevButton:" destination="4fQ-pI-UW8" eventType="touchUpInside" id="UaT-vc-mux"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDd-FJ-Jg4">
@@ -1134,7 +1134,7 @@
                                 </state>
                                 <state key="selected" image="newPause"/>
                                 <connections>
-                                    <action selector="clickPlay" destination="4fQ-pI-UW8" eventType="touchUpInside" id="WXx-2F-S8H"/>
+                                    <action selector="clickPlayButton" destination="4fQ-pI-UW8" eventType="touchUpInside" id="XKm-QC-7C8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vej-JG-KGP">
@@ -1142,7 +1142,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next" image="newNext"/>
                                 <connections>
-                                    <action selector="nextButton:" destination="4fQ-pI-UW8" eventType="touchUpInside" id="pBt-5t-y6I"/>
+                                    <action selector="clickNextButton:" destination="4fQ-pI-UW8" eventType="touchUpInside" id="OwX-3m-mu4"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Press Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IC1-He-x7A">

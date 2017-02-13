@@ -12,17 +12,17 @@ import MobileCoreServices
 import RealmSwift
 
 class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var alertLabel: UILabel!
-
+    
     @IBOutlet weak var stationTitleLabel: UILabel!
     @IBOutlet weak var detailTitleLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var stationImage: UIImageView!
-
+    
     let radioPlayer = MPMoviePlayerController()
     var playing: Bool = false
     var currentStation: StationData!
@@ -30,7 +30,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     static var favManager = FavoriteManager()
     var firstPlay: Bool = true
     
-    /** 
+    /**
      재생된 목록을 ID값으로 저장하는 배열
      다음 버튼(>>)을 눌러야 값이 저장된다.
      */
@@ -52,6 +52,10 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("나는 사라졌다!")
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -61,6 +65,23 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
     }
     
+    //###################################################
+    // 초기화 시작
+    //###################################################
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.backgroundColor = UIColor.clear
+        tableView.separatorStyle = .none
+        
+        ViewController.sdManager.loadStationsFromJSON()
+        print("sdManager Load Test : \(ViewController.sdManager.getNumberOfStation())")
+        ViewController.favManager.register(sdManager: ViewController.sdManager)
+        print("favManger Load Test : \(ViewController.favManager.sdManager.getNumberOfStation())")
+        
+        setupPlayer()
+        
+    }
     
     func setupPlayer(){
         radioPlayer.view.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
@@ -83,30 +104,17 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             print(error.localizedDescription)
         }
     }
-
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-         tableView.backgroundColor = UIColor.clear
-         tableView.separatorStyle = .none
-        
-        
-        
-        ViewController.sdManager.loadStationsFromJSON()
-        print("sdManager Load Test : \(ViewController.sdManager.getNumberOfStation())")
-        ViewController.favManager.register(sdManager: ViewController.sdManager)
-        print("favManger Load Test : \(ViewController.favManager.sdManager.getNumberOfStation())")
-      
-       
-        
-        setupPlayer()
-       
-        
-    }
-
-    //
-    // 잠금화면에서 하는 작업들
-    //
+    //###################################################
+    // 초기화 끝
+    //###################################################
+    
+    
+    
+    
+    //###################################################
+    // 잠금화면 파트 시작
+    //###################################################
     
     func updateLockScreen() {
         
@@ -140,64 +148,85 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
     }
     
-    //
-    //
-    //
+    //###################################################
+    // 잠금화면 파트 끝
+    //###################################################
     
     
-    /***
- 
-     라디오를 플레이하는 함수
-     
-    ***/
+    //###################################################
+    // 라디오 컨트롤 함수 파트 시작
+    //###################################################
+    
+    /** 랜덤으로 스테이션을 고르는 함수 */
+    func chooseRandomStation(){
+        let rand:UInt32 = arc4random_uniform(40) + 1
+        currentStation = ViewController.sdManager.stationMap[Int(rand)]
+    }
+    
+    /** 기존의 라디오가 틀어져있다면 멈추고(다른 스트리밍을 위해), 스트리밍 주소를 바꾸는 함수 */
+    func radioSetting(){
+        if playing {
+            radioPlayer.stop()
+        }
+        radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+    }
+
+    /** 현재의 방송국을 스트리밍하는 함수 */
+    func radioPlay(){
+        print("Now Playing is : \(currentStation.getStationName())")
+        radioPlayer.prepareToPlay()
+        radioPlayer.play()
+    }
+    
+    /** 메인의 정보를 바꿔주는 함수 */
+    func refreshMainInfo(){
+        tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .none)
+        stationTitleLabel.text = "\(currentStation.getStationName())"
+        detailTitleLabel.text = "\(currentStation.getStationCountry())"
+        changeFavorite()
+    }
     
     func play(){
-        playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
-        
         
         //만약 처음으로 실행한 것이 아니면
         if firstPlay {
-            
-            //랜덤변수를 생성하여 랜덤 인덱스의 라디오 스테이션의 URL 을 가져온다.
-            let rand:UInt32 = arc4random_uniform(40) + 1
-            currentStation = ViewController.sdManager.stationMap[Int(rand)]
-            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
- 
+            chooseRandomStation()
             firstPlay = false
-            
         }
         
-        print("Now Playing is : \(currentStation.getStationName())")
-        stationTitleLabel.text = "\(currentStation.getStationName())"
-        detailTitleLabel.text = "\(currentStation.getStationCountry())"
-        //stationImage.loadImageWithURL(url: url)
-        radioPlayer.prepareToPlay()
-        radioPlayer.play()
-        tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .none)
+        radioSetting()
+        radioPlay()
         
-        playing = true
+        refreshMainInfo()
+        playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
+        
         updateLockScreen()
-        changeFavorite()
+        playing = true
         
     }
     
     func pause(){
         playButton.setImage(#imageLiteral(resourceName: "newPlay"), for: .normal)
-        radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+        //radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
         radioPlayer.stop()
         playing = false
         firstPlay = false
-   //     bottomStationLabel.text = "Radio paused..."
+        //bottomStationLabel.text = "Radio paused..."
     }
     
+    //###################################################
+    // 라디오 컨트롤 함수 파트 끝
+    //###################################################
     
     
+    //###################################################
+    // 라디오 컨트롤 연결 시작 - Play, Next, Prev
+    //###################################################
     
-    @IBAction func clickPlay(){
+    @IBAction func clickPlayButton(){
         if !playing{
             
             play()
-    
             //만약 플레이 버튼이 눌리면 1번째 줄 셀 리로드
             tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .top)
             
@@ -212,7 +241,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     
     
-    @IBAction func nextButton(_ sender: UIButton) {
+    @IBAction func clickNextButton(_ sender: UIButton) {
         
         if playing{
             
@@ -220,29 +249,23 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             addHistory()
             
             // 랜덤 스테이션 가져오기
-            let rand:UInt32 = arc4random_uniform(40) + 1
-            currentStation = ViewController.sdManager.stationMap[Int(rand)]
+            chooseRandomStation()
             
             // 스트리밍 시작
-            print("Now Playing is : \(currentStation.getStationName())")
-            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
-            radioPlayer.prepareToPlay()
-            radioPlayer.play()
+            radioSetting()
+            radioPlay()
+            
             playing = true
             firstPlay = false
             
             // 정보 갱신
-            tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .none)
-            stationTitleLabel.text = "\(currentStation.getStationName())"
-            detailTitleLabel.text = "\(currentStation.getStationCountry())"
-            changeFavorite()
-            
+            refreshMainInfo()
             
         }
     }
     
     // 이전 버튼을 눌렀을 때 호출되는 함수
-    @IBAction func prevButton(_ sender: UIButton){
+    @IBAction func clickPrevButton(_ sender: UIButton){
         
         // 만약 최근 재생한 스테이션이 있다면
         if let lastStationId = getLastStationId() {
@@ -267,13 +290,14 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             
             
         }
-        // 없다면
+            // 없다면
         else{
             print("최근 재생한 스테이션이 없습니다.")
         }
         
         
     }
+    
     
     /**
      
@@ -330,7 +354,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             }
             changeFavorite()
         }
-    
+        
     }
     
     /** 알림창을 위한 타이머 */
@@ -359,8 +383,8 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         self.alertTimer = nil
     }
     
-
-//MPVolumeView : 슬라이더로 시스템볼륨 조절하기
+    
+    //MPVolumeView : 슬라이더로 시스템볼륨 조절하기
     @IBOutlet weak var volumeView: MPVolumeView!
     func adjustVolumeView() {
         volumeView.showsRouteButton = false
@@ -368,14 +392,18 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         volumeView.backgroundColor = UIColor.clear
     }
     
-
     
     
-    /***
+    //###################################################
+    // 라디오 컨트롤 연결 끝
+    //###################################################
     
-     화면 하단 Play 뷰
-     
-    ***/
+    
+    
+    
+    //###################################################
+    // 하단 라디오 박스 파트 시작
+    //###################################################
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -401,7 +429,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             return cell
         }else {
             
-           // 아니라면 그냥 놔두고 아이콘만 변경
+            // 아니라면 그냥 놔두고 아이콘만 변경
             cell.isHidden = true
             return cell
         }
@@ -415,25 +443,23 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-        if indexPath.row == 0 {
-        if let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "bottomPlayView"){
-            self.present(secondViewController, animated: true, completion: {
-                print("코드를 통해 두번째 화면이 올라왔다.")})
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == 0 {
+            if let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "bottomPlayView"){
+                self.present(secondViewController, animated: true, completion: {
+                    print("코드를 통해 두번째 화면이 올라왔다.")})
+                
             }
         }
-    
+        
     }
     
-    /***
-     
-     화면 하단 Play 뷰 END
-     
-     ***/
-
- 
+    //###################################################
+    // 하단 라디오 박스 파트 끝
+    //###################################################
+    
+    
 }
 
