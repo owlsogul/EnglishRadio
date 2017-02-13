@@ -14,6 +14,8 @@ import RealmSwift
 class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var alertView: UIView!
+    @IBOutlet weak var alertLabel: UILabel!
 
     @IBOutlet weak var stationTitleLabel: UILabel!
     @IBOutlet weak var detailTitleLabel: UILabel!
@@ -27,6 +29,29 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     static var sdManager = StationDataManager()
     static var favManager = FavoriteManager()
     var firstPlay: Bool = true
+    
+    /** 
+     재생된 목록을 ID값으로 저장하는 배열
+     다음 버튼(>>)을 눌러야 값이 저장된다.
+     */
+    var history: [Int] = []
+    /** 히스토리를 추가하는 함수 */
+    func addHistory(){
+        history.append(currentStation.getStationId())
+    }
+    /** 히스토리에서 마지막 스테이션의 아이디값을 가져온다 */
+    func getLastStationId() -> Int? {
+        if (history.count > 0){
+            print(history.endIndex)
+            let ret: Int = history[history.endIndex-1]
+            history.remove(at: history.endIndex-1)
+            return ret
+        }
+        else {
+            return nil
+        }
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -191,6 +216,9 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         
         if playing{
             
+            // 히스토리 저장
+            addHistory()
+            
             // 랜덤 스테이션 가져오기
             let rand:UInt32 = arc4random_uniform(40) + 1
             currentStation = ViewController.sdManager.stationMap[Int(rand)]
@@ -211,6 +239,40 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             
             
         }
+    }
+    
+    // 이전 버튼을 눌렀을 때 호출되는 함수
+    @IBAction func prevButton(_ sender: UIButton){
+        
+        // 만약 최근 재생한 스테이션이 있다면
+        if let lastStationId = getLastStationId() {
+            
+            // 현재 스테이션 바꿔줌
+            currentStation = ViewController.sdManager.stationMap[lastStationId]
+            
+            // 스트리밍 시작
+            print("Now Playing is : \(currentStation.getStationName())")
+            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+            radioPlayer.prepareToPlay()
+            radioPlayer.play()
+            playing = true
+            firstPlay = false
+            
+            // 정보 갱신
+            tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .none)
+            stationTitleLabel.text = "\(currentStation.getStationName())"
+            detailTitleLabel.text = "\(currentStation.getStationCountry())"
+            changeFavorite()
+            
+            
+            
+        }
+        // 없다면
+        else{
+            print("최근 재생한 스테이션이 없습니다.")
+        }
+        
+        
     }
     
     /**
@@ -259,6 +321,8 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
                 if ViewController.favManager.addFavorite(id: currentStation.getStationId()){
                     ViewController.favManager.load()
                     print("Add Sucess : \(ViewController.favManager.favStationArr?.count)")
+                    // 알림창을 띄우기 위해 추가된 코드
+                    alertFavorite(station: currentStation)
                 }
                 else {
                     print("Fail Add")
@@ -268,6 +332,33 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
     
     }
+    
+    /** 알림창을 위한 타이머 */
+    var alertTimer: Timer?
+    
+    /** 페이버릿에 추가됬음을 알리는 함수 */
+    func alertFavorite(station: StationData){
+        self.alertLabel.text = "Add '" + station.getStationName() + "' to favorite"
+        UIView.transition(with: alertView, duration: 0.5, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.alertView.isHidden = false;
+        }, completion: { _ in })
+        
+        // 이전 타이머를 초기화합니다
+        self.alertTimer?.invalidate()
+        self.alertTimer = nil
+        
+        alertTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertEnd(timer:)), userInfo: nil, repeats: false)
+    }
+    
+    /** 애니매이션을 위한 함수 */
+    func alertEnd(timer: Timer){
+        UIView.transition(with: alertView, duration: 0.5, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.alertView.isHidden = true;
+        }, completion: { _ in })
+        self.alertTimer?.invalidate()
+        self.alertTimer = nil
+    }
+    
 
 //MPVolumeView : 슬라이더로 시스템볼륨 조절하기
     @IBOutlet weak var volumeView: MPVolumeView!
