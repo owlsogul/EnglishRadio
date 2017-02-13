@@ -12,7 +12,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     
     let country: [String] = ["Canada", "United States", "Australia", "United Kingdom"]
-    var selectedCountry: [String] = []
+    static var selectedCountry: [String] = []
     var arrangedCountry: [String] = []
     var selectedCell: Bool = true
     
@@ -23,7 +23,6 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
         tableView.separatorStyle = .none
-       
         arrangedCountry = country.sorted(by: {(left:String, right:String) -> Bool
             in return left < right})
         
@@ -95,26 +94,45 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
             
                 //만약 selectedCountry에 현재 선택된 셀의 나라가 없다면 나라를 배열에 넣고 체크마크
-                if !selectedCountry.contains(arrangedCountry[indexPath.row]){
-                    selectedCountry.append(arrangedCountry[indexPath.row])
+                if !CountryViewController.selectedCountry.contains(arrangedCountry[indexPath.row]){
+                    CountryViewController.selectedCountry.append(arrangedCountry[indexPath.row])
                     cell.accessoryType = UITableViewCellAccessoryType.checkmark
                     tableView.reloadRows(at: [IndexPath.init(row: indexPath.row, section: 0)], with: .none)
-                    
+                
+               
+                
                 //아니면 체크마크 해제
                 }else {
-                    for (index, item) in selectedCountry.enumerated(){
+                    for (index, item) in CountryViewController.selectedCountry.enumerated(){
                         if item == arrangedCountry[indexPath.row]{
-                            selectedCountry.remove(at: index)
+                            CountryViewController.selectedCountry.remove(at: index)
                             
                         }
                     }
 
+                  
                     cell.accessoryType = UITableViewCellAccessoryType.none
                     tableView.reloadRows(at: [IndexPath.init(row: indexPath.row, section: 0)], with: .none)
             }
-             print(selectedCountry)
+             print(CountryViewController.selectedCountry)
         }
         
+    }
+    
+    func isHaveSelectedCountry(country: String) -> Bool {
+        
+        
+        for item in CountryViewController.selectedCountry {
+            
+            if country.contains("\(item)"){
+                return true
+            }else {
+                return false
+            }
+            
+        }
+        
+        return false
     }
     
     
