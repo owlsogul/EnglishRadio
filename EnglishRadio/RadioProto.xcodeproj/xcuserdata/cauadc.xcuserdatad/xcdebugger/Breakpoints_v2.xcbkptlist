@@ -26,7 +26,11 @@
                   moduleName = "RadioProto"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/cauadc/Documents/EnglishRadio/EnglishRadio/RadioProto/StationData.swift"
+<<<<<<< Updated upstream
                   timestampString = "508660937.937584"
+=======
+                  timestampString = "508659527.363357"
+>>>>>>> Stashed changes
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -41,7 +45,11 @@
                   moduleName = "RadioProto"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/cauadc/Documents/EnglishRadio/EnglishRadio/RadioProto/StationData.swift"
+<<<<<<< Updated upstream
                   timestampString = "508660937.941136"
+=======
+                  timestampString = "508659527.366345"
+>>>>>>> Stashed changes
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
