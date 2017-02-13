@@ -12,9 +12,9 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     
     let country: [String] = ["Canada", "United States", "Australia", "United Kingdom"]
-    
+    var selectedCountry: [String] = []
     var arrangedCountry: [String] = []
-    
+    var selectedCell: Bool = true
     
     @IBOutlet weak var tableView: UITableView!
     override func viewWillAppear(_ animated: Bool) {
@@ -92,11 +92,28 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell: CountryTableViewCell
         cell = tableView.dequeueReusableCell(withIdentifier: "countryListCell", for: indexPath) as! CountryTableViewCell
         if cell.isSelected {
-            cell.setSelected(true, animated:true)
-            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+        
+            
+                //만약 selectedCountry에 현재 선택된 셀의 나라가 없다면 나라를 배열에 넣고 체크마크
+                if !selectedCountry.contains(arrangedCountry[indexPath.row]){
+                    selectedCountry.append(arrangedCountry[indexPath.row])
+                    cell.accessoryType = UITableViewCellAccessoryType.checkmark
+                    tableView.reloadRows(at: [IndexPath.init(row: indexPath.row, section: 0)], with: .none)
+                    
+                //아니면 체크마크 해제
+                }else {
+                    for (index, item) in selectedCountry.enumerated(){
+                        if item == arrangedCountry[indexPath.row]{
+                            selectedCountry.remove(at: index)
+                            
+                        }
+                    }
+
+                    cell.accessoryType = UITableViewCellAccessoryType.none
+                    tableView.reloadRows(at: [IndexPath.init(row: indexPath.row, section: 0)], with: .none)
+            }
+             print(selectedCountry)
         }
-        
-        
         
     }
     
