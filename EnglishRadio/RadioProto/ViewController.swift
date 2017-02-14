@@ -164,6 +164,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         
         currentStation = ViewController.sdManager.stationMap[Int(rand)]
         
+        // TODO: 나라가 없을때랑 기타 등등의 상황등을 고려해봐야할듯
         //for 문을 통해 현재 스테이션과 CountryViewController 에 있는 아이템을 비교 후 같으면 토큰 1 증가
         for item in CountryViewController.selectedCountry{
             
@@ -210,7 +211,9 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         
         //만약 처음으로 실행한 것이 아니면
         if firstPlay {
-            chooseRandomStation()
+            if chooseRandomStation() {
+                print("스테이션이 없습니다")
+            }
             firstPlay = false
         }
         
