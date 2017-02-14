@@ -25,6 +25,7 @@
                         <segue destination="l2J-b9-Kd1" kind="relationship" relationship="viewControllers" id="hfw-H3-5b2"/>
                         <segue destination="uIG-Yd-6e1" kind="relationship" relationship="viewControllers" id="EfM-jN-slV"/>
                         <segue destination="0cq-Xc-e9u" kind="relationship" relationship="viewControllers" id="4MY-zr-Rao"/>
+                        <segue destination="UbY-jX-VIj" kind="relationship" relationship="viewControllers" id="zLV-xh-6uC"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2uw-b2-VtM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -50,6 +51,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uIs-Dd-BD9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="960" y="-194"/>
+        </scene>
+        <!--Timer-->
+        <scene sceneID="dGd-du-05M">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Timer" id="UbY-jX-VIj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="paS-LF-3QT"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WRR-4x-hsD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="609" y="-173"/>
         </scene>
         <!--DataTest-->
         <scene sceneID="t3q-Q7-BMj">

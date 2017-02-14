@@ -43,7 +43,13 @@ class TimerViewController: UIViewController {
     
     
     
+    @IBAction func LapButton(sender: AnyObject){
     
+    
+    
+    
+    
+    }
     
     
     
