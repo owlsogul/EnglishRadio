@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Make status bar white
         UINavigationBar.appearance().barStyle = .black
         
+        window?.tintColor = UIColor.white
+        
 
         return true
     }
