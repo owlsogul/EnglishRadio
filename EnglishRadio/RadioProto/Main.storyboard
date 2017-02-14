@@ -1163,7 +1163,6 @@
                             </label>
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jvU-0m-jXN" customClass="MPVolumeView">
                                 <rect key="frame" x="9" y="502" width="359" height="63"/>
 =======
@@ -1180,16 +1179,6 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u15-Hz-b4q">
                                 <rect key="frame" x="171" y="437" width="35" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-=======
-                            <view contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jvU-0m-jXN" customClass="MPVolumeView">
-                                <rect key="frame" x="8" y="532" width="359" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u15-Hz-b4q">
-                                <rect key="frame" x="171" y="437" width="35" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
->>>>>>> origin/master
                                 <state key="normal" title="Favorite" image="newFavorite"/>
                                 <connections>
                                     <action selector="clickFavButton:" destination="4fQ-pI-UW8" eventType="touchUpInside" id="jUM-11-xu5"/>
