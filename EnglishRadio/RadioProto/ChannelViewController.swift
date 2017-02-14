@@ -8,25 +8,52 @@
 
 import UIKit
 
-class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewDataSource{
 
+
+class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewDataSource{
     
     let country: [String] = ["Canada", "United States", "Australia", "United Kingdom"]
     var sdManager:StationDataManager = ViewController.sdManager
     var arrangedCountry: [String] = []
     var stationsInCountry: [String: [StationData]] = [:]
     var arrangedStation: [String: [StationData]] = [:]
-    
+
     @IBOutlet weak var tableView: UITableView!
     
+    
+    
+    
+    //###################################################
+    // MARK: - 액션 모음
+    //###################################################
+    
+    @IBAction func NavigationBack(_ sender: UIButton) {
+        
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+
+    
+    
+    
+    
+    //###################################################
+    // MARK: -  뷰 로딩 설정
+    //###################################################
+   
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
+        tableView.separatorStyle = .none
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         // 나라 이름 정렬
-        arrangedCountry = country.sorted(by: {(left:String, right:String) -> Bool
-            in return left < right})
+        arrangedCountry = country.sorted(by: {(left:String, right:String) -> Bool in return left < right})
         
         // 딕셔너리 초기화
         for countryName in arrangedCountry {
@@ -44,37 +71,40 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
         // 딕셔너리 정렬
         for countryName in arrangedCountry {
             arrangedStation[countryName] = stationsInCountry[countryName]?.sorted(by: {
-                (left:StationData, right: StationData) -> Bool in
-                return left.getStationName() < right.getStationName()
+            (left:StationData, right: StationData) -> Bool
+                in return left.getStationName() < right.getStationName()
             })
         }
        
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
-        tableView.separatorStyle = .none
-    }
-  
+ 
+    
+    //###################################################
+    //뷰 라이프 사이클 끝
+    //###################################################
     
     
     
-    // Row 수 정하기
+    //###################################################
+    // MARK: -  테이블 뷰 설정
+    //###################################################
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
         if let stationCountry = arrangedStation[arrangedCountry[section]] {
+           
             return stationCountry.count + 1
         }
         else {
+        
             return 0
         }
-        
-        
-        
     }
-    // 섹션 수 정하기
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return arrangedCountry.count
     }
@@ -82,8 +112,10 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath.row == 0){
+           
             return 22.0
         }
+      
         return 44.0
     }
     
@@ -95,6 +127,7 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
         if row == 0 {
             
             let header: ChannelTableViewCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! ChannelTableViewCell
+            
             header.setEditing(false, animated: false)
             header.backgroundColor = UIColor.black.withAlphaComponent(0.2)
             header.headerLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
@@ -113,29 +146,27 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
             cell.stationLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
             
             if let station = arrangedStation[countryName]?[row-1] {
+               
                 cell.stationLabel.text = station.getStationName()
             }
+            
             if indexPath.row % 2 == 0 {
+              
                 cell.backgroundColor = UIColor.clear
-            } else {
+            }
+            else {
+                
                 cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
             }
-            
             
             return cell
         }
         
     }
     
-    
-    
-    
-    // MARK: - Navigation
-    @IBAction func NavigationBack(_ sender: UIButton) {
-        
-        self.navigationController?.popViewController(animated: true)
-        
-    }
+    //###################################################
+    //테이블 뷰 설정 끝
+    //###################################################
 
     
 

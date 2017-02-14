@@ -15,6 +15,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editButton: UIButton!
     
+    //###################################################
+    // MARK: -  액션 모음
+    //###################################################
+    
     
     @IBAction func clickEditButton(_ sender: UIButton) {
         if (self.tableView.isEditing) {
@@ -25,6 +29,38 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
             self.tableView.setEditing(true, animated: true)
         }
     }
+    
+    //###################################################
+    // MARK: - 뷰 로딩 설정
+    //###################################################
+    
+    // ViewController의 화면이 보여지기 직전에 불려질 함수
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("ViewController의 화면이 보여질 예정입니다")
+        
+        // Favorite Manager의 Realm으로부터 Result 값을 불러옵니다
+        ViewController.favManager.load()
+        
+        // 테이블뷰를 새로고침 합니다
+        self.tableView.reloadData()
+        
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        //테이블 뷰 백그라운드 색상 및 구분선 UI 조작
+        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
+        tableView.separatorStyle = .none
+        
+    }
+
+    
+    //###################################################
+    // MARK: -  테이블 뷰 세팅
+    //###################################################
     
     
     // 테이블뷰의 셀을 스와이프하여 삭제할 수 있는지 확인
@@ -55,28 +91,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    // ViewController의 화면이 보여지기 직전에 불려질 함수
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        print("ViewController의 화면이 보여질 예정입니다")
-        
-        // Favorite Manager의 Realm으로부터 Result 값을 불러옵니다
-        ViewController.favManager.load()
-        
-        // 테이블뷰를 새로고침 합니다
-        self.tableView.reloadData()
-        
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        //테이블 뷰 백그라운드 색상 및 구분선 UI 조작
-        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
-        tableView.separatorStyle = .none
-        
-    }
     
     
     

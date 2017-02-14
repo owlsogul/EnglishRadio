@@ -25,6 +25,15 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var stationImage: UIImageView!
+  
+    /**MPVolumeView : 슬라이더로 시스템볼륨 조절하기*/
+    @IBOutlet weak var volumeView: MPVolumeView!
+    func adjustVolumeView() {
+        self.volumeView.showsRouteButton = false
+        self.volumeView.showsVolumeSlider = true
+        self.volumeView.backgroundColor = UIColor.clear
+    }
+   
     
     let radioPlayer = MPMoviePlayerController()
     var isPlay: Bool = false
@@ -35,7 +44,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     
     //###################################################
-    // MARK: 초기화
+    // MARK: - 뷰 로딩 설정
     //###################################################
     
     override func viewDidLoad() {
@@ -71,15 +80,18 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
     }
     
+    
+    //###################################################
+    // MARK: - play 초기화
+    //###################################################
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if isPlay{
             radioPlayer.play()
         }
     }
     
-    /**
-     오디오 플레이어를 초기화하는 함수
-     */
+    /** 오디오 플레이어를 초기화하는 함수 */
     func setupPlayer(){
         radioPlayer.view.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         radioPlayer.view.sizeToFit()
@@ -111,12 +123,10 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     
     //###################################################
-    // MARK: 잠금화면 파트
+    // MARK: - 잠금화면 파트
     //###################################################
     
-    /**
-     잠금화면 스크린을 업데이트 하는 함수
-     */
+    /** 잠금화면 스크린을 업데이트 하는 함수 */
     func updateLockScreen() {
         
         // Update notification/lock screen
@@ -129,9 +139,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         ]
     }
     
-    /**
-     잠금화면으로부터 버튼 클릭 이벤트를 받아오는 함수
-     */
+    /** 잠금화면으로부터 버튼 클릭 이벤트를 받아오는 함수 */
     override func remoteControlReceived(with receivedEvent: UIEvent?) {
         super.remoteControlReceived(with: receivedEvent)
         
@@ -166,7 +174,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     
     //###################################################
-    // MARK: 라디오 컨트롤 함수 파트
+    // MARK: - 라디오 컨트롤 함수 파트
     //###################################################
     
     func play(){
@@ -224,6 +232,11 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         
     }
     
+    
+    //###################################################
+    // MARK: - 라디오 Station 설정 함수
+    //###################################################
+    
     /** 기존의 라디오가 틀어져있다면 멈추고(다른 스트리밍을 위해), 스트리밍 주소를 바꾸는 함수 */
     func radioSetting(){
         if isPlay {
@@ -241,20 +254,16 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         radioPlayer.play()
     }
     
-    /** 메인의 정보를 바꿔주는 함수 */
-    func refreshMainInfo(){
-        tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .none)
-        stationTitleLabel.text = "\(currentStation.getStationName())"
-        detailTitleLabel.text = "\(currentStation.getStationCountry())"
-        changeFavorite()
-    }
+   
     
     
+    //###################################################
+    // MARK: - 라디오 Station history
+    //###################################################
     
-    /**
-     재생된 목록을 ID값으로 저장하는 배열
-     다음 버튼(>>)을 눌러야 값이 저장된다.
-     */
+    
+    /** 재생된 목록을 ID값으로 저장하는 배열
+     다음 버튼(>>)을 눌러야 값이 저장된다. */
     var history: [Int] = []
     /** 히스토리를 추가하는 함수 */
     func addHistory(){
@@ -273,13 +282,28 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
     }
     
+    
+    
+    
+    //###################################################
+    // MARK: - Favorite 관련 설정
+    //###################################################
+    
+    /** 메인의 정보를 바꿔주는 함수 */
+    func refreshMainInfo(){
+        tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .none)
+        stationTitleLabel.text = "\(currentStation.getStationName())"
+        detailTitleLabel.text = "\(currentStation.getStationCountry())"
+        changeFavorite()
+    }
+    
     /** 알림창을 위한 타이머 */
     var alertTimer: Timer?
     
     /** 페이버릿에 추가됬음을 알리는 함수 */
     func alertFavorite(station: StationData){
         self.alertLabel.text = "Added favorite"
-        self.alertLabel.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+        self.alertLabel.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         
         UIView.transition(with: alertView, duration: 0.5, options: .transitionCrossDissolve, animations: {() -> Void in
             self.alertView.isHidden = false;
@@ -302,23 +326,9 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         self.alertTimer?.invalidate()
         self.alertTimer = nil
     }
-    
-    
-    //MPVolumeView : 슬라이더로 시스템볼륨 조절하기
-    @IBOutlet weak var volumeView: MPVolumeView!
-    func adjustVolumeView() {
-        self.volumeView.showsRouteButton = false
-        self.volumeView.showsVolumeSlider = true
-        self.volumeView.backgroundColor = UIColor.clear
-    }
-    
-    
-    
-    /**
-     
-     Favorite 버튼 갱신 할 때 쓰임!
-     
-     */
+
+
+    /** Favorite 버튼 갱신 할 때 쓰임!  */
     func changeFavorite(){
         if ViewController.favManager.isFavorite(id: currentStation.getStationId()) {
             favoriteButton.setImage(#imageLiteral(resourceName: "newFavoriteFilled"), for: .normal)
@@ -336,7 +346,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     
     //###################################################
-    // MARK: 라디오 액션 연결 - Play, Next, Prev
+    // MARK: - 라디오 액션 연결 - Play, Next, Prev
     //###################################################
     
     @IBAction func clickPlayButton(){
@@ -354,8 +364,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
         
     }
-    
-    
     
     @IBAction func clickNextButton() {
         
@@ -459,7 +467,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     
     //###################################################
-    // MARK: 하단 라디오 박스 파트
+    // MARK: - 하단 플레이 테이블 뷰 세팅
     //###################################################
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
