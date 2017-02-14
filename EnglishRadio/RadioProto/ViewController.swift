@@ -136,17 +136,23 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         super.remoteControlReceived(with: receivedEvent)
         
         if receivedEvent!.type == UIEventType.remoteControl {
-            
+            print("이벤트의 서브 타입 : \(receivedEvent!.subtype)")
             switch receivedEvent!.subtype {
             case .remoteControlPlay:
-                //clickPlay()
                 play()
                 print("잠금화면에서 플레이 버튼이 눌렸다.")
                 break;
             case .remoteControlPause:
-                //clickPlay()
                 pause()
                 print("잠금화면에서 멈춤 버튼이 눌렸다.")
+                break;
+            case .remoteControlNextTrack:
+                clickNextButton()
+                print("잠금화면에서 다음 버튼이 눌렸다.")
+                break;
+            case .remoteControlPreviousTrack:
+                clickPrevButton()
+                print("잠금화면에서 이전 버튼이 눌렸다.")
                 break;
             default:
                 break
@@ -351,7 +357,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     
     
-    @IBAction func clickNextButton(_ sender: UIButton) {
+    @IBAction func clickNextButton() {
         
         if isPlay{
             
@@ -380,7 +386,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     }
     
     // 이전 버튼을 눌렀을 때 호출되는 함수
-    @IBAction func clickPrevButton(_ sender: UIButton){
+    @IBAction func clickPrevButton(){
         
         // 만약 최근 재생한 스테이션이 있다면
         if let lastStationId = getLastStationId() {
