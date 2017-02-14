@@ -1122,6 +1122,9 @@
                                 <rect key="frame" x="16" y="274" width="53" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next" image="newPrev"/>
+                                <connections>
+                                    <action selector="clickPrevButton:" destination="4fQ-pI-UW8" eventType="touchUpInside" id="ZM0-En-gzx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDd-FJ-Jg4">
                                 <rect key="frame" x="93" y="205" width="187" height="181"/>
@@ -1131,7 +1134,7 @@
                                 </state>
                                 <state key="selected" image="newPause"/>
                                 <connections>
-                                    <action selector="clickPlay" destination="4fQ-pI-UW8" eventType="touchUpInside" id="WXx-2F-S8H"/>
+                                    <action selector="clickPlayButton" destination="4fQ-pI-UW8" eventType="touchUpInside" id="HTz-Ad-JFv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vej-JG-KGP">
@@ -1139,7 +1142,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next" image="newNext"/>
                                 <connections>
-                                    <action selector="nextButton:" destination="4fQ-pI-UW8" eventType="touchUpInside" id="pBt-5t-y6I"/>
+                                    <action selector="clickNextButton:" destination="4fQ-pI-UW8" eventType="touchUpInside" id="b0L-hj-DmF"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Press Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IC1-He-x7A">
@@ -1162,6 +1165,20 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view hidden="YES" alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Yx-in-P9N">
+                                <rect key="frame" x="1" y="28" width="375" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1L2-vd-bJs">
+                                        <rect key="frame" x="0.0" y="12" width="375" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1173,6 +1190,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Radio" image="Radio" id="jSm-eK-ani"/>
                     <connections>
+                        <outlet property="alertLabel" destination="1L2-vd-bJs" id="c7d-a7-eyo"/>
+                        <outlet property="alertView" destination="1Yx-in-P9N" id="zID-Ks-8ZP"/>
                         <outlet property="detailTitleLabel" destination="IC1-He-x7A" id="AWU-rb-OWi"/>
                         <outlet property="favoriteButton" destination="u15-Hz-b4q" id="HfO-w9-Rx2"/>
                         <outlet property="playButton" destination="hDd-FJ-Jg4" id="JeL-UD-CFn"/>
