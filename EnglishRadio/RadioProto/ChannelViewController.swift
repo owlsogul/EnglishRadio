@@ -12,14 +12,14 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
 
     
     let country: [String] = ["Canada", "United States", "Australia", "United Kingdom"]
-    
     var sdManager:StationDataManager = ViewController.sdManager
-   
     var arrangedCountry: [String] = []
     var stationsInCountry: [String: [StationData]] = [:]
     var arrangedStation: [String: [StationData]] = [:]
     
     @IBOutlet weak var tableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,6 +58,9 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
         tableView.separatorStyle = .none
     }
   
+    
+    
+    
     // Row 수 정하기
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
@@ -71,7 +74,6 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
         
         
     }
-    
     // 섹션 수 정하기
     func numberOfSections(in tableView: UITableView) -> Int {
         return arrangedCountry.count

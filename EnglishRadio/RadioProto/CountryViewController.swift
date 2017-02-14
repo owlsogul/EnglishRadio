@@ -12,39 +12,13 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     
     let country: [String] = ["Canada", "United States", "Australia", "United Kingdom"]
-    
-    static var selectedCountry: [String] = []
-    
     var arrangedCountry: [String] = []
-    
     var selectedCell: Bool = true
-    
+    static var selectedCountry: [String] = []
     @IBOutlet weak var tableView: UITableView!
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
-        tableView.separatorStyle = .none
-       
-        arrangedCountry = country.sorted(by: {(left:String, right:String) -> Bool
-            in return left < right})
-        
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
-        tableView.separatorStyle = .none
-        
-
-        
-        
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+   
+   
+    
     
     @IBAction func NavigationBack(_ sender: UIButton) {
         
@@ -53,15 +27,40 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
     }
-
     
-    //row 갯수
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
+        tableView.separatorStyle = .none
+        arrangedCountry = country.sorted(by: {(left:String, right:String) -> Bool
+            in return left < right})
+        
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
+        tableView.separatorStyle = .none
+        
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+    }
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
         return arrangedCountry.count
         
     }
-    
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -71,11 +70,8 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let rowNumber:Int = indexPath.row
         let name: String = arrangedCountry[rowNumber]
-            
-        
         
         cell.backgroundColor = UIColor.clear
-        
         cell.countryLabel?.textColor = UIColor.white.withAlphaComponent(0.9)
         cell.countryLabel?.text = name
         
@@ -105,7 +101,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 
                 
-                //아니면 체크마크 해제
+            //아니면 체크마크 해제
             }else {
                 for (index, item) in CountryViewController.selectedCountry.enumerated(){
                     if item == arrangedCountry[indexPath.row]{
