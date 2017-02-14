@@ -40,6 +40,7 @@
 		6625BAC51E4B057000E53565 /* StationTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 6625BAC41E4B057000E53565 /* StationTest.json */; };
 		6625BACB1E4B0B2100E53565 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625BACA1E4B0B2100E53565 /* StationData.swift */; };
 		6625BACD1E4B0B3500E53565 /* Station.json in Resources */ = {isa = PBXBuildFile; fileRef = 6625BACC1E4B0B3500E53565 /* Station.json */; };
+		66B90D8F1E52A40500A1B877 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B90D8E1E52A40500A1B877 /* TimerViewController.swift */; };
 		66EC31761E4C340C0097C96D /* StationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EC31751E4C340C0097C96D /* StationInfo.swift */; };
 		66EC31781E4C41630097C96D /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EC31771E4C41630097C96D /* Timer.storyboard */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,7 @@
 		6625BAC41E4B057000E53565 /* StationTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StationTest.json; sourceTree = "<group>"; };
 		6625BACA1E4B0B2100E53565 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
 		6625BACC1E4B0B3500E53565 /* Station.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Station.json; sourceTree = "<group>"; };
+		66B90D8E1E52A40500A1B877 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = SOURCE_ROOT; };
 		66EC31751E4C340C0097C96D /* StationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationInfo.swift; sourceTree = "<group>"; };
 		66EC31771E4C41630097C96D /* Timer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timer.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,6 +173,7 @@
 				400FC80F1E4DEFD00084A822 /* Data */,
 				40A4522A1E23222B0033F0AE /* AppDelegate.swift */,
 				66EC31771E4C41630097C96D /* Timer.storyboard */,
+				66B90D8E1E52A40500A1B877 /* TimerViewController.swift */,
 				6625BAC41E4B057000E53565 /* StationTest.json */,
 				40F9228C1E4AE7EB00C969BB /* DataTest.storyboard */,
 				6625BAC21E4AF22100E53565 /* DataTestViewController.swift */,
@@ -238,7 +241,6 @@
 				TargetAttributes = {
 					40A452261E23222B0033F0AE = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9PZPL5979H;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -352,6 +354,7 @@
 				6610394B1E4B3C220088951C /* NowPlayingViewController.swift in Sources */,
 				6625BABC1E4AEC5000E53565 /* StationDataManager.swift in Sources */,
 				6625BAC31E4AF22100E53565 /* DataTestViewController.swift in Sources */,
+				66B90D8F1E52A40500A1B877 /* TimerViewController.swift in Sources */,
 				404EBB581E49BC570018D030 /* ChannelViewController.swift in Sources */,
 				40A4522B1E23222B0033F0AE /* AppDelegate.swift in Sources */,
 				4000D6F01E497F5B00FBE648 /* CountryTableViewCell.swift in Sources */,
@@ -472,7 +475,7 @@
 			baseConfigurationReference = 5805918F2A1CC235FDE566F8 /* Pods-RadioProto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9PZPL5979H;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RadioProto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -487,7 +490,7 @@
 			baseConfigurationReference = 1E3116D82FBBAAA90B311997 /* Pods-RadioProto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9PZPL5979H;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RadioProto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
