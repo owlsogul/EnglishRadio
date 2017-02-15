@@ -86,6 +86,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     //###################################################
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if isPlay{
             radioPlayer.play()
         }
@@ -512,14 +513,12 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 0 {
-            if let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "bottomPlayView"){
-                self.present(secondViewController, animated: true, completion: {
-                    print("코드를 통해 두번째 화면이 올라왔다.")})
-                
-            }
+            self.performSegue(withIdentifier: "ShowBottomPlayerViewController", sender: self)
         }
         
     }
+    
+
     
     //###################################################
     // 하단 라디오 박스 파트 끝

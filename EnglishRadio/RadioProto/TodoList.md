@@ -80,7 +80,7 @@
 - country 필터링 설정값 저장하기(현재 백버튼을 눌러서 뒤로 갔다가오면 설정초기화 되어있음)
 
 - BottomPlayView modal 로 넘어가기 - 완료
-- BottomPlayView 화면 중간쯤 올라오기
+- BottomPlayView 화면 중간쯤 올라오기 - 완료
 - BottomPlayView Favorite, Setting 에서도 보이기 
 - BottomPlayView 에서도 Play 제어 가능
 
