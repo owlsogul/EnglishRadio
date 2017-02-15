@@ -329,13 +329,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             // 히스토리 저장
             addHistory()
             
-            // 랜덤 스테이션 가져오기
-            while chooseRandomStation(){
-                if CountryViewController.selectedCountry.count == 0{
-                    break
-                }
-                
-            }
+         
 
            // 스트리밍 딜레이 타이머
             self.playDelayTime = 0
@@ -344,6 +338,13 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             self.playDelayTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(playDelayFunc(timer:)), userInfo: nil, repeats: true)
             self.playDelayTimer?.fire()
 
+            // 랜덤 스테이션 가져오기
+            while chooseRandomStation(){
+                if CountryViewController.selectedCountry.count == 0{
+                    break
+                }
+                
+            }
             isPlay = true
             firstPlay = false
             

@@ -15,7 +15,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var bottomTableView: UITableView!
-  
+    var radioPlayer:RadioPlayer = RadioPlayer()
     var recievedStationName: String?
     var isPlaying: Bool = true
     //###################################################
@@ -153,10 +153,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
             cell.backgroundColor = UIColor.black.withAlphaComponent(0.2)
             
             //만약 현재 플레이 중이라면
-            if ViewController.nowPlaying{
+            if radioPlayer.isPlay{
                 
                 //Bottom 셀의 hidden 을 해제하고 현재 재생중인 스테이션 제목을 보여준다.
-                cell.bottomStationLabel.text = ViewController.stationName
+                cell.bottomStationLabel.text = radioPlayer.currentStation?.getStationName()
                 cell.bottomStationLabel.textColor = UIColor.white
                 cell.bottomPlayButton.setImage(#imageLiteral(resourceName: "newPauseSmall"), for: .normal)
                 cell.isHidden = false

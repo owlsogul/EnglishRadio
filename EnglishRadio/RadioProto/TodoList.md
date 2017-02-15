@@ -88,6 +88,8 @@
 - BottomPlayView 화면 중간쯤 올라오기 - 완료
 - BottomPlayView Favorite, Setting 에서도 보이기 - 완료
 - BottomPlayView 에서도 Play 제어 가능
+- 다른 탭에서 BottomPlayView 에 제목 표시되는 딜레이 해결하기
+
 
 - Favorite 에서 재생 가능 
 

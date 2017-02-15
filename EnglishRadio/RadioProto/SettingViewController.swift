@@ -13,7 +13,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
     var changed:Bool = false
     var currentIndex: Int = 0
     var isPlaying:Bool = true
-    
+    var radioPlayer:RadioPlayer = RadioPlayer()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var bottomTableView: UITableView!
     
@@ -144,9 +144,9 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
                 
                 //만약 현재 플레이 중이라면
             
-            if ViewController.nowPlaying{
+            if radioPlayer.isPlay{
                     //Bottom 셀의 hidden 을 해제하고 현재 재생중인 스테이션 제목을 보여준다.
-                   cell.bottomStationLabel.text = ViewController.stationName
+                   cell.bottomStationLabel.text = radioPlayer.currentStation?.getStationName()
                     cell.bottomStationLabel.textColor = UIColor.white
                     cell.bottomPlayButton.setImage(#imageLiteral(resourceName: "newPauseSmall"), for: .normal)
                     cell.isHidden = false
@@ -219,7 +219,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     /**country테이블과 channel테이블로 이동하는 네비게이션 함수*/
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if tableView == self.tableView{
         if indexPath.row == 0 {
             
             if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "countryView"){
@@ -234,6 +234,9 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
                 self.navigationController?.pushViewController(nextViewController, animated: true)
             }
         }
+        }
+        
+        
     }
     
     
