@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barStyle = .black
         
         window?.tintColor = UIColor.white
+        window?.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         
 
         return true

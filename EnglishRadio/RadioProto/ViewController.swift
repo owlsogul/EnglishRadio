@@ -481,7 +481,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         
         let cell: BottomPlayViewCell = tableView.dequeueReusableCell(withIdentifier: "bottomPlayCell", for: indexPath) as! BottomPlayViewCell
         
-        cell.backgroundColor = UIColor.black.withAlphaComponent(0.15)
+        cell.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         
         //만약 현재 플레이 중이라면
         if isPlay{
