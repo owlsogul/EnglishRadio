@@ -5,12 +5,10 @@
 //  Created by byung-soo kwon on 2017. 1. 9..
 //  Copyright © 2017년 byung-soo kwon. All rights reserved.
 //
-
 import UIKit
 import MediaPlayer
 import MobileCoreServices
 import RealmSwift
-import AVFoundation
 
 class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
     
@@ -26,7 +24,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var stationImage: UIImageView!
-  
+    
     /**MPVolumeView : 슬라이더로 시스템볼륨 조절하기*/
     @IBOutlet weak var volumeView: MPVolumeView!
     func adjustVolumeView() {
@@ -34,9 +32,9 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         self.volumeView.showsVolumeSlider = true
         self.volumeView.backgroundColor = UIColor.clear
     }
-   
     
-    let radioPlayer = AVPlayer()
+    
+    let radioPlayer = MPMoviePlayerController()
     var isPlay: Bool = false
     var currentStation: StationData!
     var firstPlay: Bool = true
@@ -85,7 +83,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     //###################################################
     // MARK: - play 초기화
     //###################################################
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if isPlay{
@@ -95,6 +92,13 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     /** 오디오 플레이어를 초기화하는 함수 */
     func setupPlayer(){
+        radioPlayer.view.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        radioPlayer.view.sizeToFit()
+        radioPlayer.movieSourceType = MPMovieSourceType.streaming
+        radioPlayer.isFullscreen = false
+        radioPlayer.shouldAutoplay = true
+        radioPlayer.prepareToPlay()
+        radioPlayer.controlStyle = MPMovieControlStyle.none
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             print("AVAudioSession Category Playback OK")
@@ -151,10 +155,12 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
                 break;
             case .remoteControlNextTrack:
                 clickNextButton()
+                updateLockScreen()
                 print("잠금화면에서 다음 버튼이 눌렸다.")
                 break;
             case .remoteControlPreviousTrack:
                 clickPrevButton()
+                updateLockScreen()
                 print("잠금화면에서 이전 버튼이 눌렸다.")
                 break;
             default:
@@ -174,7 +180,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     func play(){
         
-
         //만약 처음으로 실행한 것이 아니면
         if firstPlay {
             if chooseRandomStation() {
@@ -187,15 +192,17 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         radioPlay()
         
         refreshMainInfo()
-               updateLockScreen()
+        playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
+        
+        updateLockScreen()
         isPlay = true
         
     }
     
     func pause(){
         playButton.setImage(#imageLiteral(resourceName: "newPlay"), for: .normal)
-        radioPlayer.replaceCurrentItem(with: nil)
-        radioPlayer.pause()
+        //radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+        radioPlayer.stop()
         isPlay = false
         firstPlay = false
         //bottomStationLabel.text = "Radio paused..."
@@ -203,7 +210,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     /** 랜덤으로 스테이션을 고르는 함수 */
     func chooseRandomStation() -> Bool{
-        let rand:UInt32 = arc4random_uniform(30) + 1
+        let rand:UInt32 = arc4random_uniform(UInt32(ViewController.sdManager.getNumberOfStation())) + 1
         var token: Int = 0
         
         currentStation = ViewController.sdManager.stationMap[Int(rand)]
@@ -234,20 +241,21 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     /** 기존의 라디오가 틀어져있다면 멈추고(다른 스트리밍을 위해), 스트리밍 주소를 바꾸는 함수 */
     func radioSetting(){
         if isPlay {
-            radioPlayer.pause()
+            radioPlayer.stop()
         }
         print(CountryViewController.selectedCountry)
-        let playerItem = AVPlayerItem(url:NSURL(string: currentStation.getStreamingURL()) as! URL)
-        radioPlayer.replaceCurrentItem(with: playerItem)
+        radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
     }
     
     /** 현재의 방송국을 스트리밍하는 함수 */
     func radioPlay(){
         print("Now Playing is : \(currentStation.getStationName())")
+        
+        radioPlayer.prepareToPlay()
         radioPlayer.play()
     }
     
-   
+    
     
     
     //###################################################
@@ -335,8 +343,8 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         self.alertTimer?.invalidate()
         self.alertTimer = nil
     }
-
-
+    
+    
     /** Favorite 버튼 갱신 할 때 쓰임!  */
     func changeFavorite(){
         if ViewController.favManager.isFavorite(id: currentStation.getStationId()) {
@@ -360,7 +368,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     @IBAction func clickPlayButton(){
         if !isPlay{
-            playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
             
             play()
             //만약 플레이 버튼이 눌리면 1번째 줄 셀 리로드
@@ -411,10 +418,12 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             
             // 현재 스테이션 바꿔줌
             currentStation = ViewController.sdManager.stationMap[lastStationId]
-            radioSetting()
+            
             // 스트리밍 시작
             print("Now Playing is : \(currentStation.getStationName())")
-            radioPlay()
+            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+            radioPlayer.prepareToPlay()
+            radioPlayer.play()
             isPlay = true
             firstPlay = false
             
@@ -433,7 +442,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
         
     }
-
+    
     // favourite button을 할수있게 버튼을 생성
     @IBAction func clickFavButton(_ sender: UIButton) {
         
@@ -527,7 +536,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         
     }
     
-
+    
     
     //###################################################
     // 하단 라디오 박스 파트 끝
@@ -535,4 +544,3 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     
 }
-
