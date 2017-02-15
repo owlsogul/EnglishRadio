@@ -116,7 +116,6 @@
                                 </state>
                                 <connections>
                                     <action selector="LapButtonWithSender:" destination="vbP-xv-AaR" eventType="touchUpInside" id="Gs4-M8-BU9"/>
-                                    <action selector="PlayButton:" destination="vbP-xv-AaR" eventType="touchUpInside" id="bOI-HQ-WR0"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpD-up-NQ6">
@@ -126,15 +125,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhK-CA-dtu">
+                                <rect key="frame" x="186" y="281" width="86" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ClearButton:" destination="vbP-xv-AaR" eventType="touchUpInside" id="fU5-hE-v9w"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="UVF-fO-Snw"/>
                     <connections>
-                        <outlet property="ClickButton" destination="fQe-Ef-nNe" id="4ei-8O-69h"/>
-                        <outlet property="Play" destination="fQe-Ef-nNe" id="TBj-RE-F3S"/>
+                        <outlet property="ClearButton" destination="vhK-CA-dtu" id="qjS-QY-orW"/>
                         <outlet property="PlayButton" destination="fQe-Ef-nNe" id="1Zs-P7-O0W"/>
-                        <outlet property="Playbutton" destination="fQe-Ef-nNe" id="Gfv-KV-nSZ"/>
                         <outlet property="TimeTextField" destination="KFd-qY-rj7" id="qPV-GQ-Pkl"/>
                         <outlet property="tableView" destination="u68-cN-L7R" id="hbO-5y-dUf"/>
                         <outlet property="theLabel" destination="jpD-up-NQ6" id="5aa-Ie-de5"/>
