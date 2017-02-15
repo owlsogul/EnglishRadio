@@ -11,8 +11,11 @@ import UIKit
 class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
 
     var changed:Bool = false
+    var currentIndex: Int = 0
+    var isPlaying:Bool = true
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var bottomTableView: UITableView!
     
     
     //###################################################
@@ -22,6 +25,8 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         
         super.viewDidLoad()
         
+        
+        
        /**테이블 뷰 백그라운드 색상 및 구분선 UI 조작*/
         tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
         tableView.separatorColor = UIColor.white.withAlphaComponent(0.3)
@@ -30,6 +35,10 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         /**데이터테이블 스위치로 hide&Show 조작*/
         tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+
+        bottomTableView.backgroundColor = UIColor.clear
+        bottomTableView.separatorStyle = .none
+        
 
     }
 
@@ -47,15 +56,21 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     /** Setting 테이블의 줄(row)갯수 정하기*/
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        
+        if tableView == self.tableView{
         return 4
+        }
+        else{
+            return 1
+        }
         
     }
     
     /**줄마다 테이블셀 설정*/
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
-        print("section number is \(indexPath.section)")
+        if tableView == self.tableView {
+      
+            print("section number is \(indexPath.section)")
         
         //첫번째 row 에 country
         if indexPath.row == 0 {
@@ -114,6 +129,25 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
                 
             }
             
+            }
+        }else {
+                
+                
+                let cell: BottomPlayViewCell = tableView.dequeueReusableCell(withIdentifier: "bottomPlayCell", for: indexPath) as! BottomPlayViewCell
+                cell.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+                
+                //만약 현재 플레이 중이라면
+            
+                    
+                    //Bottom 셀의 hidden 을 해제하고 현재 재생중인 스테이션 제목을 보여준다.
+                   cell.bottomStationLabel.text = "test"
+                    cell.bottomStationLabel.textColor = UIColor.white
+                    cell.bottomPlayButton.setImage(#imageLiteral(resourceName: "newPauseSmall"), for: .normal)
+                    cell.isHidden = false
+                    
+                    return cell
+                           
+        
         }
     
     }
@@ -124,7 +158,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     /**data cell에 스위치on 하면 나오는 dataUsageCell의 높이 설정*/
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    
+        if tableView == self.tableView {
     let cell : SettingTableViewCell
     cell = tableView.dequeueReusableCell(withIdentifier: "dataCell") as! SettingTableViewCell
     
@@ -136,12 +170,15 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             
             return 144
         }
+
+            }
+        }else {
+    
+    return 52
+        
     }
-    
-    return UITableViewAutomaticDimension
-    
+        return UITableViewAutomaticDimension
     }
-    
     //###################################################
     // MARK: - 데이터 셀 스위치 on/off 동작
     //###################################################

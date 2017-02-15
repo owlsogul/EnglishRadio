@@ -83,12 +83,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     //###################################################
     // MARK: - play 초기화
     //###################################################
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if isPlay{
-            radioPlayer.play()
-        }
-    }
     
     /** 오디오 플레이어를 초기화하는 함수 */
     func setupPlayer(){
@@ -541,6 +535,35 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     //###################################################
     // 하단 라디오 박스 파트 끝
     //###################################################
+    
+    
+    
+    //###################################################
+    // MARK: - Navigation
+    //###################################################
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+     
+       
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 }

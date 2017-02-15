@@ -14,7 +14,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editButton: UIButton!
-    
+    @IBOutlet weak var bottomTableView: UITableView!
+    var currentIndex: Int = 0
+   
+    var isPlaying: Bool = true
     //###################################################
     // MARK: -  액션 모음
     //###################################################
@@ -49,8 +52,11 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        bottomTableView.backgroundColor = UIColor.clear
+        bottomTableView.separatorStyle = .none
         
-        
+
         //테이블 뷰 백그라운드 색상 및 구분선 UI 조작
         tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
         tableView.separatorStyle = .none
@@ -96,11 +102,19 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // favStationInfos는 옵셔널ㅇㅇ
+        
+        if tableView == self.tableView{
         return ViewController.favManager.favStationArr?.count ?? 0
+    
+        }
+        
+        return 1
+    
+    
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        if tableView == self.tableView{
         let cell = tableView.dequeueReusableCell(withIdentifier: "favCell", for: indexPath)
         
         // cell의 indexPath의 row에 해당하는 스테이션 정보를 불러옴
@@ -131,13 +145,47 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         return cell
+        }else {
+            
+            
+            let cell: BottomPlayViewCell = tableView.dequeueReusableCell(withIdentifier: "bottomPlayCell", for: indexPath) as! BottomPlayViewCell
+            cell.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+            
+            //만약 현재 플레이 중이라면
+            if isPlaying{
+                
+                //Bottom 셀의 hidden 을 해제하고 현재 재생중인 스테이션 제목을 보여준다.
+                cell.bottomStationLabel.text = "test"
+                cell.bottomStationLabel.textColor = UIColor.white
+                cell.bottomPlayButton.setImage(#imageLiteral(resourceName: "newPauseSmall"), for: .normal)
+                cell.isHidden = false
+                
+                return cell
+            }else {
+                
+                // 아니라면 그냥 놔두고 아이콘만 변경
+                cell.isHidden = true
+                return cell
+            }
+            
     }
-
+        
+    }
     
-
-
+    
+    
+    
+    
+    
     
 }
+
+
+
+    
+
+
+    
 
 
 
