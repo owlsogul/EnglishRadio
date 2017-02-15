@@ -15,8 +15,8 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var bottomTableView: UITableView!
-    var currentIndex: Int = 0
-   
+  
+    var recievedStationName: String?
     var isPlaying: Bool = true
     //###################################################
     // MARK: -  액션 모음
@@ -48,7 +48,8 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         
         // 테이블뷰를 새로고침 합니다
         self.tableView.reloadData()
-        
+       self.bottomTableView.reloadData()
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +61,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         //테이블 뷰 백그라운드 색상 및 구분선 UI 조작
         tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
         tableView.separatorStyle = .none
-        
+      
     }
 
     
@@ -152,10 +153,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
             cell.backgroundColor = UIColor.black.withAlphaComponent(0.2)
             
             //만약 현재 플레이 중이라면
-            if isPlaying{
+            if ViewController.nowPlaying{
                 
                 //Bottom 셀의 hidden 을 해제하고 현재 재생중인 스테이션 제목을 보여준다.
-                cell.bottomStationLabel.text = "test"
+                cell.bottomStationLabel.text = ViewController.stationName
                 cell.bottomStationLabel.textColor = UIColor.white
                 cell.bottomPlayButton.setImage(#imageLiteral(resourceName: "newPauseSmall"), for: .normal)
                 cell.isHidden = false

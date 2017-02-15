@@ -41,6 +41,12 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.bottomTableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         
@@ -138,15 +144,20 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
                 
                 //만약 현재 플레이 중이라면
             
-                    
+            if ViewController.nowPlaying{
                     //Bottom 셀의 hidden 을 해제하고 현재 재생중인 스테이션 제목을 보여준다.
-                   cell.bottomStationLabel.text = "test"
+                   cell.bottomStationLabel.text = ViewController.stationName
                     cell.bottomStationLabel.textColor = UIColor.white
                     cell.bottomPlayButton.setImage(#imageLiteral(resourceName: "newPauseSmall"), for: .normal)
                     cell.isHidden = false
                     
                     return cell
-                           
+            }else {
+                
+                cell.isHidden = true
+                return cell
+            }
+            
         
         }
     

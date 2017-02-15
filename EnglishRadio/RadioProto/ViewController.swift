@@ -38,8 +38,9 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     var isPlay: Bool = false
     var currentStation: StationData!
     var firstPlay: Bool = true
-    
-    
+    static var stationName: String?
+    static var nowPlaying: Bool = false
+
     
     
     //###################################################
@@ -74,8 +75,14 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     override func viewWillDisappear(_ animated: Bool) {
         //TODO: 꺼져도 계속 인풋을 받음 - 해결해야함
+        
         if isPlay{
+            
+            ViewController.stationName = currentStation.getStationName()
             radioPlayer.play()
+            ViewController.nowPlaying = true
+        }else {
+            ViewController.nowPlaying = false
         }
     }
     
@@ -390,7 +397,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
                 }
                 
             }
-            
             // 스트리밍 시작
             radioSetting()
             radioPlay()
@@ -543,20 +549,24 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     //###################################################
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-     
+        let nextViewController = segue.destination as? FavoriteViewController
        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        print("이거 실행되나??")
+        
+        if let favoriteViewController = nextViewController{
+            
+            print(" 다음 화면은 이미지 뷰 컨트롤러입니다")
+                
+                //꺼내온 사진 정보를 다음 뷰 컨트롤러의 변수로 넘겨줍니다
+                favoriteViewController.recievedStationName = self.currentStation.getStationName()
+                    print("꺼내온 정보가 있따")
+                
+                
+            }
+        }
+        
+
+       
     
     
     

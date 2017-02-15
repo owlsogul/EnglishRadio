@@ -81,7 +81,7 @@
 
 - BottomPlayView modal 로 넘어가기 - 완료
 - BottomPlayView 화면 중간쯤 올라오기 - 완료
-- BottomPlayView Favorite, Setting 에서도 보이기 
+- BottomPlayView Favorite, Setting 에서도 보이기 - 완료
 - BottomPlayView 에서도 Play 제어 가능
 
 - Favorite 에서 재생 가능 
