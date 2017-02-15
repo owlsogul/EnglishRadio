@@ -42,6 +42,7 @@
 		6625BACD1E4B0B3500E53565 /* Station.json in Resources */ = {isa = PBXBuildFile; fileRef = 6625BACC1E4B0B3500E53565 /* Station.json */; };
 		66B90D8F1E52A40500A1B877 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B90D8E1E52A40500A1B877 /* TimerViewController.swift */; };
 		66E223921E54152D00D85117 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E223911E54152D00D85117 /* AVFoundation.framework */; };
+		66E223971E54679700D85117 /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E223961E54679700D85117 /* RadioPlayer.swift */; };
 		66EC31761E4C340C0097C96D /* StationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EC31751E4C340C0097C96D /* StationInfo.swift */; };
 		66EC31781E4C41630097C96D /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EC31771E4C41630097C96D /* Timer.storyboard */; };
 /* End PBXBuildFile section */
@@ -86,6 +87,7 @@
 		6625BACC1E4B0B3500E53565 /* Station.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Station.json; sourceTree = "<group>"; };
 		66B90D8E1E52A40500A1B877 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = SOURCE_ROOT; };
 		66E223911E54152D00D85117 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		66E223961E54679700D85117 /* RadioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
 		66EC31751E4C340C0097C96D /* StationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationInfo.swift; sourceTree = "<group>"; };
 		66EC31771E4C41630097C96D /* Timer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timer.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,6 +171,7 @@
 				400FC80B1E4DEF860084A822 /* TodoList.md */,
 				404EBB5D1E49C00E0018D030 /* Main.storyboard */,
 				40A4522C1E23222B0033F0AE /* ViewController.swift */,
+				66E223961E54679700D85117 /* RadioPlayer.swift */,
 				402C3AA41E4F6B2900C330F7 /* BottomPlayViewCell.swift */,
 				402C3AA81E4FECD100C330F7 /* BottomPlayViewController.swift */,
 				400FC80D1E4DEFAD0084A822 /* Favorite */,
@@ -365,6 +368,7 @@
 				6600FCA01E4DB95A00951782 /* FavoriteManager.swift in Sources */,
 				4000D6F21E49800E00FBE648 /* CountryViewController.swift in Sources */,
 				6625BACB1E4B0B2100E53565 /* StationData.swift in Sources */,
+				66E223971E54679700D85117 /* RadioPlayer.swift in Sources */,
 				40C857D01E4C663000AE1D1B /* FavoriteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -136,8 +136,8 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 //타이머를 생성해줍니다.
                 //반복하는 타이머이며 반복주기는 1초입니다.
+
                 self.timer = Timer.scheduledTimer(timeInterval: perSecond, target: self, selector: #selector(timerResult), userInfo: nil, repeats: true)
-                
                 //타이머의 트리거를 당깁니다. 빵야
                 self.timer?.fire()
                 
