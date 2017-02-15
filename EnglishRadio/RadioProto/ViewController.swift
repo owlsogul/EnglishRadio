@@ -132,7 +132,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         let albumArtwork = MPMediaItemArtwork(image: #imageLiteral(resourceName: "albumArt"))
         
         MPNowPlayingInfoCenter.default().nowPlayingInfo = [
-            MPMediaItemPropertyArtist: "",
+            MPMediaItemPropertyArtist: currentStation.getStationCountry(),
             MPMediaItemPropertyTitle: currentStation.getStationName(),
             MPMediaItemPropertyArtwork: albumArtwork
         ]
