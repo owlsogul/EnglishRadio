@@ -395,6 +395,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             playDelayTime = 0
             self.playDelayTimer?.invalidate()
             self.playDelayTimer = nil
+            self.isPlay = true
         }
     }
     
@@ -439,20 +440,15 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             // 현재 스테이션 바꿔줌
             currentStation = ViewController.sdManager.stationMap[lastStationId]
             
+            radioSetting()
             // 스트리밍 시작
-            print("Now Playing is : \(currentStation.getStationName())")
-            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
-            radioPlayer.prepareToPlay()
-            radioPlayer.play()
+            radioPlay()
+            
             isPlay = true
             firstPlay = false
             
             // 정보 갱신
-            tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .none)
-            stationTitleLabel.text = "\(currentStation.getStationName())"
-            detailTitleLabel.text = "\(currentStation.getStationCountry())"
-            changeFavorite()
-            
+            refreshMainInfo()
             
             
         }
