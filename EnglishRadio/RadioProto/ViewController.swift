@@ -242,15 +242,15 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     func radioSetting(){
         if isPlay {
             radioPlayer.stop()
+            radioPlayer.contentURL = nil
         }
-        print(CountryViewController.selectedCountry)
+        print("Selected Country: \(CountryViewController.selectedCountry)")
         radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
     }
     
     /** 현재의 방송국을 스트리밍하는 함수 */
     func radioPlay(){
         print("Now Playing is : \(currentStation.getStationName())")
-        
         radioPlayer.prepareToPlay()
         radioPlayer.play()
     }
@@ -381,6 +381,22 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
         
     }
+    var playDelayTime = 0
+    var playDelayTimer: Timer?
+    func playDelayFunc(timer: Timer){
+        if (playDelayTime == 0){
+            playDelayTime = 1
+        }
+        else{
+            print("딜레이가 다 되어 재생을 시작합니다")
+            radioSetting()
+            radioPlay()
+            
+            playDelayTime = 0
+            self.playDelayTimer?.invalidate()
+            self.playDelayTimer = nil
+        }
+    }
     
     @IBAction func clickNextButton() {
         
@@ -397,9 +413,13 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
                 
             }
             
-            // 스트리밍 시작
-            radioSetting()
-            radioPlay()
+            // 스트리밍 딜레이 타이머
+            self.playDelayTime = 0
+            self.playDelayTimer?.invalidate()
+            self.playDelayTimer = nil
+            self.playDelayTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(playDelayFunc(timer:)), userInfo: nil, repeats: true)
+            self.playDelayTimer?.fire()
+            
             
             isPlay = true
             firstPlay = false
