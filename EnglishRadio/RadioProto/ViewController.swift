@@ -33,13 +33,11 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         self.volumeView.backgroundColor = UIColor.clear
     }
     
-    
-    let radioPlayer = MPMoviePlayerController()
     var isPlay: Bool = false
     var currentStation: StationData!
     var firstPlay: Bool = true
     
-    
+    var radioPlayer: RadioPlayer = RadioPlayer()
     
     
     //###################################################
@@ -55,8 +53,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         print("sdManager Load Test : \(ViewController.sdManager.getNumberOfStation())")
         ViewController.favManager.register(sdManager: ViewController.sdManager)
         print("favManger Load Test : \(ViewController.favManager.sdManager.getNumberOfStation())")
-        
-        setupPlayer()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -71,54 +67,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             changeFavorite()
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        //TODO: 꺼져도 계속 인풋을 받음 - 해결해야함
-        if isPlay{
-            radioPlayer.play()
-        }
-    }
-    
-    
-    //###################################################
-    // MARK: - play 초기화
-    //###################################################
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if isPlay{
-            radioPlayer.play()
-        }
-    }
-    
-    /** 오디오 플레이어를 초기화하는 함수 */
-    func setupPlayer(){
-        radioPlayer.view.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-        radioPlayer.view.sizeToFit()
-        radioPlayer.movieSourceType = MPMovieSourceType.streaming
-        radioPlayer.isFullscreen = false
-        radioPlayer.shouldAutoplay = true
-        radioPlayer.prepareToPlay()
-        radioPlayer.controlStyle = MPMovieControlStyle.none
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            print("AVAudioSession Category Playback OK")
-            do {
-                try AVAudioSession.sharedInstance().setActive(true)
-                print("AVAudioSession is Active")
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-        adjustVolumeView()
-    }
-    
-    //###################################################
-    // 초기화 끝
-    //###################################################
-    
-    
     
     
     //###################################################
@@ -187,9 +135,9 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             }
             firstPlay = false
         }
-        
-        radioSetting()
-        radioPlay()
+
+        let userInfoDic = [UserInfoStationKey : self.currentStation]
+        NotificationCenter.default.post(name: DidUserPlay, object: nil, userInfo: userInfoDic)
         
         refreshMainInfo()
         playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
@@ -201,11 +149,9 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     func pause(){
         playButton.setImage(#imageLiteral(resourceName: "newPlay"), for: .normal)
-        //radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
-        radioPlayer.stop()
+        NotificationCenter.default.post(name: DidUserStop, object: nil)
         isPlay = false
         firstPlay = false
-        //bottomStationLabel.text = "Radio paused..."
     }
     
     /** 랜덤으로 스테이션을 고르는 함수 */
@@ -232,30 +178,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
         
     }
-    
-    
-    //###################################################
-    // MARK: - 라디오 Station 설정 함수
-    //###################################################
-    
-    /** 기존의 라디오가 틀어져있다면 멈추고(다른 스트리밍을 위해), 스트리밍 주소를 바꾸는 함수 */
-    func radioSetting(){
-        if isPlay {
-            radioPlayer.stop()
-            radioPlayer.contentURL = nil
-        }
-        print("Selected Country: \(CountryViewController.selectedCountry)")
-        radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
-    }
-    
-    /** 현재의 방송국을 스트리밍하는 함수 */
-    func radioPlay(){
-        print("Now Playing is : \(currentStation.getStationName())")
-        radioPlayer.prepareToPlay()
-        radioPlayer.play()
-    }
-    
-    
     
     
     //###################################################
@@ -389,8 +311,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
         else{
             print("딜레이가 다 되어 재생을 시작합니다")
-            radioSetting()
-            radioPlay()
+            play()
             
             playDelayTime = 0
             self.playDelayTimer?.invalidate()
@@ -440,9 +361,8 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             // 현재 스테이션 바꿔줌
             currentStation = ViewController.sdManager.stationMap[lastStationId]
             
-            radioSetting()
             // 스트리밍 시작
-            radioPlay()
+            play()
             
             isPlay = true
             firstPlay = false
