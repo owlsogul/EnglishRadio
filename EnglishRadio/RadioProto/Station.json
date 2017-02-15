@@ -278,5 +278,32 @@
                 "country": "United States",
                 "State(optional)": "Waston",
                 "desc": "http://www.hollowearthradio.org/home°±"
+                }, {
+                "id": 32,
+                "stationName": "ABC Radio National - RN",
+                "URL": "http://live-radio01.mediahubaustralia.com/2RNW/mp3/",
+                "Image": "http://cdn-radiotime-logos.tunein.com/s20269q.png",
+                "genre": "Public Radio",
+                "country": "Australia",
+                "State(optional)": "Sydney,NSW(New South Wales)",
+                "desc": ""
+                }, {
+                "id": 33,
+                "stationName": "ABC Brisbane",
+                "URL": "http://live-radio01.mediahubaustralia.com/4LRW/mp3/",
+                "Image": "http://cdn-radiotime-logos.tunein.com/s9797q.png",
+                "genre": "Community, Public Radio",
+                "country": "Australia",
+                "State(optional)": "Brisbane, QLD",
+                "desc": ""
+                }, {
+                "id": 34,
+                "stationName": "ABC Canberra",
+                "URL": "http://live-radio01.mediahubaustralia.com/1LRW/mp3/",
+                "Image": "http://cdn-radiotime-logos.tunein.com/s9798q.png",
+                "genre": "Community, News",
+                "country": "Australia",
+                "State(optional)": "Canberra, ACT",
+                "desc": ""
                 }]
 }
