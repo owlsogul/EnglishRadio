@@ -39,8 +39,8 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     var radioPlayer: RadioPlayer = RadioPlayer()
     static var stationName: String?
-    static var nowPlaying: Bool = false
-  
+    static var nowPlaying: Bool = true
+    
     //###################################################
     // MARK: - 뷰 로딩 설정
     //###################################################
@@ -68,7 +68,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             changeFavorite()
         }
     }
-
     
     //###################################################
     // MARK: - 잠금화면 파트
@@ -145,6 +144,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         
         updateLockScreen()
         isPlay = true
+        ViewController.nowPlaying = true
         
     }
     
@@ -153,6 +153,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         NotificationCenter.default.post(name: DidUserStop, object: nil)
         isPlay = false
         firstPlay = false
+        ViewController.nowPlaying = false
     }
     
     /** 랜덤으로 스테이션을 고르는 함수 */
@@ -335,15 +336,14 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
                 }
                 
             }
-            
+
            // 스트리밍 딜레이 타이머
             self.playDelayTime = 0
             self.playDelayTimer?.invalidate()
             self.playDelayTimer = nil
             self.playDelayTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(playDelayFunc(timer:)), userInfo: nil, repeats: true)
             self.playDelayTimer?.fire()
-          
-          
+
             isPlay = true
             firstPlay = false
             

@@ -27,12 +27,20 @@ let StationNotExist = "NO_STATION"
 let SenderRequestStationData = NSNotification.Name("SenderRequestStationData")
 /** 플레이어가 스테이션 데이터를 보내는 노티피케이션 */
 let PlayerSendStationData = NSNotification.Name("PlayerSendStationData")
+/** 플레이어한테 재생 중인지 물어보는 노티피케이션 */
+let SenderRequestIsPlay = NSNotification.Name("SenderRequestIsPlay")
+/** 플레이어가 재생 중인지 보내는 노티피케이션 */
+let PlayerSendIsPlay = NSNotification.Name("PlayerSendIsPlay")
+/** 플레이어가 재생 중인지 키 */
+let UserInfoIsPlayKey = "isPlay"
 
 class RadioPlayer {
     
     let radioPlayer = MPMoviePlayerController()
     
     var currentStation: StationData?
+    
+    var isPlay: Bool = false
     
     //########################################
     // MARK: Init
@@ -77,6 +85,8 @@ class RadioPlayer {
         NotificationCenter.default.addObserver(self, selector: #selector(observeUserStop(noti:)), name: DidUserStop, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(observeRequestStationData(noti:)), name: SenderRequestStationData, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(observeRequestIsPlay(noti:)), name: SenderRequestIsPlay, object: nil)
     }
     
     //########################################
@@ -114,6 +124,17 @@ class RadioPlayer {
         print("스테이션 요구를 들어주기 위해 노티에 실어보냈다.")
     }
     
+    @objc func observeRequestIsPlay(noti: Notification){
+        print("플레이 여부 확인 요구 노티를 받았다")
+        sendIsPlay()
+        print("플레이 여부 확인 요구를 들어주기 위해 노티에 실어보냈다.")
+    }
+    
+    func sendIsPlay(){
+        let userInfoDic: [String: Bool] = [UserInfoIsPlayKey:isPlay]
+        NotificationCenter.default.post(name: PlayerSendIsPlay, object: nil, userInfo: userInfoDic)
+    }
+    
     //########################################
     // MARK: Cotrol Functions(Play, Pause ...)
     //########################################
@@ -124,14 +145,20 @@ class RadioPlayer {
         radioPlayer.contentURL = URL(string: (currentStation?.getStreamingURL())!)
         radioPlayer.prepareToPlay()
         radioPlayer.play()
+        isPlay = true
+        sendIsPlay()
     }
     
     func pauseRadio(){
         radioPlayer.pause()
+        isPlay = false
+        sendIsPlay()
     }
     
     func stopRadio(){
         radioPlayer.stop()
+        isPlay = false
+        sendIsPlay()
     }
     
     
