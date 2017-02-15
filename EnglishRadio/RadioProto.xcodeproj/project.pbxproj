@@ -41,6 +41,7 @@
 		6625BACB1E4B0B2100E53565 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625BACA1E4B0B2100E53565 /* StationData.swift */; };
 		6625BACD1E4B0B3500E53565 /* Station.json in Resources */ = {isa = PBXBuildFile; fileRef = 6625BACC1E4B0B3500E53565 /* Station.json */; };
 		66B90D8F1E52A40500A1B877 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B90D8E1E52A40500A1B877 /* TimerViewController.swift */; };
+		66E223921E54152D00D85117 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E223911E54152D00D85117 /* AVFoundation.framework */; };
 		66EC31761E4C340C0097C96D /* StationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EC31751E4C340C0097C96D /* StationInfo.swift */; };
 		66EC31781E4C41630097C96D /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EC31771E4C41630097C96D /* Timer.storyboard */; };
 /* End PBXBuildFile section */
@@ -84,6 +85,7 @@
 		6625BACA1E4B0B2100E53565 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
 		6625BACC1E4B0B3500E53565 /* Station.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Station.json; sourceTree = "<group>"; };
 		66B90D8E1E52A40500A1B877 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = SOURCE_ROOT; };
+		66E223911E54152D00D85117 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		66EC31751E4C340C0097C96D /* StationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationInfo.swift; sourceTree = "<group>"; };
 		66EC31771E4C41630097C96D /* Timer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timer.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66E223921E54152D00D85117 /* AVFoundation.framework in Frameworks */,
 				400FC80A1E4DA9CF0084A822 /* RealmSwift.framework in Frameworks */,
 				40F922911E4BFEA600C969BB /* Foundation.framework in Frameworks */,
 				40F9228F1E4BFE9D00C969BB /* UIKit.framework in Frameworks */,
@@ -188,6 +191,7 @@
 		860AB81DF6D4F93C2C1DB2F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66E223911E54152D00D85117 /* AVFoundation.framework */,
 				400FC8091E4DA9CF0084A822 /* RealmSwift.framework */,
 				40F922901E4BFEA600C969BB /* Foundation.framework */,
 				40F9228E1E4BFE9D00C969BB /* UIKit.framework */,
