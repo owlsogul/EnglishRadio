@@ -302,7 +302,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     var alertTimer: Timer?
     
     /** 페이버릿에 추가됬음을 알리는 함수 */
-    func alertFavorite(station: StationData){
+    func alertAddingFavorite(station: StationData){
         self.alertLabel.text = "Added favorite"
         self.alertLabel.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         
@@ -316,6 +316,22 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         
         alertTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(alertEnd(timer:)), userInfo: nil, repeats: false)
         
+    }
+    
+    /** 페이버릿에 추가됬음을 알리는 함수 */
+    func alertDeletingFavorite(station: StationData){
+        self.alertLabel.text = "Deleted favorite"
+        self.alertLabel.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        
+        UIView.transition(with: alertView, duration: 0.5, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.alertView.isHidden = false;
+        }, completion: { _ in })
+        
+        // 이전 타이머를 초기화합니다
+        self.alertTimer?.invalidate()
+        self.alertTimer = nil
+        
+        alertTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(alertEnd(timer:)), userInfo: nil, repeats: false)
         
     }
     
@@ -437,6 +453,8 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
                 ViewController.favManager.delFavorite(id: currentStation.getStationId())
                 ViewController.favManager.load()
                 print("del Favorite : \(ViewController.favManager.favStationArr?.count)")
+                // 알림창을 띄우기 위해 추가된 코드
+                alertDeletingFavorite(station: currentStation)
             }
             else {
                 stationInfo.stationData = self.currentStation.getStationName()
@@ -446,7 +464,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
                     ViewController.favManager.load()
                     print("Add Sucess : \(ViewController.favManager.favStationArr?.count)")
                     // 알림창을 띄우기 위해 추가된 코드
-                    alertFavorite(station: currentStation)
+                    alertAddingFavorite(station: currentStation)
                 }
                 else {
                     print("Fail Add")
