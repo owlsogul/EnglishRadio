@@ -61,14 +61,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ggO-Kt-EhU">
-                                        <rect key="frame" x="0.0" y="72" width="384" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ggO-Kt-EhU" id="EDz-MX-hg4">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="vbP-xv-AaR" id="50m-p2-d8L"/>
@@ -141,6 +133,7 @@
                     <connections>
                         <outlet property="ClickButton" destination="fQe-Ef-nNe" id="4ei-8O-69h"/>
                         <outlet property="Play" destination="fQe-Ef-nNe" id="TBj-RE-F3S"/>
+                        <outlet property="PlayButton" destination="fQe-Ef-nNe" id="1Zs-P7-O0W"/>
                         <outlet property="Playbutton" destination="fQe-Ef-nNe" id="Gfv-KV-nSZ"/>
                         <outlet property="TimeTextField" destination="KFd-qY-rj7" id="qPV-GQ-Pkl"/>
                         <outlet property="tableView" destination="u68-cN-L7R" id="hbO-5y-dUf"/>
