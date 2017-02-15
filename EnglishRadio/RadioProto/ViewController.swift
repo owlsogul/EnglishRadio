@@ -203,7 +203,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     /** 랜덤으로 스테이션을 고르는 함수 */
     func chooseRandomStation() -> Bool{
-        let rand:UInt32 = arc4random_uniform(40) + 1
+        let rand:UInt32 = arc4random_uniform(38) + 1
         var token: Int = 0
         
         currentStation = ViewController.sdManager.stationMap[Int(rand)]
