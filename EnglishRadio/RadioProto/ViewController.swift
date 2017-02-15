@@ -38,8 +38,9 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     var firstPlay: Bool = true
     
     var radioPlayer: RadioPlayer = RadioPlayer()
-    
-    
+    static var stationName: String?
+    static var nowPlaying: Bool = false
+  
     //###################################################
     // MARK: - 뷰 로딩 설정
     //###################################################
@@ -67,7 +68,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             changeFavorite()
         }
     }
-    
+
     
     //###################################################
     // MARK: - 잠금화면 파트
@@ -335,14 +336,14 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
                 
             }
             
-            // 스트리밍 딜레이 타이머
+           // 스트리밍 딜레이 타이머
             self.playDelayTime = 0
             self.playDelayTimer?.invalidate()
             self.playDelayTimer = nil
             self.playDelayTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(playDelayFunc(timer:)), userInfo: nil, repeats: true)
             self.playDelayTimer?.fire()
-            
-            
+          
+          
             isPlay = true
             firstPlay = false
             
@@ -477,6 +478,39 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     //###################################################
     // 하단 라디오 박스 파트 끝
     //###################################################
+    
+    
+    
+    //###################################################
+    // MARK: - Navigation
+    //###################################################
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let nextViewController = segue.destination as? FavoriteViewController
+       
+        print("이거 실행되나??")
+        
+        if let favoriteViewController = nextViewController{
+            
+            print(" 다음 화면은 이미지 뷰 컨트롤러입니다")
+                
+                //꺼내온 사진 정보를 다음 뷰 컨트롤러의 변수로 넘겨줍니다
+                favoriteViewController.recievedStationName = self.currentStation.getStationName()
+                    print("꺼내온 정보가 있따")
+                
+                
+            }
+        }
+        
+
+       
+    
+    
+    
+    
+    
+    
+    
     
     
 }

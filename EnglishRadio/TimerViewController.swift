@@ -95,6 +95,13 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
     
+    
+    @IBAction func ClearButton(_ sender: UIButton!) {
+        
+        // 테이블에 있는 데이터들 지우기
+    }
+    
+    
     @IBOutlet weak var TimeTextField: UITextField!
     //    var seconds: Double = 0
     let radioPlayer = MPMoviePlayerController()
@@ -129,8 +136,8 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 //타이머를 생성해줍니다.
                 //반복하는 타이머이며 반복주기는 1초입니다.
-                //self.timer = Timer.scheduledTimer(timeInterval: perSecond, target: self, selector: #selector(ticTock(timer:)), userInfo: nil, repeats: true)
-                
+
+                self.timer = Timer.scheduledTimer(timeInterval: perSecond, target: self, selector: #selector(timerResult), userInfo: nil, repeats: true)
                 //타이머의 트리거를 당깁니다. 빵야
                 self.timer?.fire()
                 
@@ -151,12 +158,8 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
             
         } else {    // 재생중이라면
-            
-            // 중지하는 코드를 넣어줍니다
-            ///
-            ////////
-            
-            
+           
+            radioPlayer.stop()
             isPlay = false
         }
         
