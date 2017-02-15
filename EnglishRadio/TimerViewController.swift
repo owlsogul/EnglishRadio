@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import MediaPlayer
+import MobileCoreServices
+import RealmSwift
+
 
 class TimerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-   
+    
     var startTime: TimeInterval?
     var checkTimes: [TimeInterval] = []
     let dateFromatter: DateFormatter = DateFormatter()
@@ -44,7 +48,7 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     // timer = NSTimer.scheduledTimerWithTimeInterval(1.0)
-    //https://www.youtube.com/watch?v=QKXZRRSlDss 참고
+
     @IBAction func StopButton(sender: AnyObject){
         
         self.appendLap()
@@ -92,8 +96,37 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         return cell
     }
-}
-
-
     
+    @IBOutlet weak var TimeTextField: UITextField!
+    var seconds: Double = 0
+    @IBAction func PlayButton(_ sender: Any) {
+        
+        
+        
+        //텍스트 필드에 입력한 숫자를
+        guard let perSecond = Double(TimeTextField.text!) else {
+            print("입력된 숫자가 없거나 잘못된 값이 입력되었습니다.")
+            
+            
+            return
+        }
+        
+        //시간초기화
+        self.seconds = 0
+        //이전타이머를 초기화합니다.
+        self.timer.invalidate()
+        
+        //타이머를 생성해줍니다.
+        //반복하는 타이머이며 반복주기는 1초입니다.
+        self.timer = Timer.scheduledTimer(timeInterval: perSecond, target: self, selector: #selector(timerResult), userInfo: nil, repeats: true)
+        
+        //타이머의 트리거를 당깁니다. 빵야
+        self.timer.fire()
+        
+        
 
+
+
+
+}
+  }

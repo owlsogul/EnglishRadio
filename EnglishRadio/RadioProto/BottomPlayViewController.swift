@@ -10,7 +10,10 @@ import UIKit
 
 class BottomPlayViewController: UIViewController {
 
+    /**viewDidLoad함수에 모달창 배경 투명하게하는 옵션을 넣음*/
     override func viewDidLoad() {
+        view.backgroundColor = UIColor.clear
+        view.isOpaque = false
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

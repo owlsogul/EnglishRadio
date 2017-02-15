@@ -10,6 +10,7 @@ import UIKit
 import MediaPlayer
 import MobileCoreServices
 import RealmSwift
+import AVFoundation
 
 class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
     
@@ -35,7 +36,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     }
    
     
-    let radioPlayer = MPMoviePlayerController()
+    let radioPlayer = AVPlayer()
     var isPlay: Bool = false
     var currentStation: StationData!
     var firstPlay: Bool = true
@@ -86,6 +87,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     //###################################################
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if isPlay{
             radioPlayer.play()
         }
@@ -93,13 +95,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     /** 오디오 플레이어를 초기화하는 함수 */
     func setupPlayer(){
-        radioPlayer.view.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-        radioPlayer.view.sizeToFit()
-        radioPlayer.movieSourceType = MPMovieSourceType.streaming
-        radioPlayer.isFullscreen = false
-        radioPlayer.shouldAutoplay = true
-        radioPlayer.prepareToPlay()
-        radioPlayer.controlStyle = MPMovieControlStyle.none
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             print("AVAudioSession Category Playback OK")
@@ -179,6 +174,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     func play(){
         
+
         //만약 처음으로 실행한 것이 아니면
         if firstPlay {
             if chooseRandomStation() {
@@ -191,17 +187,15 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         radioPlay()
         
         refreshMainInfo()
-        playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
-        
-        updateLockScreen()
+               updateLockScreen()
         isPlay = true
         
     }
     
     func pause(){
         playButton.setImage(#imageLiteral(resourceName: "newPlay"), for: .normal)
-        //radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
-        radioPlayer.stop()
+        radioPlayer.replaceCurrentItem(with: nil)
+        radioPlayer.pause()
         isPlay = false
         firstPlay = false
         //bottomStationLabel.text = "Radio paused..."
@@ -240,17 +234,16 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     /** 기존의 라디오가 틀어져있다면 멈추고(다른 스트리밍을 위해), 스트리밍 주소를 바꾸는 함수 */
     func radioSetting(){
         if isPlay {
-            radioPlayer.stop()
+            radioPlayer.pause()
         }
         print(CountryViewController.selectedCountry)
-        radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
+        let playerItem = AVPlayerItem(url:NSURL(string: currentStation.getStreamingURL()) as! URL)
+        radioPlayer.replaceCurrentItem(with: playerItem)
     }
     
     /** 현재의 방송국을 스트리밍하는 함수 */
     func radioPlay(){
         print("Now Playing is : \(currentStation.getStationName())")
-        
-        radioPlayer.prepareToPlay()
         radioPlayer.play()
     }
     
@@ -301,7 +294,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     var alertTimer: Timer?
     
     /** 페이버릿에 추가됬음을 알리는 함수 */
-    func alertFavorite(station: StationData){
+    func alertAddingFavorite(station: StationData){
         self.alertLabel.text = "Added favorite"
         self.alertLabel.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         
@@ -315,6 +308,22 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         
         alertTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(alertEnd(timer:)), userInfo: nil, repeats: false)
         
+    }
+    
+    /** 페이버릿에 추가됬음을 알리는 함수 */
+    func alertDeletingFavorite(station: StationData){
+        self.alertLabel.text = "Deleted favorite"
+        self.alertLabel.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        
+        UIView.transition(with: alertView, duration: 0.5, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.alertView.isHidden = false;
+        }, completion: { _ in })
+        
+        // 이전 타이머를 초기화합니다
+        self.alertTimer?.invalidate()
+        self.alertTimer = nil
+        
+        alertTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(alertEnd(timer:)), userInfo: nil, repeats: false)
         
     }
     
@@ -351,6 +360,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     @IBAction func clickPlayButton(){
         if !isPlay{
+            playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
             
             play()
             //만약 플레이 버튼이 눌리면 1번째 줄 셀 리로드
@@ -401,12 +411,10 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             
             // 현재 스테이션 바꿔줌
             currentStation = ViewController.sdManager.stationMap[lastStationId]
-            
+            radioSetting()
             // 스트리밍 시작
             print("Now Playing is : \(currentStation.getStationName())")
-            radioPlayer.contentURL = URL(string: currentStation.getStreamingURL())
-            radioPlayer.prepareToPlay()
-            radioPlayer.play()
+            radioPlay()
             isPlay = true
             firstPlay = false
             
@@ -436,6 +444,8 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
                 ViewController.favManager.delFavorite(id: currentStation.getStationId())
                 ViewController.favManager.load()
                 print("del Favorite : \(ViewController.favManager.favStationArr?.count)")
+                // 알림창을 띄우기 위해 추가된 코드
+                alertDeletingFavorite(station: currentStation)
             }
             else {
                 stationInfo.stationData = self.currentStation.getStationName()
@@ -445,7 +455,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
                     ViewController.favManager.load()
                     print("Add Sucess : \(ViewController.favManager.favStationArr?.count)")
                     // 알림창을 띄우기 위해 추가된 코드
-                    alertFavorite(station: currentStation)
+                    alertAddingFavorite(station: currentStation)
                 }
                 else {
                     print("Fail Add")
@@ -512,14 +522,12 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 0 {
-            if let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "bottomPlayView"){
-                self.present(secondViewController, animated: true, completion: {
-                    print("코드를 통해 두번째 화면이 올라왔다.")})
-                
-            }
+            self.performSegue(withIdentifier: "ShowBottomPlayerViewController", sender: self)
         }
         
     }
+    
+
     
     //###################################################
     // 하단 라디오 박스 파트 끝

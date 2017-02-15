@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="krR-Tq-lK6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="krR-Tq-lK6">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1209,6 +1209,7 @@
                         <outlet property="stationTitleLabel" destination="Hzm-7T-YTP" id="tPj-vB-BCj"/>
                         <outlet property="tableView" destination="5GE-xu-6Tk" id="keW-cV-yQW"/>
                         <outlet property="volumeView" destination="jvU-0m-jXN" id="TLb-bF-YpR"/>
+                        <segue destination="Nh3-xj-Bxy" kind="presentation" identifier="ShowBottomPlayerViewController" id="hmG-Km-5Rb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tW-5U-8Z4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1218,17 +1219,17 @@
         <!--Bottom Play View Controller-->
         <scene sceneID="Aa5-MX-BZX">
             <objects>
-                <viewController storyboardIdentifier="bottomPlayView" id="Nh3-xj-Bxy" customClass="BottomPlayViewController" customModule="RadioProto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="bottomPlayView" modalPresentationStyle="overCurrentContext" id="Nh3-xj-Bxy" customClass="BottomPlayViewController" customModule="RadioProto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="deB-hU-Bga"/>
                         <viewControllerLayoutGuide type="bottom" id="k96-g9-LY1"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kiv-0f-Xwm">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="kiv-0f-Xwm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5V8-dy-C0J">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                                <rect key="frame" x="0.0" y="38" width="375" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="albumArt" translatesAutoresizingMaskIntoConstraints="NO" id="Ip1-0T-YmE">
@@ -1253,23 +1254,31 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.2910691352739726" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpG-0c-sSe">
-                                <rect key="frame" x="153" y="225" width="46" height="30"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nke-UA-Xvs">
+                                <rect key="frame" x="0.0" y="89" width="375" height="578"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="Back:" destination="Nh3-xj-Bxy" eventType="touchUpInside" id="TcM-Bw-wat"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpG-0c-sSe">
+                                        <rect key="frame" x="164" y="144" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Back:" destination="Nh3-xj-Bxy" eventType="touchUpInside" id="TcM-Bw-wat"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yhz-tH-YUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="-1073"/>
+            <point key="canvasLocation" x="213.59999999999999" y="-1110.4947526236883"/>
         </scene>
     </scenes>
     <resources>
