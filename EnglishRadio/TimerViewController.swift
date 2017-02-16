@@ -19,9 +19,10 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     var checkTimes: [TimeInterval] = []
     let dateFromatter: DateFormatter = DateFormatter()
     
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var theLabel : UILabel!
-    var timer = Timer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,11 +49,11 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     // timer = NSTimer.scheduledTimerWithTimeInterval(1.0)
-
+    
     @IBAction func StopButton(sender: AnyObject){
         
         self.appendLap()
-        timer.invalidate()
+        timer?.invalidate()
         
     }
     
@@ -89,44 +90,86 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LapCell", for: indexPath)
-        
         let date = Date(timeIntervalSinceReferenceDate: self.checkTimes[indexPath.row])
-        
         cell.textLabel?.text = self.dateFromatter.string(from: date)
-        
         return cell
     }
     
+    
+    @IBAction func ClearButton(_ sender: UIButton!) {
+        
+        // 테이블에 있는 데이터들 지우기
+    
+    
+    
+    }
+    
+    
     @IBOutlet weak var TimeTextField: UITextField!
-    var seconds: Double = 0
-    @IBAction func PlayButton(_ sender: Any) {
+    //    var seconds: Double = 0
+    //let radioPlayer = MPMoviePlayerController()
+    var second: TimeInterval = 0
+    
+    @IBOutlet weak var PlayButton: UIButton!
+    var isPlay: Bool = false
+    var currentStation: StationData!
+    var firstPlay: Bool = true
+    var timer: Timer?
+    
+    @IBAction func play(sender: UIButton){
         
-        
-        
-        //텍스트 필드에 입력한 숫자를
-        guard let perSecond = Double(TimeTextField.text!) else {
-            print("입력된 숫자가 없거나 잘못된 값이 입력되었습니다.")
-            
-            
-            return
+        //만약 처음으로 실행한 것이 아니면
+        if firstPlay == true {
+            //            if chooseRandomStation() {
+            //                print("스테이션이 없습니다")
+            //            }
+            firstPlay = false
         }
         
-        //시간초기화
-        self.seconds = 0
+        
+        self.second = 0
         //이전타이머를 초기화합니다.
-        self.timer.invalidate()
-        
-        //타이머를 생성해줍니다.
-        //반복하는 타이머이며 반복주기는 1초입니다.
-        self.timer = Timer.scheduledTimer(timeInterval: perSecond, target: self, selector: #selector(timerResult), userInfo: nil, repeats: true)
-        
-        //타이머의 트리거를 당깁니다. 빵야
-        self.timer.fire()
+        self.timer?.invalidate()
+        self.timer = nil
         
         
+        /*if isPlay == false {
+            
+            if let text = self.TimeTextField.text, let perSecond = TimeInterval(text) {
+                
+                //타이머를 생성해줍니다.
+                //반복하는 타이머이며 반복주기는 1초입니다.
+
+                self.timer = Timer.scheduledTimer(timeInterval: perSecond, target: self, selector: #selector(timerResult), userInfo: nil, repeats: true)
 
 
+                //타이머의 트리거를 당깁니다. 빵야
+                self.timer?.fire()
+                
+                
+                // 라디오를 재생해줌
+                
+                //        radioSetting()
+                //        radioPlay()
+                //
+                //        refreshMainInfo()
+                //        playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
+                //
+                //        updateLockScreen()
+                
+                
+                
+                isPlay = true
+            }
+            
+        } else {    // 재생중이라면
+           
+            radioPlayer.stop()
+            isPlay = false*/
+        }
+        
+        
+        
+    }
+    
 
-
-}
-  }

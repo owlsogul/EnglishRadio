@@ -5,12 +5,10 @@
 //  Created by byung-soo kwon on 2017. 1. 9..
 //  Copyright © 2017년 byung-soo kwon. All rights reserved.
 //
-
 import UIKit
 import MediaPlayer
 import MobileCoreServices
 import RealmSwift
-import AVFoundation
 
 class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
     
@@ -26,7 +24,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var stationImage: UIImageView!
-  
+    
     /**MPVolumeView : 슬라이더로 시스템볼륨 조절하기*/
     @IBOutlet weak var volumeView: MPVolumeView!
     func adjustVolumeView() {
@@ -34,15 +32,14 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         self.volumeView.showsVolumeSlider = true
         self.volumeView.backgroundColor = UIColor.clear
     }
-   
     
-    let radioPlayer = AVPlayer()
     var isPlay: Bool = false
     var currentStation: StationData!
     var firstPlay: Bool = true
     
-    
-    
+    var radioPlayer: RadioPlayer = RadioPlayer()
+    static var stationName: String?
+    static var nowPlaying: Bool = true
     
     //###################################################
     // MARK: - 뷰 로딩 설정
@@ -50,6 +47,8 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        adjustVolumeView()
         tableView.backgroundColor = UIColor.clear
         tableView.separatorStyle = .none
         
@@ -57,8 +56,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         print("sdManager Load Test : \(ViewController.sdManager.getNumberOfStation())")
         ViewController.favManager.register(sdManager: ViewController.sdManager)
         print("favManger Load Test : \(ViewController.favManager.sdManager.getNumberOfStation())")
-        
-        setupPlayer()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -74,49 +71,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        //TODO: 꺼져도 계속 인풋을 받음 - 해결해야함
-        if isPlay{
-            radioPlayer.play()
-        }
-    }
-    
-    
-    //###################################################
-    // MARK: - play 초기화
-    //###################################################
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if isPlay{
-            radioPlayer.play()
-        }
-    }
-    
-    /** 오디오 플레이어를 초기화하는 함수 */
-    func setupPlayer(){
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            print("AVAudioSession Category Playback OK")
-            do {
-                try AVAudioSession.sharedInstance().setActive(true)
-                print("AVAudioSession is Active")
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-        adjustVolumeView()
-    }
-    
-    //###################################################
-    // 초기화 끝
-    //###################################################
-    
-    
-    
-    
     //###################################################
     // MARK: - 잠금화면 파트
     //###################################################
@@ -128,7 +82,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         let albumArtwork = MPMediaItemArtwork(image: #imageLiteral(resourceName: "albumArt"))
         
         MPNowPlayingInfoCenter.default().nowPlayingInfo = [
-            MPMediaItemPropertyArtist: "",
+            MPMediaItemPropertyArtist: currentStation.getStationCountry(),
             MPMediaItemPropertyTitle: currentStation.getStationName(),
             MPMediaItemPropertyArtwork: albumArtwork
         ]
@@ -151,10 +105,12 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
                 break;
             case .remoteControlNextTrack:
                 clickNextButton()
+                updateLockScreen()
                 print("잠금화면에서 다음 버튼이 눌렸다.")
                 break;
             case .remoteControlPreviousTrack:
                 clickPrevButton()
+                updateLockScreen()
                 print("잠금화면에서 이전 버튼이 눌렸다.")
                 break;
             default:
@@ -174,7 +130,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     func play(){
         
-
         //만약 처음으로 실행한 것이 아니면
         if firstPlay {
             if chooseRandomStation() {
@@ -182,28 +137,31 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             }
             firstPlay = false
         }
-        
-        radioSetting()
-        radioPlay()
+
+        let userInfoDic = [UserInfoStationKey : self.currentStation]
+        NotificationCenter.default.post(name: DidUserPlay, object: nil, userInfo: userInfoDic)
         
         refreshMainInfo()
-               updateLockScreen()
+        playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
+        
+        updateLockScreen()
         isPlay = true
+        ViewController.nowPlaying = true
         
     }
     
     func pause(){
         playButton.setImage(#imageLiteral(resourceName: "newPlay"), for: .normal)
-        radioPlayer.replaceCurrentItem(with: nil)
-        radioPlayer.pause()
+        NotificationCenter.default.post(name: DidUserStop, object: nil)
         isPlay = false
         firstPlay = false
-        //bottomStationLabel.text = "Radio paused..."
+        ViewController.nowPlaying = false
+        
     }
     
     /** 랜덤으로 스테이션을 고르는 함수 */
     func chooseRandomStation() -> Bool{
-        let rand:UInt32 = arc4random_uniform(30) + 1
+        let rand:UInt32 = arc4random_uniform(UInt32(ViewController.sdManager.getNumberOfStation())) + 1
         var token: Int = 0
         
         currentStation = ViewController.sdManager.stationMap[Int(rand)]
@@ -225,29 +183,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
         
     }
-    
-    
-    //###################################################
-    // MARK: - 라디오 Station 설정 함수
-    //###################################################
-    
-    /** 기존의 라디오가 틀어져있다면 멈추고(다른 스트리밍을 위해), 스트리밍 주소를 바꾸는 함수 */
-    func radioSetting(){
-        if isPlay {
-            radioPlayer.pause()
-        }
-        print(CountryViewController.selectedCountry)
-        let playerItem = AVPlayerItem(url:NSURL(string: currentStation.getStreamingURL()) as! URL)
-        radioPlayer.replaceCurrentItem(with: playerItem)
-    }
-    
-    /** 현재의 방송국을 스트리밍하는 함수 */
-    func radioPlay(){
-        print("Now Playing is : \(currentStation.getStationName())")
-        radioPlayer.play()
-    }
-    
-   
     
     
     //###################################################
@@ -335,8 +270,8 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         self.alertTimer?.invalidate()
         self.alertTimer = nil
     }
-
-
+    
+    
     /** Favorite 버튼 갱신 할 때 쓰임!  */
     func changeFavorite(){
         if ViewController.favManager.isFavorite(id: currentStation.getStationId()) {
@@ -360,18 +295,64 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     @IBAction func clickPlayButton(){
         if !isPlay{
-            playButton.setImage(#imageLiteral(resourceName: "newPause"), for: .normal)
             
             play()
             //만약 플레이 버튼이 눌리면 1번째 줄 셀 리로드
             tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .top)
             
+            
+            self.playLimitTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(playLimitFunc(timer:)), userInfo: nil, repeats: true)
+            self.playLimitTimer?.fire()
+            
         }else {
             
             pause()
+            self.playLimitTimer?.invalidate()
+            self.playLimitTimer = nil
             tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .bottom)
             
         }
+        
+    }
+   
+    
+    
+    var playDelayTime = 0
+    var playDelayTimer: Timer?
+    
+    var playLimitTime = 0
+    var playLimitTimer: Timer?
+    
+    func playDelayFunc(timer: Timer){
+        if (playDelayTime == 0){
+            playDelayTime = 1
+        }
+        else{
+            print("딜레이가 다 되어 재생을 시작합니다")
+            play()
+            
+            playDelayTime = 0
+            self.playDelayTimer?.invalidate()
+            self.playDelayTimer = nil
+            self.isPlay = true
+        }
+    }
+    
+    func playLimitFunc(timer: Timer){
+        if (SettingTableViewCell.dataLimit == 0){
+            pause()
+            self.playLimitTimer?.invalidate()
+            self.playLimitTimer = nil
+            print("Limit Timer End!")
+            
+        }else {
+            
+            print("Limit Timer 시작! 현재 남은 시간은 \(SettingTableViewCell.dataLimit - 1) 분")
+            
+            SettingTableViewCell.dataLimit = SettingTableViewCell.dataLimit - 1
+        }
+        
+        
         
     }
     
@@ -382,6 +363,15 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             // 히스토리 저장
             addHistory()
             
+         
+
+           // 스트리밍 딜레이 타이머
+            self.playDelayTime = 0
+            self.playDelayTimer?.invalidate()
+            self.playDelayTimer = nil
+            self.playDelayTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(playDelayFunc(timer:)), userInfo: nil, repeats: true)
+            self.playDelayTimer?.fire()
+
             // 랜덤 스테이션 가져오기
             while chooseRandomStation(){
                 if CountryViewController.selectedCountry.count == 0{
@@ -389,11 +379,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
                 }
                 
             }
-            
-            // 스트리밍 시작
-            radioSetting()
-            radioPlay()
-            
             isPlay = true
             firstPlay = false
             
@@ -411,19 +396,15 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             
             // 현재 스테이션 바꿔줌
             currentStation = ViewController.sdManager.stationMap[lastStationId]
-            radioSetting()
+            
             // 스트리밍 시작
-            print("Now Playing is : \(currentStation.getStationName())")
-            radioPlay()
+            play()
+            
             isPlay = true
             firstPlay = false
             
             // 정보 갱신
-            tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .none)
-            stationTitleLabel.text = "\(currentStation.getStationName())"
-            detailTitleLabel.text = "\(currentStation.getStationCountry())"
-            changeFavorite()
-            
+            refreshMainInfo()
             
             
         }
@@ -433,7 +414,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
         
     }
-
+    
     // favourite button을 할수있게 버튼을 생성
     @IBAction func clickFavButton(_ sender: UIButton) {
         
@@ -527,12 +508,51 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         
     }
     
-
+    
     
     //###################################################
     // 하단 라디오 박스 파트 끝
     //###################################################
     
     
-}
+    
+    //###################################################
+    // MARK: - Navigation
+    //###################################################
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let nextViewController = segue.destination as? BottomPlayViewController
+       
+        print("이거 실행되나??")
+        
+        if let BottomPlayViewController = nextViewController{
+            
+            print(" 다음 화면은 이미지 뷰 컨트롤러입니다")
+                
+                //꺼내온 정보를 다음 뷰 컨트롤러의 변수로 넘겨줍니다
+            BottomPlayViewController.receivedStationImageURL = self.currentStation.getImageURL()
+            
+            
+            BottomPlayViewController.receivedStationNameFromPrevious = self.currentStation.getStationName()
+            BottomPlayViewController.receivedStationGenreFromPrevious = self.currentStation.getStationGenre()
+            BottomPlayViewController.receivedStationCountryFromPrevious = self.currentStation.getStationCountry()
+            BottomPlayViewController.receivedStationStateFromPrevious = self.currentStation.getStationState()
+            BottomPlayViewController.receivedStationDescriptionFromPrevious = self.currentStation.getDescription()
+                
+                
+            }
+        }
+    
+        
 
+       
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}

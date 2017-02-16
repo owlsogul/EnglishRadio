@@ -15,8 +15,7 @@ class FavoriteManager {
     var favStationArr: Results<StationInfo>?
     var favStationMap: [Int: StationInfo] = [:]
     var sdManager: StationDataManager = StationDataManager()
-    
-    init(){self.load()}
+       init(){self.load()}
     
     func register(sdManager: StationDataManager){
         self.sdManager = sdManager

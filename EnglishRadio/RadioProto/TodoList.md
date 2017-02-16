@@ -67,6 +67,11 @@
 >> selectedCountry 배열 전역으로 선언 후 ViewController 에서 랜덤 함수를 호출 할 때 
 해당 배열에 나라와 일치하는지 확인 후 url 설정
 
+- Player 바깥으로 빼서 노티피케이션 주고받으면서 하기 :
+목표:
+1. 재생을 하기 위해 노티피케이션만 보내면 되게
+2. 스테이션 데이터만 넘겨주면 다음곡 재생도 원할하게 되게
+3.
 
 -----todo-----
 
@@ -81,8 +86,10 @@
 
 - BottomPlayView modal 로 넘어가기 - 완료
 - BottomPlayView 화면 중간쯤 올라오기 - 완료
-- BottomPlayView Favorite, Setting 에서도 보이기 
+- BottomPlayView Favorite, Setting 에서도 보이기 - 완료
 - BottomPlayView 에서도 Play 제어 가능
+- 다른 탭에서 BottomPlayView 에 제목 표시되는 딜레이 해결하기
+
 
 - Favorite 에서 재생 가능 
 
@@ -101,6 +108,8 @@
 - 탭바 아이콘이 하얗게는 안될까?? 선택시 태두리 변경 
 
 - 미디어플레이어를 최신 사용 가능한 것으로 바꾸기
+
+- 다음 곡으로 넘어가는 딜레이 있을때 플레이 버튼 누르면 엉키는 버그 수정
 
 2그룹
 

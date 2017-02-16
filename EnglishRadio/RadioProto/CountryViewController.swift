@@ -93,6 +93,8 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.backgroundColor = UIColor.clear
         cell.countryLabel?.textColor = UIColor.white.withAlphaComponent(0.9)
         cell.countryLabel?.text = name
+        cell.selectionStyle = .none
+
         print("country 탭에 셀이 생성되었다")
       
         

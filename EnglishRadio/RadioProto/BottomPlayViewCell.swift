@@ -10,17 +10,65 @@ import UIKit
 
 class BottomPlayViewCell: UITableViewCell {
 
+    @IBOutlet weak var smallStationImage: UIImageView!
+    var data : NSData?
+    
+    var currentStation: StationData?
+    var play = false
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        print("I awake")
+        bottomPlayButton.addTarget(self, action: #selector(clickButton(sender:)), for: .touchUpInside)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeIsPlay(noti:)), name: PlayerSendIsPlay, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getStationData(noti:)), name: PlayerSendStationData, object: nil)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
+    func changeIsPlay(noti: Notification){
+        
+        if let isPlay: Bool = noti.userInfo?[UserInfoIsPlayKey] as? Bool{
+            play = isPlay
+            if isPlay{
+                bottomPlayButton.setImage(#imageLiteral(resourceName: "newPauseSmall"), for: .normal)
+            }
+            else {
+                bottomPlayButton.setImage(#imageLiteral(resourceName: "newPlaySmall"), for: .normal)
+            }
+        }
+    }
+    
+    func getStationData(noti: Notification){
+        if let station = noti.userInfo?[UserInfoStationKey] as? StationData{
+            currentStation = station
+            bottomStationLabel.text = currentStation?.getStationName()
+        }
+        
+        let url = NSURL(string:"\(currentStation?.getImageURL())")
+        data = NSData(contentsOf: url! as URL)
+        if data != nil {
+            smallStationImage?.image = UIImage(data: data! as Data)
+        }
+        
+        
+        
+    }
+    
+    func clickButton(sender: UIButton){
+        if (play){
+            NotificationCenter.default.post(name: DidUserStop, object: nil, userInfo: nil)
+        }
+        else {
+            let userInfoDic = [UserInfoStationKey:currentStation]
+            NotificationCenter.default.post(name: DidUserPlay, object: nil, userInfo: userInfoDic)
+        }
+        
+    }
+    
     
     @IBOutlet weak var bottomPlayButton: UIButton!
     @IBOutlet weak var bottomStationLabel: UILabel!

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mvB-0p-CVg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mvB-0p-CVg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -61,14 +61,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ggO-Kt-EhU">
-                                        <rect key="frame" x="0.0" y="72" width="384" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ggO-Kt-EhU" id="EDz-MX-hg4">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="vbP-xv-AaR" id="50m-p2-d8L"/>
@@ -124,7 +116,6 @@
                                 </state>
                                 <connections>
                                     <action selector="LapButtonWithSender:" destination="vbP-xv-AaR" eventType="touchUpInside" id="Gs4-M8-BU9"/>
-                                    <action selector="PlayButton:" destination="vbP-xv-AaR" eventType="touchUpInside" id="bOI-HQ-WR0"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpD-up-NQ6">
@@ -134,14 +125,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhK-CA-dtu">
+                                <rect key="frame" x="186" y="281" width="86" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ClearButton:" destination="vbP-xv-AaR" eventType="touchUpInside" id="fU5-hE-v9w"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="UVF-fO-Snw"/>
                     <connections>
-                        <outlet property="ClickButton" destination="fQe-Ef-nNe" id="4ei-8O-69h"/>
-                        <outlet property="Play" destination="fQe-Ef-nNe" id="TBj-RE-F3S"/>
-                        <outlet property="Playbutton" destination="fQe-Ef-nNe" id="Gfv-KV-nSZ"/>
+                        <outlet property="PlayButton" destination="fQe-Ef-nNe" id="1Zs-P7-O0W"/>
                         <outlet property="TimeTextField" destination="KFd-qY-rj7" id="qPV-GQ-Pkl"/>
                         <outlet property="tableView" destination="u68-cN-L7R" id="hbO-5y-dUf"/>
                         <outlet property="theLabel" destination="jpD-up-NQ6" id="5aa-Ie-de5"/>
