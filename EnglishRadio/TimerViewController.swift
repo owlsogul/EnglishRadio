@@ -99,12 +99,15 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func ClearButton(_ sender: UIButton!) {
         
         // 테이블에 있는 데이터들 지우기
+    
+    
+    
     }
     
     
     @IBOutlet weak var TimeTextField: UITextField!
     //    var seconds: Double = 0
-    let radioPlayer = MPMoviePlayerController()
+    //let radioPlayer = MPMoviePlayerController()
     var second: TimeInterval = 0
     
     @IBOutlet weak var PlayButton: UIButton!
@@ -130,7 +133,7 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.timer = nil
         
         
-        if isPlay == false {
+        /*if isPlay == false {
             
             if let text = self.TimeTextField.text, let perSecond = TimeInterval(text) {
                 
@@ -162,11 +165,11 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
         } else {    // 재생중이라면
            
             radioPlayer.stop()
-            isPlay = false
+            isPlay = false*/
         }
         
         
         
     }
     
-}
+
