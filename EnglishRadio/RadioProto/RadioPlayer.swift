@@ -43,7 +43,7 @@ class RadioPlayer {
     var isPlay: Bool = false
     
     //########################################
-    // MARK: Init
+    // MARK: - Init
     //########################################
     
     init(){
@@ -90,7 +90,7 @@ class RadioPlayer {
     }
     
     //########################################
-    // MARK: Notification Observer
+    // MARK: - Notification Observer
     //########################################
     
     @objc func observeUserPlay(noti: Notification){
@@ -136,7 +136,7 @@ class RadioPlayer {
     }
     
     //########################################
-    // MARK: Cotrol Functions(Play, Pause ...)
+    // MARK: - Cotrol Functions(Play, Pause ...)
     //########################################
     
     func playRadio(){

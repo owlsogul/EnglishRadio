@@ -297,6 +297,10 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             //만약 플레이 버튼이 눌리면 1번째 줄 셀 리로드
             tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .top)
             
+            
+            self.playLimitTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(playLimitFunc(timer:)), userInfo: nil, repeats: true)
+            self.playLimitTimer?.fire()
+            
         }else {
             
             pause()
@@ -305,8 +309,15 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         }
         
     }
+   
+    
+    
     var playDelayTime = 0
     var playDelayTimer: Timer?
+    
+    var playLimitTime = 0
+    var playLimitTimer: Timer?
+    
     func playDelayFunc(timer: Timer){
         if (playDelayTime == 0){
             playDelayTime = 1
@@ -320,6 +331,22 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             self.playDelayTimer = nil
             self.isPlay = true
         }
+    }
+    
+    func playLimitFunc(timer: Timer){
+        if (SettingTableViewCell.dataLimit == 0){
+            pause()
+            self.playLimitTimer?.invalidate()
+            self.playLimitTimer = nil
+            
+        }else {
+            
+            print("Limit Timer 시작! 현재 남은 시간은 \(SettingTableViewCell.dataLimit) 분")
+            SettingTableViewCell.dataLimit = SettingTableViewCell.dataLimit - Int(timer.timeInterval)
+        }
+        
+        
+        
     }
     
     @IBAction func clickNextButton() {
