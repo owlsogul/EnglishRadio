@@ -47,6 +47,8 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        adjustVolumeView()
         tableView.backgroundColor = UIColor.clear
         tableView.separatorStyle = .none
         
@@ -154,6 +156,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         isPlay = false
         firstPlay = false
         ViewController.nowPlaying = false
+        
     }
     
     /** 랜덤으로 스테이션을 고르는 함수 */
@@ -298,12 +301,14 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .top)
             
             
-            self.playLimitTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(playLimitFunc(timer:)), userInfo: nil, repeats: true)
+            self.playLimitTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(playLimitFunc(timer:)), userInfo: nil, repeats: true)
             self.playLimitTimer?.fire()
             
         }else {
             
             pause()
+            self.playLimitTimer?.invalidate()
+            self.playLimitTimer = nil
             tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .bottom)
             
         }
