@@ -7,12 +7,15 @@
 //
 
 import UIKit
-import RealmSwift
 
 class BottomPlayViewController: UIViewController {
     
-    var stationInfos: Results<StationInfo>?
-    var currentStation: StationData!
+
+    var receivedStationNameFromPrevious : String?
+    var receivedStationGenreFromPrevious : String?
+    var receivedStationCountryFromPrevious : String?
+    var receivedStationStateFromPrevious : String?
+    var receivedStationDescriptionFromPrevious : String?
 
     @IBOutlet weak var stationInfoView: UIView!
     
@@ -21,30 +24,31 @@ class BottomPlayViewController: UIViewController {
     @IBOutlet weak var stationNameLabel: UILabel!
     @IBOutlet weak var stationGenreLabel: UILabel!
     @IBOutlet weak var stationCountryLabel: UILabel!
-    @IBOutlet weak var stationStatesLabel: UILabel!
+    @IBOutlet weak var stationStateLabel: UILabel!
     @IBOutlet weak var stationDescriptionLabel: UILabel!
     
     
-    
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         print("ViewController의 화면이 보여질 예정입니다")
 
-        
-        
-        let stationInfos : StationInfo = StationInfo()
-        self.stationCountryLabel.textColor = UIColor.black
-        self.stationCountryLabel?.text = stationInfos.stationCountry
-        print("\(stationInfos.stationCountry)")
-        print("\(currentStation?.getStationName())")
-        print("라벨이 로드되었다")
-        
-        
-        self.stationInfoView.reloadInputViews()
-        
+
+        refreshMainInfo()
     }
+    
+    func refreshMainInfo(){
+        stationNameLabel!.text = "\(receivedStationNameFromPrevious!)"
+        stationGenreLabel!.text = "\(receivedStationGenreFromPrevious!)"
+        stationCountryLabel!.text = "\(receivedStationCountryFromPrevious!)"
+        stationStateLabel!.text = "\(receivedStationStateFromPrevious!)"
+        stationDescriptionLabel!.text = "\(receivedStationDescriptionFromPrevious!)"
+
+
+    }
+
     
     /**viewDidLoad함수에 모달창 배경 투명하게하는 옵션을 넣음*/
     override func viewDidLoad() {

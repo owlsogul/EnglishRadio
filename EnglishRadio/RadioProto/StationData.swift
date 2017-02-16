@@ -14,13 +14,15 @@ class StationData{
 
     
     
-    public init(id: Int, name: String, streaming: String, image: String, desc: String, country: String) {
+    public init(id: Int, name: String, streaming: String, image: String, desc: String, country: String, genre: String, state: String) {
         self.stationId = id
         self.stationName = name
         self.stationStreamURL = streaming
         self.stationImageURL = image
         self.stationDesc = desc
         self.stationCountry = country
+        self.stationGenre = genre
+        self.stationState = state
     }
     
     //
@@ -34,6 +36,8 @@ class StationData{
     // Description of Station
     private var stationDesc: String = ""
     private var stationCountry: String = ""
+    private var stationGenre: String = ""
+    private var stationState: String = ""
     
 
     class func parseStation(stationJSON: JSON) -> (StationData) {
@@ -44,8 +48,10 @@ class StationData{
         let imageURL  = stationJSON["Image"].string ?? ""
         let desc      = stationJSON["desc"].string ?? ""
         let country   = stationJSON["country"].string ?? ""
+        let genre     = stationJSON["genre"].string ?? ""
+        let state     = stationJSON["State(optional)"].string ?? ""
 
-        let station = StationData(id: id, name: name, streaming: streamURL, image: imageURL, desc: desc, country: country)
+        let station = StationData(id: id, name: name, streaming: streamURL, image: imageURL, desc: desc, country: country, genre: genre, state: state)
         return station
     }
     
@@ -118,6 +124,22 @@ class StationData{
     
     public func setStationCountry(country: String) -> () {
         self.stationCountry = country;
+    }
+    
+    public func getStationGenre() -> String{
+        return self.stationGenre
+    }
+    
+    public func setStationGenre(genre: String) -> () {
+        self.stationGenre = genre;
+    }
+    
+    public func getStationState() -> String{
+        return self.stationState
+    }
+    
+    public func setStationCountry(state: String) -> () {
+        self.stationState = state;
     }
     
 }

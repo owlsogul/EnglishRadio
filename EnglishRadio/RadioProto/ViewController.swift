@@ -521,21 +521,25 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     //###################################################
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let nextViewController = segue.destination as? FavoriteViewController
+        let nextViewController = segue.destination as? BottomPlayViewController
        
         print("이거 실행되나??")
         
-        if let favoriteViewController = nextViewController{
+        if let BottomPlayViewController = nextViewController{
             
             print(" 다음 화면은 이미지 뷰 컨트롤러입니다")
                 
                 //꺼내온 사진 정보를 다음 뷰 컨트롤러의 변수로 넘겨줍니다
-                favoriteViewController.recievedStationName = self.currentStation.getStationName()
-                    print("꺼내온 정보가 있따")
+            BottomPlayViewController.receivedStationNameFromPrevious = self.currentStation.getStationName()
+            BottomPlayViewController.receivedStationGenreFromPrevious = self.currentStation.getStationGenre()
+            BottomPlayViewController.receivedStationCountryFromPrevious = self.currentStation.getStationCountry()
+            BottomPlayViewController.receivedStationStateFromPrevious = self.currentStation.getStationState()
+            BottomPlayViewController.receivedStationDescriptionFromPrevious = self.currentStation.getDescription()
                 
                 
             }
         }
+    
         
 
        
