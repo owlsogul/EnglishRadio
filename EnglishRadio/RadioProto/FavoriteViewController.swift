@@ -135,13 +135,16 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
             // cell의 detailTextLabel에 세팅
             cell.detailTextLabel?.text = info.stationCountry
             cell.detailTextLabel?.textColor = UIColor.white
+            cell.selectionStyle = .none
+            tableView.rowHeight = 80
+            
         }
         
         
         if indexPath.row % 2 == 0 {
             cell.backgroundColor = UIColor.clear
         } else {
-            cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+            cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
         }
         
         
@@ -172,6 +175,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     }
         
     }
+    
     
     
     

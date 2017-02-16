@@ -35,9 +35,12 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         /**데이터테이블 스위치로 hide&Show 조작*/
         tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-
+       
+        
         bottomTableView.backgroundColor = UIColor.clear
         bottomTableView.separatorStyle = .none
+        
+        
         
 
     }
@@ -112,6 +115,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
 
             cell.dataSettingSwitch.onTintColor = UIColor.white.withAlphaComponent(0.8)
             cell.dataSettingSwitch.tintColor = UIColor.white
+            cell.selectionStyle = .none
             return cell
             
         } else {
@@ -122,7 +126,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             cell.backgroundColor = UIColor.clear
             cell.dataUsageLabel?.text = "Slide to adjust"
             cell.dataUsageLabel.textColor = UIColor.darkGray.withAlphaComponent(1)
-           
+            cell.selectionStyle = .none
             //만약 스위치의 상태가 변한다면
             if changed{
                 
@@ -228,6 +232,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "countryView"){
                 
                 self.navigationController?.pushViewController(nextViewController, animated: true)
+                tableView.deselectRow(at: IndexPath.init(row: 0, section: 0), animated: true)
                 
             }
         }else if indexPath.row == 1{
@@ -235,6 +240,8 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "channelView"){
                 
                 self.navigationController?.pushViewController(nextViewController, animated: true)
+                tableView.deselectRow(at: IndexPath.init(row: 1, section: 0), animated: true)
+                
             }
         }
         }

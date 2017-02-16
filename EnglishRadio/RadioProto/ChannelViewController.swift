@@ -132,7 +132,8 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
             header.backgroundColor = UIColor.black.withAlphaComponent(0.2)
             header.headerLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
             header.headerLabel?.text = arrangedCountry[section]
-            
+            header.selectionStyle = .none
+
             return header
             
         }
@@ -144,7 +145,8 @@ class ChannelViewController: UIViewController , UITableViewDelegate,UITableViewD
             
             cell.backgroundColor = UIColor.clear
             cell.stationLabel?.textColor = UIColor.white.withAlphaComponent(0.8)
-            
+            cell.selectionStyle = .none
+
             if let station = arrangedStation[countryName]?[row-1] {
                
                 cell.stationLabel.text = station.getStationName()

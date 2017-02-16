@@ -343,11 +343,13 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             pause()
             self.playLimitTimer?.invalidate()
             self.playLimitTimer = nil
+            print("Limit Timer End!")
             
         }else {
             
-            print("Limit Timer 시작! 현재 남은 시간은 \(SettingTableViewCell.dataLimit) 분")
-            SettingTableViewCell.dataLimit = SettingTableViewCell.dataLimit - Int(timer.timeInterval)
+            print("Limit Timer 시작! 현재 남은 시간은 \(SettingTableViewCell.dataLimit - 1) 분")
+            
+            SettingTableViewCell.dataLimit = SettingTableViewCell.dataLimit - 1
         }
         
         
