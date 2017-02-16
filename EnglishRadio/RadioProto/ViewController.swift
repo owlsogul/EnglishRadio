@@ -335,7 +335,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             self.playDelayTime = 0
             self.playDelayTimer?.invalidate()
             self.playDelayTimer = nil
-            self.playDelayTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(playDelayFunc(timer:)), userInfo: nil, repeats: true)
+            self.playDelayTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(playDelayFunc(timer:)), userInfo: nil, repeats: true)
             self.playDelayTimer?.fire()
 
             // 랜덤 스테이션 가져오기

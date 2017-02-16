@@ -110,6 +110,8 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             cell.dataLabel?.textColor = UIColor.white
             cell.dataLabel?.text = "3G/LTE"
 
+            cell.dataSettingSwitch.onTintColor = UIColor.white.withAlphaComponent(0.8)
+            cell.dataSettingSwitch.tintColor = UIColor.white
             return cell
             
         } else {
@@ -118,7 +120,8 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             let cell:SettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "dataLimitCell", for: indexPath) as! SettingTableViewCell
             
             cell.backgroundColor = UIColor.clear
-            cell.dataUsageLabel?.text = "데이터설정값"
+            cell.dataUsageLabel?.text = "Slide to adjust"
+            cell.dataUsageLabel.textColor = UIColor.darkGray.withAlphaComponent(1)
            
             //만약 스위치의 상태가 변한다면
             if changed{

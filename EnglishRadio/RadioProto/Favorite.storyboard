@@ -26,7 +26,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <view alpha="0.10000000149011612" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9cH-QD-8dz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="566"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
