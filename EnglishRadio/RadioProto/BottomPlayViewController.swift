@@ -40,11 +40,36 @@ class BottomPlayViewController: UIViewController {
     }
     
     func refreshMainInfo(){
-        stationNameLabel!.text = "\(receivedStationNameFromPrevious!)"
-        stationGenreLabel!.text = "\(receivedStationGenreFromPrevious!)"
+        stationNameLabel.textColor = UIColor.white
+        stationGenreLabel.textColor = UIColor.white
+        stationCountryLabel.textColor = UIColor.white
+        stationStateLabel.textColor = UIColor.white
+        stationDescriptionLabel.textColor = UIColor.white
+        
+        stationNameLabel.text = "\(receivedStationNameFromPrevious!)"
+        
+        
+        if receivedStationGenreFromPrevious == nil {
+            stationGenreLabel.text = "NO INFO"
+        }else {
+            stationGenreLabel!.text = "\(receivedStationGenreFromPrevious!)"
+        }
+        
         stationCountryLabel!.text = "\(receivedStationCountryFromPrevious!)"
-        stationStateLabel!.text = "\(receivedStationStateFromPrevious!)"
-        stationDescriptionLabel!.text = "\(receivedStationDescriptionFromPrevious!)"
+        
+        if receivedStationStateFromPrevious == nil {
+            stationStateLabel.text = "NO INFO"
+        } else{
+            stationStateLabel!.text = "\(receivedStationStateFromPrevious!)"
+        }
+        
+        if receivedStationDescriptionFromPrevious == nil {
+            stationDescriptionLabel.text = "NO INFO"
+        } else {
+            stationDescriptionLabel!.text = "\(receivedStationDescriptionFromPrevious!)"
+        }
+        
+        
 
 
     }
