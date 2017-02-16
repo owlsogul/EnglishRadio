@@ -10,6 +10,9 @@ import UIKit
 
 class BottomPlayViewCell: UITableViewCell {
 
+    @IBOutlet weak var smallStationImage: UIImageView!
+    var data : NSData?
+    
     var currentStation: StationData?
     var play = false
     override func awakeFromNib() {
@@ -44,6 +47,15 @@ class BottomPlayViewCell: UITableViewCell {
             currentStation = station
             bottomStationLabel.text = currentStation?.getStationName()
         }
+        
+        let url = NSURL(string:"\(currentStation?.getImageURL())")
+        data = NSData(contentsOf: url! as URL)
+        if data != nil {
+            smallStationImage?.image = UIImage(data: data! as Data)
+        }
+        
+        
+        
     }
     
     func clickButton(sender: UIButton){

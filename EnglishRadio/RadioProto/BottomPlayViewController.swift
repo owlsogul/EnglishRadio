@@ -10,7 +10,8 @@ import UIKit
 
 class BottomPlayViewController: UIViewController {
     
-
+    var receivedStationImageURL : String?
+    var data : NSData?
     var receivedStationNameFromPrevious : String?
     var receivedStationGenreFromPrevious : String?
     var receivedStationCountryFromPrevious : String?
@@ -46,11 +47,18 @@ class BottomPlayViewController: UIViewController {
         stationStateLabel.textColor = UIColor.white
         stationDescriptionLabel.textColor = UIColor.white
         
+        let url = NSURL(string:"\(receivedStationImageURL!)")
+        data = NSData(contentsOf: url! as URL)
+        if data != nil {
+            albumArtImageView?.image = UIImage(data:data! as Data)
+        }
+        
+        
         stationNameLabel.text = "\(receivedStationNameFromPrevious!)"
         
         
         if receivedStationGenreFromPrevious == nil {
-            stationGenreLabel.text = "NO INFO"
+            stationGenreLabel.text = "*NO INFO*"
         }else {
             stationGenreLabel!.text = "\(receivedStationGenreFromPrevious!)"
         }
@@ -58,13 +66,13 @@ class BottomPlayViewController: UIViewController {
         stationCountryLabel!.text = "\(receivedStationCountryFromPrevious!)"
         
         if receivedStationStateFromPrevious == nil {
-            stationStateLabel.text = "NO INFO"
+            stationStateLabel.text = "*NO INFO*"
         } else{
             stationStateLabel!.text = "\(receivedStationStateFromPrevious!)"
         }
         
         if receivedStationDescriptionFromPrevious == nil {
-            stationDescriptionLabel.text = "NO INFO"
+            stationDescriptionLabel.text = "*NO INFO*"
         } else {
             stationDescriptionLabel!.text = "\(receivedStationDescriptionFromPrevious!)"
         }

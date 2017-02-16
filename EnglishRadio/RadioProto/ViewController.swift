@@ -529,7 +529,10 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
             
             print(" 다음 화면은 이미지 뷰 컨트롤러입니다")
                 
-                //꺼내온 사진 정보를 다음 뷰 컨트롤러의 변수로 넘겨줍니다
+                //꺼내온 정보를 다음 뷰 컨트롤러의 변수로 넘겨줍니다
+            BottomPlayViewController.receivedStationImageURL = self.currentStation.getImageURL()
+            
+            
             BottomPlayViewController.receivedStationNameFromPrevious = self.currentStation.getStationName()
             BottomPlayViewController.receivedStationGenreFromPrevious = self.currentStation.getStationGenre()
             BottomPlayViewController.receivedStationCountryFromPrevious = self.currentStation.getStationCountry()
